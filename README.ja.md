@@ -28,7 +28,11 @@ English: [README.md](README.md)
 
 - `apm.yml`: APM package manifest
 - `.apm/skills/impl-planner/SKILL.md`: Skill 本体
-- `.apm/skills/impl-planner/references/plan-contract.md`: 出力契約とプロンプト例
+- `.apm/skills/impl-planner/references/plan-contract.md`: 中核の出力契約
+- `.apm/skills/impl-planner/references/examples.md`: 必要時に読む例と再利用用プロンプトテンプレート
+- `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
+- `.apm/skills/impl-planner/references/html-output.md`: 必要時に読む HTML レポート制約
+- `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
 
 ## 使い方
 

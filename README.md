@@ -28,7 +28,11 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 
 - `apm.yml`: APM package manifest
 - `.apm/skills/impl-planner/SKILL.md`: Skill entrypoint
-- `.apm/skills/impl-planner/references/plan-contract.md`: Output contract and prompt examples
+- `.apm/skills/impl-planner/references/plan-contract.md`: Core output contract
+- `.apm/skills/impl-planner/references/examples.md`: Optional examples and reusable prompt templates
+- `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
+- `.apm/skills/impl-planner/references/html-output.md`: Optional HTML report constraints
+- `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
 
 ## How to use the skill
 

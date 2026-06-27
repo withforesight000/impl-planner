@@ -21,7 +21,7 @@ Use this skill to produce an implementation plan for a software repository chang
 3. State assumptions explicitly.
    - Prefer conservative assumptions that follow repository conventions.
    - If an assumption affects architecture, data safety, compatibility, security, or operations, call it out.
-4. Produce the final plan in Plan.md style using the contract in `references/plan-contract.md`.
+4. Produce the final plan in Plan.md style using the core contract in `references/plan-contract.md`.
    - Write explanatory prose and bullet contents in the same language the user used for the request.
    - Use the English or Japanese structural labels from the contract based on the user's request language, unless the user explicitly asks for a different variant.
    - Use HTML output only when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
@@ -51,6 +51,8 @@ Use this skill to produce an implementation plan for a software repository chang
 
 ## Detail-Request Mode
 
+Read `references/detail-request.md` when this mode applies.
+
 When the user asks for more detail, asks for decision support, or cannot choose an implementation direction, respond with Markdown bullets that include:
 
 - A clearly marked recommended option.
@@ -62,4 +64,11 @@ After a choice is made, reflect it in the plan's `Assumptions` or milestone `dec
 
 ## Output Contract
 
-Read `references/plan-contract.md` before producing the final plan. Follow that structure exactly unless the user explicitly asks for a different format.
+Read `references/plan-contract.md` before producing the final plan. Follow that core structure exactly unless the user explicitly asks for a different format.
+
+Read optional references only when their trigger applies:
+
+- `references/detail-request.md`: when the user asks for detailed decision support, multiple options, tradeoffs, or cannot choose an implementation direction.
+- `references/examples.md`: when including usage prompt examples or a mini-example would help the user reuse the skill.
+- `references/html-output.md`: when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
+- `references/formatting.md`: when formatting constraints are unclear or the output needs tables, code blocks, or unusually compact structure.
