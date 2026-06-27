@@ -85,7 +85,7 @@ Use `impl-planner` to create an implementation plan.
 - Points that need detailed explanation or judgment from AI
 ```
 
-For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, and any points that need detailed explanation or judgment from AI up front.
+For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, the repository's high-level goal and how it achieves it, and any points that need detailed explanation or judgment from AI up front.
 If you want the plan to be broad on impact, mention entrypoints, routing, registration, config, tests, fixtures, and docs that are likely to move together.
 If the repository already follows an architecture or layering convention, mention that explicitly so the plan can preserve the existing boundaries.
 

@@ -10,6 +10,7 @@ Use this skill to produce an implementation plan for a software repository chang
 ## Workflow
 
 1. Ground the plan in the environment before asking questions.
+   - First understand what the repository is trying to achieve and how it achieves it at a high level.
    - Read or search relevant files, configs, schemas, types, manifests, docs, tests, and existing patterns.
    - Trace the likely change surface outward from entrypoints, call sites, import chains, routing or registration points, and adjacent tests or fixtures.
    - When a file is clearly central, inspect the surrounding module boundaries and any direct dependents before deciding the plan's affected files.
