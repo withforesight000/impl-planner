@@ -10,6 +10,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Produces a Plan.md-style implementation plan
 - Lists ambiguities before planning
 - Records assumptions explicitly
+- Scales the amount of structure to the task size
 - Breaks the plan into milestones with:
   - goal
   - files / modules likely affected
@@ -19,6 +20,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
   - main risks
   - rollback considerations
 - Supports detailed decision support when the answer is not obvious
+- Self-checks that acceptance criteria, validation, risks, and rollback notes are actionable
 - Can include concise example prompts the user can reuse next time when helpful
 
 ## Repository layout

@@ -23,10 +23,16 @@ Use this skill to produce an implementation plan for a software repository chang
    - If an assumption affects architecture, data safety, compatibility, security, or operations, call it out.
 4. Produce the final plan in Plan.md style using the contract in `references/plan-contract.md`.
    - Write explanatory prose and bullet contents in the same language the user used for the request.
-   - Keep the structural section labels aligned with the contract unless the user explicitly asks for a localized variant.
+   - Use the English or Japanese structural labels from the contract based on the user's request language, unless the user explicitly asks for a different variant.
+   - Scale the plan to the task size: small, low-risk changes can use one concise milestone and omit empty optional subsections; risky or cross-cutting changes should use the full structure.
 5. Include usage prompts for future users when useful.
    - Prefer a short prompt example section only when it helps reuse the skill.
    - Include both a minimal prompt and a detailed prompt when you include the section.
+6. Self-check the plan before returning it.
+   - Confirm acceptance criteria are observable.
+   - Confirm validation commands are concrete or the validation class is explicit.
+   - Confirm risks have matching rollback or mitigation notes when risk exists.
+   - Confirm assumptions are explicit and do not hide blocking unknowns.
 
 ## Planning Rules
 
@@ -36,7 +42,7 @@ Use this skill to produce an implementation plan for a software repository chang
 - For configuration-management tool repositories, account for inventory/group vars, idempotence, handler behavior, check mode, secrets, role boundaries, and rollback implications.
 - For software repositories, account for public interfaces, compatibility, migrations, data flow, failure modes, test coverage, and deployment or rollout risk when relevant.
 - Do not invent detailed schemas, flags, APIs, or validation rules unless the request or discovered code requires them. Where a choice matters, present the decision and a recommended default.
-- Do not use tables. Use Markdown headings and bullet lists.
+- Prefer Markdown headings and bullet lists. Tables are allowed only when they make comparisons or file lists easier to scan.
 - Close every code block if one is used.
 
 ## Detail-Request Mode

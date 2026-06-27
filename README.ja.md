@@ -10,6 +10,7 @@ English: [README.md](README.md)
 - Plan.md 形式の実装 plan を作る
 - 先に前提不足や曖昧点を列挙する
 - Assumptions を明示する
+- タスク規模に応じて plan の構造を調整する
 - milestone ごとに次を整理する
   - goal
   - files / modules likely affected
@@ -19,6 +20,7 @@ English: [README.md](README.md)
   - main risks
   - rollback considerations
 - 判断が難しいときは、推奨案つきの複数案を出す
+- acceptance criteria、validation、risk、rollback が実行可能か自己点検する
 - 必要に応じて、次回そのまま使える短いプロンプト例を出す
 
 ## リポジトリ構成
