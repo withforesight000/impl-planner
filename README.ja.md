@@ -26,7 +26,7 @@ English: [README.md](README.md)
 - validation command はリポジトリ既存の検証スタイルに合わせる
 - Clean Architecture, MVC, Hexagonal Architecture, DDD, feature-based structure などの既存アーキテクチャやレイヤリング規約がある場合は、それを確認して尊重する
 - 判断が難しいときは、推奨案つきの複数案を出す
-- acceptance criteria、validation、risk、rollback が実行可能か自己点検する
+- acceptance criteria、validation、risk、mitigation、rollback が実行可能か自己点検する
 - 必要に応じて、次回そのまま使える短いプロンプト例を出す
 
 ## リポジトリ構成

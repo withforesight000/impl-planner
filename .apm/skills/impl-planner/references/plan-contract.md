@@ -132,6 +132,7 @@ Use `## Milestone N: <short title>` for each milestone. Keep the milestone headi
 
 - List the highest-risk technical or operational failure modes.
 - Include data safety, compatibility, rollout, security, idempotence, and dependency risks where relevant.
+- Tie each meaningful risk to a concrete mitigation, validation step, or rollback action.
 
 ### rollback considerations
 
@@ -145,7 +146,7 @@ Before returning the plan, verify these points and revise the plan if any check 
 - Each acceptance criterion is observable by a reviewer, test, command, or runtime behavior.
 - Each validation command is concrete, or the validation class is explicit when the exact command is unknown.
 - Validation commands reflect the repository's existing validation style when it is discoverable.
-- Each meaningful risk has a corresponding rollback, mitigation, or decision note.
+- Each meaningful risk has a concrete mitigation, validation step, or rollback action.
 - Blocking unknowns are not silently converted into assumptions.
 - The affected-file list reflects the discovered impact surface, not only the obvious edit target, when repository structure indicates additional touched areas.
 - Each likely affected file or module has a short reason tied to repository evidence or an explicit assumption.

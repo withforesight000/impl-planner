@@ -26,7 +26,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Aligns validation commands with the repository's existing validation style
 - Checks for an existing architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure and respects it when present
 - Supports detailed decision support when the answer is not obvious
-- Self-checks that acceptance criteria, validation, risks, and rollback notes are actionable
+- Self-checks that acceptance criteria, validation, risks, mitigations, and rollback actions are actionable
 - Can include concise example prompts the user can reuse next time when helpful
 
 ## Repository layout

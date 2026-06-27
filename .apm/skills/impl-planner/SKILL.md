@@ -42,7 +42,7 @@ Use this skill to produce an implementation plan for a software repository chang
    - Confirm likely affected files or modules include reasons, not just paths.
    - Confirm validation follows the repository's existing validation style when discoverable.
    - Confirm validation commands are concrete or the validation class is explicit.
-   - Confirm risks have matching rollback or mitigation notes when risk exists.
+   - Confirm each meaningful risk has a concrete mitigation, validation step, or rollback action.
    - Confirm assumptions are explicit and do not hide blocking unknowns.
 
 ## Planning Rules
