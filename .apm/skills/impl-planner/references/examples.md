@@ -38,12 +38,14 @@ This example shows the expected density for a small English request. Adapt langu
 
 - `README.md`
 - `README.ja.md`
+- `SKILL.md` and `plan-contract.md` if the prompt contract itself changes
 
 ### acceptance criteria
 
 - English and Japanese READMEs both show the list-based minimal prompt and detailed prompt.
 - The detailed prompt includes fields for domain knowledge that AI is likely to miss.
 - The detailed prompt includes a field for points that need detailed explanation or judgment from AI.
+- The detailed prompt asks for broad impact surfaces when that matters, including entrypoints, routing, registration, tests, fixtures, and docs.
 - The wording stays planning-only and does not imply implementation work.
 
 ### validation commands
@@ -54,6 +56,7 @@ This example shows the expected density for a small English request. Adapt langu
 ### decision notes to avoid oscillation
 
 - Prefer list-based prompt templates over prose-heavy examples for the detailed input section.
+- When improving prompt templates, bias toward prompting for likely impact surfaces instead of only the obvious edit target.
 ```
 
 ## Future Usage Prompts
