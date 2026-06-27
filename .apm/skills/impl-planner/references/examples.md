@@ -46,6 +46,10 @@ This example shows the expected density for a small English request. Adapt langu
 - `README.ja.md`: Japanese usage guidance must stay aligned with the English README.
 - `SKILL.md` and `plan-contract.md`: likely affected if the prompt contract itself changes.
 
+### out of scope
+
+- Reworking APM packaging behavior or adding implementation-time automation.
+
 ### acceptance criteria
 
 - English and Japanese READMEs both show the list-based minimal prompt and detailed prompt.

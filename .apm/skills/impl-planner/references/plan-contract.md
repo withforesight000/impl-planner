@@ -36,6 +36,7 @@ Use this label set for English requests:
 - `## Milestone N: <short title>`
 - `### goal`
 - `### files / modules likely affected`
+- `### out of scope`
 - `### acceptance criteria`
 - `### validation commands`
 - `### decision notes to avoid oscillation`
@@ -54,6 +55,7 @@ Use this label set for Japanese requests:
 - `## Milestone N: <short title>`
 - `### goal`
 - `### files / modules likely affected`
+- `### out of scope`
 - `### acceptance criteria`
 - `### validation commands`
 - `### decision notes to avoid oscillation`
@@ -103,6 +105,11 @@ Use `## Milestone N: <short title>` for each milestone. Keep the milestone headi
 - Use paths when they are known from exploration.
 - If exact paths are unknown, name the module or subsystem and explain what will be discovered.
 - Prefer a complete impact surface over a minimal edit list. If discovery shows a likely dependency chain, include the upstream entrypoint and downstream tests or adjacent modules rather than only the file that the user named.
+
+### out of scope
+
+- State notable excluded areas when naming them prevents implementation drift.
+- Omit this subsection for small changes when there is no meaningful exclusion to record.
 
 ### acceptance criteria
 

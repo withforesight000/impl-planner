@@ -26,6 +26,7 @@ Use this skill to produce an implementation plan for a software repository chang
    - Prefer conservative assumptions that follow repository conventions.
    - If an assumption affects architecture, data safety, compatibility, security, or operations, call it out.
    - Do not shrink the affected-file list to only the most obvious edited file when repository evidence suggests surrounding code, tests, config, docs, or generated artifacts will likely move as well.
+   - State notable out-of-scope areas when excluding them prevents implementation drift.
 4. Produce the final plan in Plan.md style using the core contract in `references/plan-contract.md`.
    - Start with a concise repository-understanding summary before listing ambiguities.
    - Write explanatory prose and bullet contents in the same language the user used for the request.
