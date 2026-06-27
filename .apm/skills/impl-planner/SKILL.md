@@ -56,6 +56,7 @@ Use this skill to produce an implementation plan for a software repository chang
 - For configuration-management tool repositories, account for inventory/group vars, idempotence, handler behavior, check mode, secrets, role boundaries, and rollback implications.
 - For software repositories, account for public interfaces, compatibility, migrations, data flow, failure modes, test coverage, and deployment or rollout risk when relevant.
 - Do not invent detailed schemas, flags, APIs, or validation rules unless the request or discovered code requires them. Where a choice matters, present the decision and a recommended default.
+- When the implementation direction is not obvious, include the recommended option, rejected alternatives, and the reason for the recommendation.
 - Prefer Markdown headings and bullet lists. Tables are allowed only when they make comparisons or file lists easier to scan.
 - Close every code block if one is used.
 

@@ -127,6 +127,7 @@ Use `## Milestone N: <short title>` for each milestone. Keep the milestone headi
 
 - Record decisions that should not be reopened during implementation unless new facts invalidate them.
 - Include recommended defaults and rejected alternatives when they are likely to cause rework.
+- When the implementation direction is not obvious, include the recommended option, rejected alternatives, and why the recommendation fits the discovered constraints.
 
 ### main risks
 
