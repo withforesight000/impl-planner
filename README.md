@@ -50,18 +50,33 @@ Detailed prompt:
 ```text
 Use `impl-planner` to create an implementation plan.
 
-Target repository (software repository or configuration-management tool repository):
-What you want to do:
-What to do in this task:
-What not to do in this task:
-Required design rules:
-Domain knowledge that AI is likely to miss:
-Constraints:
-Acceptance criteria:
-Validation steps:
-Known pitfalls:
-Open questions:
-Points that need detailed explanation or judgment from AI:
+- Repository / system
+  - [software repository or configuration-management tool repository name]
+- What you want to achieve
+  - [what you want to implement]
+- In scope
+- Out of scope
+- Design rules to keep
+  - [architecture constraints]
+  - [existing patterns]
+  - [implementations to avoid]
+- Domain knowledge AI is likely to miss
+  - [business rules]
+  - [exception handling]
+  - [background of existing specifications]
+- Constraints
+  - [backward compatibility]
+  - [performance]
+  - [security]
+  - [operations]
+  - [runtime / library constraints]
+- Acceptance criteria
+- Validation steps
+  - [build / test / lint / typecheck / e2e]
+  - [manual verification steps]
+- Known pitfalls
+- Open questions
+- Points that need detailed explanation or judgment from AI
 ```
 
 For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, and any points that need detailed explanation or judgment from AI up front.
