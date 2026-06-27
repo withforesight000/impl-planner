@@ -6,6 +6,7 @@ This reference defines the required output shape for implementation planning. Us
 
 Use the instructions below to choose the right level of detail and labels.
 The final plan output must start with the missing-context section, followed by `Assumptions`, then `Plan.md`.
+When the user explicitly asks for HTML, use the same content contract in a self-contained HTML report instead of Markdown while preserving the same information and ordering.
 
 - Write explanatory prose and bullet contents in the same language the user used for the request.
 - Use the English structural labels for English requests and the Japanese structural labels for Japanese requests unless the user explicitly asks for a different variant.
@@ -251,3 +252,27 @@ When the user asks for detailed decision support, use this structure before or a
 - Close all code blocks.
 - Prefer concise, implementation-ready bullets over long prose.
 - Do not tell the implementer to start coding or proceed with execution.
+
+## HTML Output Variant
+
+Use this variant only when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
+
+The HTML report must preserve the same information as the Markdown plan:
+
+- Missing context and ambiguities
+- Assumptions
+- Plan milestones
+- Acceptance criteria
+- Validation commands
+- Decision notes
+- Main risks
+- Rollback considerations
+
+HTML constraints:
+
+- Use semantic HTML: `main`, `section`, `h1`, `h2`, `h3`, `ul`, `ol`, `pre`, `code`, and `table` when useful.
+- Keep CSS minimal and inline inside a single `<style>` block.
+- Do not use JavaScript.
+- Do not load external fonts, stylesheets, scripts, images, or remote assets.
+- Preserve command snippets inside `<pre><code>...</code></pre>`.
+- Keep the report printable and readable in light and dark browser settings where possible.

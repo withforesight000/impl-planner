@@ -24,6 +24,8 @@ Use this skill to produce an implementation plan for a software repository chang
 4. Produce the final plan in Plan.md style using the contract in `references/plan-contract.md`.
    - Write explanatory prose and bullet contents in the same language the user used for the request.
    - Use the English or Japanese structural labels from the contract based on the user's request language, unless the user explicitly asks for a different variant.
+   - Use HTML output only when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
+   - Keep HTML output self-contained, semantic, and free of JavaScript or external assets.
    - Scale the plan to the task size: small, low-risk changes can use one concise milestone and omit empty optional subsections; risky or cross-cutting changes should use the full structure.
 5. Include usage prompts for future users when useful.
    - Prefer a short prompt example section only when it helps reuse the skill.
@@ -39,6 +41,8 @@ Use this skill to produce an implementation plan for a software repository chang
 - Prefer existing codebase conventions, frameworks, module boundaries, helper APIs, and validation style.
 - Preserve type safety.
 - Avoid silent failure. Plans must require visible errors, validation, or explicit fallback behavior where failure is possible.
+- Markdown is the default output format; HTML is an explicit opt-in variant.
+- HTML output must preserve the same planning contract as Markdown output and must not rely on external CSS, JavaScript, remote assets, or framework-specific components.
 - For configuration-management tool repositories, account for inventory/group vars, idempotence, handler behavior, check mode, secrets, role boundaries, and rollback implications.
 - For software repositories, account for public interfaces, compatibility, migrations, data flow, failure modes, test coverage, and deployment or rollout risk when relevant.
 - Do not invent detailed schemas, flags, APIs, or validation rules unless the request or discovered code requires them. Where a choice matters, present the decision and a recommended default.

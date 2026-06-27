@@ -8,6 +8,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 ## What this package does
 
 - Produces a Plan.md-style implementation plan
+- Can optionally produce a self-contained HTML report when explicitly requested
 - Lists ambiguities before planning
 - Records assumptions explicitly
 - Scales the amount of structure to the task size
@@ -32,6 +33,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 ## How to use the skill
 
 Use this skill when you need an implementation plan for a new feature, a refactor, an Ansible change, or a design decision.
+Ask for HTML output only when you want a browser-readable review artifact or visual report.
 
 Minimal prompt:
 
