@@ -20,6 +20,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
   - decision notes to avoid oscillation
   - main risks
   - rollback considerations
+- Traces likely impact outward from entrypoints, call sites, configs, tests, and adjacent docs when estimating affected files
 - Supports detailed decision support when the answer is not obvious
 - Self-checks that acceptance criteria, validation, risks, and rollback notes are actionable
 - Can include concise example prompts the user can reuse next time when helpful
@@ -84,6 +85,7 @@ Use `impl-planner` to create an implementation plan.
 ```
 
 For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, and any points that need detailed explanation or judgment from AI up front.
+If you want the plan to be broad on impact, mention entrypoints, routing, registration, config, tests, fixtures, and docs that are likely to move together.
 
 ## How to verify the package
 

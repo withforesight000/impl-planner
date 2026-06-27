@@ -19,6 +19,7 @@ When the user explicitly asks for HTML, use the same content contract in a self-
 - Always keep `goal`, `files / modules likely affected`, `acceptance criteria`, and `validation commands` for each milestone.
 - Use the full milestone structure for cross-cutting, risky, data-affecting, security-sensitive, deployment-sensitive, or configuration-management changes.
 - If the user asks for a concise plan, prefer fewer milestones and shorter bullets while preserving assumptions, observable acceptance criteria, and validation.
+- When identifying likely affected files, include the direct edit targets plus the surrounding surfaces that the repository evidence points to: entrypoints, callers, routing or registration, config, tests, fixtures, docs, and generated artifacts when applicable.
 
 ## Structural Labels
 
@@ -91,6 +92,7 @@ Use `## Milestone N: <short title>` for each milestone. Keep the milestone headi
 - List likely files, modules, roles, playbooks, services, APIs, schemas, or docs.
 - Use paths when they are known from exploration.
 - If exact paths are unknown, name the module or subsystem and explain what will be discovered.
+- Prefer a complete impact surface over a minimal edit list. If discovery shows a likely dependency chain, include the upstream entrypoint and downstream tests or adjacent modules rather than only the file that the user named.
 
 ### acceptance criteria
 
@@ -126,6 +128,7 @@ Before returning the plan, verify these points and revise the plan if any check 
 - Each validation command is concrete, or the validation class is explicit when the exact command is unknown.
 - Each meaningful risk has a corresponding rollback, mitigation, or decision note.
 - Blocking unknowns are not silently converted into assumptions.
+- The affected-file list reflects the discovered impact surface, not only the obvious edit target, when repository structure indicates additional touched areas.
 - The plan size matches the task size and avoids filler sections.
 
 ## Optional References

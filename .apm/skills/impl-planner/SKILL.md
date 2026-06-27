@@ -10,7 +10,9 @@ Use this skill to produce an implementation plan for a software repository chang
 ## Workflow
 
 1. Ground the plan in the environment before asking questions.
-   - Read or search relevant files, configs, schemas, types, manifests, docs, and existing patterns.
+   - Read or search relevant files, configs, schemas, types, manifests, docs, tests, and existing patterns.
+   - Trace the likely change surface outward from entrypoints, call sites, import chains, routing or registration points, and adjacent tests or fixtures.
+   - When a file is clearly central, inspect the surrounding module boundaries and any direct dependents before deciding the plan's affected files.
    - Use non-mutating commands only. Dry-run checks and tests are allowed when they do not edit tracked source.
    - Do not ask the user for facts that can be discovered from the repository.
    - Accept user prompts in Japanese or English.
@@ -21,6 +23,7 @@ Use this skill to produce an implementation plan for a software repository chang
 3. State assumptions explicitly.
    - Prefer conservative assumptions that follow repository conventions.
    - If an assumption affects architecture, data safety, compatibility, security, or operations, call it out.
+   - Do not shrink the affected-file list to only the most obvious edited file when repository evidence suggests surrounding code, tests, config, docs, or generated artifacts will likely move as well.
 4. Produce the final plan in Plan.md style using the core contract in `references/plan-contract.md`.
    - Write explanatory prose and bullet contents in the same language the user used for the request.
    - Use the English or Japanese structural labels from the contract based on the user's request language, unless the user explicitly asks for a different variant.
