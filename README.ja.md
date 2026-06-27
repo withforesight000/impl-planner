@@ -21,6 +21,7 @@ English: [README.md](README.md)
   - main risks
   - rollback considerations
 - エントリポイント、呼び出し元、設定、テスト、隣接するドキュメントまで含めて、影響範囲を広めにたどる
+- Clean Architecture, MVC, Hexagonal Architecture, DDD, feature-based structure などの既存アーキテクチャやレイヤリング規約がある場合は、それを確認して尊重する
 - 判断が難しいときは、推奨案つきの複数案を出す
 - acceptance criteria、validation、risk、rollback が実行可能か自己点検する
 - 必要に応じて、次回そのまま使える短いプロンプト例を出す
@@ -86,6 +87,7 @@ impl-planner を使って実装 plan を作ってください。
 
 より詳しく渡す場合は、スコープ、制約、受け入れ条件、検証方法、既知の地雷、未確定事項、AIが気づきにくいドメイン知識、AIに詳しく解説・判断してほしいポイントまで書くと plan の精度が上がります。
 影響範囲を広めに見てほしい場合は、エントリポイント、ルーティング、登録処理、設定、テスト、fixture、ドキュメントも明示すると plan が漏れにくくなります。
+リポジトリに既存のアーキテクチャやレイヤリングの規約があるなら、それを明示すると境界を崩さない plan になりやすくなります。
 
 ## 検証方法
 

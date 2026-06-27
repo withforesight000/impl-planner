@@ -20,6 +20,7 @@ When the user explicitly asks for HTML, use the same content contract in a self-
 - Use the full milestone structure for cross-cutting, risky, data-affecting, security-sensitive, deployment-sensitive, or configuration-management changes.
 - If the user asks for a concise plan, prefer fewer milestones and shorter bullets while preserving assumptions, observable acceptance criteria, and validation.
 - When identifying likely affected files, include the direct edit targets plus the surrounding surfaces that the repository evidence points to: entrypoints, callers, routing or registration, config, tests, fixtures, docs, and generated artifacts when applicable.
+- If the repository shows an established architecture or layering pattern, keep the plan aligned with that structure and avoid suggesting changes that would cross or collapse the existing boundaries without justification.
 
 ## Structural Labels
 
@@ -129,6 +130,7 @@ Before returning the plan, verify these points and revise the plan if any check 
 - Each meaningful risk has a corresponding rollback, mitigation, or decision note.
 - Blocking unknowns are not silently converted into assumptions.
 - The affected-file list reflects the discovered impact surface, not only the obvious edit target, when repository structure indicates additional touched areas.
+- The plan does not ignore an established architecture or layering pattern if repository evidence shows one is in use.
 - The plan size matches the task size and avoids filler sections.
 
 ## Optional References

@@ -42,6 +42,7 @@ Use this skill to produce an implementation plan for a software repository chang
 ## Planning Rules
 
 - Prefer existing codebase conventions, frameworks, module boundaries, helper APIs, and validation style.
+- Before planning, check whether the repository already follows a recognizable architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure, and respect those boundaries if present.
 - Preserve type safety.
 - Avoid silent failure. Plans must require visible errors, validation, or explicit fallback behavior where failure is possible.
 - Markdown is the default output format; HTML is an explicit opt-in variant.
