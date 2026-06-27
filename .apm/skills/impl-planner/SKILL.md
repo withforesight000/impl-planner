@@ -1,6 +1,6 @@
 ---
 name: impl-planner
-description: Create implementation plans for software repositories or configuration-management tool repositories. Use when the user asks for an implementation plan, 実装 plan, Plan.md, milestones, planning before coding, 実装前の計画, or decision support for a new feature/change. This skill is planning-only: do not implement, edit files, run mutating commands, or instruct another agent to proceed with implementation.
+description: "Create implementation plans for software repositories or configuration-management tool repositories. Use when the user asks for an implementation plan, 実装 plan, Plan.md, milestones, planning before coding, 実装前の計画, or decision support for a new feature/change. This skill is planning-only: do not implement, edit files, run mutating commands, or instruct another agent to proceed with implementation."
 ---
 
 # impl-planner
