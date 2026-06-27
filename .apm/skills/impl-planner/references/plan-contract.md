@@ -112,6 +112,7 @@ Use `## Milestone N: <short title>` for each milestone. Keep the milestone headi
 ### validation commands
 
 - List concrete commands when known.
+- Prefer commands and validation classes that match the repository's existing validation style.
 - If commands are unknown, list the expected class of validation, such as typecheck, unit test, integration test, configuration-management syntax-check, configuration-management check mode, or targeted smoke test.
 - Do not include commands that mutate source as a validation step unless the user explicitly wants implementation execution.
 
@@ -136,6 +137,7 @@ Before returning the plan, verify these points and revise the plan if any check 
 
 - Each acceptance criterion is observable by a reviewer, test, command, or runtime behavior.
 - Each validation command is concrete, or the validation class is explicit when the exact command is unknown.
+- Validation commands reflect the repository's existing validation style when it is discoverable.
 - Each meaningful risk has a corresponding rollback, mitigation, or decision note.
 - Blocking unknowns are not silently converted into assumptions.
 - The affected-file list reflects the discovered impact surface, not only the obvious edit target, when repository structure indicates additional touched areas.

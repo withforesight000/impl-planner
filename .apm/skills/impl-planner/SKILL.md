@@ -13,6 +13,7 @@ Use this skill to produce an implementation plan for a software repository chang
    - First understand what the repository is trying to achieve and how it achieves it at a high level.
    - Read or search relevant files, configs, schemas, types, manifests, docs, tests, and existing patterns.
    - Trace the likely change surface outward from entrypoints, call sites, import chains, routing or registration points, and adjacent tests or fixtures.
+   - Identify the repository's existing validation style before proposing validation commands.
    - When a file is clearly central, inspect the surrounding module boundaries and any direct dependents before deciding the plan's affected files.
    - Use non-mutating commands only. Dry-run checks and tests are allowed when they do not edit tracked source.
    - Do not ask the user for facts that can be discovered from the repository.
@@ -38,6 +39,7 @@ Use this skill to produce an implementation plan for a software repository chang
 6. Self-check the plan before returning it.
    - Confirm acceptance criteria are observable.
    - Confirm likely affected files or modules include reasons, not just paths.
+   - Confirm validation follows the repository's existing validation style when discoverable.
    - Confirm validation commands are concrete or the validation class is explicit.
    - Confirm risks have matching rollback or mitigation notes when risk exists.
    - Confirm assumptions are explicit and do not hide blocking unknowns.

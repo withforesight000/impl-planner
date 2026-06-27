@@ -23,6 +23,7 @@ English: [README.md](README.md)
   - rollback considerations
 - 影響を受けそうなファイルや module には理由も付ける
 - エントリポイント、呼び出し元、設定、テスト、隣接するドキュメントまで含めて、影響範囲を広めにたどる
+- validation command はリポジトリ既存の検証スタイルに合わせる
 - Clean Architecture, MVC, Hexagonal Architecture, DDD, feature-based structure などの既存アーキテクチャやレイヤリング規約がある場合は、それを確認して尊重する
 - 判断が難しいときは、推奨案つきの複数案を出す
 - acceptance criteria、validation、risk、rollback が実行可能か自己点検する

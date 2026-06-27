@@ -23,6 +23,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
   - rollback considerations
 - Requires reasons for likely affected files and modules
 - Traces likely impact outward from entrypoints, call sites, configs, tests, and adjacent docs when estimating affected files
+- Aligns validation commands with the repository's existing validation style
 - Checks for an existing architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure and respects it when present
 - Supports detailed decision support when the answer is not obvious
 - Self-checks that acceptance criteria, validation, risks, and rollback notes are actionable
