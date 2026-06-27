@@ -50,9 +50,10 @@ Minimal prompt:
 ```text
 Use `impl-planner` to create an implementation plan for this task.
 
-Purpose:
-Background:
-Constraints:
+- Purpose
+  - [what you want to achieve]
+- Background
+  - [why it is needed / what problem exists now]
 ```
 
 Detailed prompt:
@@ -62,18 +63,27 @@ Use `impl-planner` to create an implementation plan.
 
 - Repository / system
   - [software repository or configuration-management tool repository name]
+- Repository understanding
+  - [what this repository is meant to achieve]
+  - [main implementation approach / primary processing flow]
 - What you want to achieve
   - [what you want to implement]
-- In scope
-- Out of scope
-- Design rules to keep
-  - [architecture constraints]
-  - [existing patterns]
-  - [implementations to avoid]
+- Background
+  - [why it is needed / what problem exists now]
 - Domain knowledge AI is likely to miss
   - [business rules]
   - [exception handling]
   - [background of existing specifications]
+- In scope
+- Out of scope
+- Points that need detailed explanation or judgment from AI
+- Design rules to keep
+  - [architecture constraints]
+  - [existing patterns]
+  - [implementations to avoid]
+- Impact surfaces to inspect
+  - [entrypoint / routing / registration]
+  - [related test / fixture / docs]
 - Constraints
   - [backward compatibility]
   - [performance]
@@ -86,10 +96,9 @@ Use `impl-planner` to create an implementation plan.
   - [manual verification steps]
 - Known pitfalls
 - Open questions
-- Points that need detailed explanation or judgment from AI
 ```
 
-For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, the repository's high-level goal and how it achieves it, and any points that need detailed explanation or judgment from AI up front.
+For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, repository understanding, impact surfaces to inspect, and any points that need detailed explanation or judgment from AI up front.
 If you want the plan to be broad on impact, mention entrypoints, routing, registration, config, tests, fixtures, and docs that are likely to move together.
 If the repository already follows an architecture or layering convention, mention that explicitly so the plan can preserve the existing boundaries.
 
