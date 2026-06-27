@@ -1,0 +1,12 @@
+name: impl-planner
+version: 0.1.0
+description: Planning-only skill for software and configuration-management repositories.
+author: withforesight000
+license: MIT
+includes:
+  - .apm/skills/impl-planner/
+dependencies:
+  apm: []
+  mcp: []
+  lsp: []
+scripts: {}

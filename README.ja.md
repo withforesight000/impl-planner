@@ -1,0 +1,109 @@
+# impl-planner APM package
+
+`impl-planner` は、ソフトウェアまたは構成管理ツールのリポジトリ向けの「計画専用」Skill です。
+Codex、Claude Code、GitHub Copilot に実装 plan を作らせたいときに使います。実装そのものは行いません。
+
+English: [README.md](README.md)
+
+## この package でできること
+
+- Plan.md 形式の実装 plan を作る
+- 先に前提不足や曖昧点を列挙する
+- Assumptions を明示する
+- milestone ごとに次を整理する
+  - goal
+  - files / modules likely affected
+  - acceptance criteria
+  - validation commands
+  - decision notes to avoid oscillation
+  - main risks
+  - rollback considerations
+- 判断が難しいときは、推奨案つきの複数案を出す
+- 必要に応じて、次回そのまま使える短いプロンプト例を出す
+
+## リポジトリ構成
+
+- `apm.yml`: APM package manifest
+- `.apm/skills/impl-planner/SKILL.md`: Skill 本体
+- `.apm/skills/impl-planner/references/plan-contract.md`: 出力契約とプロンプト例
+
+## 使い方
+
+新機能、リファクタ、構成管理ツールの変更、設計判断などで「まず plan が欲しい」ときにこの Skill を使います。
+
+最小入力の例:
+
+```text
+impl-planner を使って、このタスクの実装 plan を作ってください。
+
+目的:
+背景:
+制約:
+```
+
+詳細入力の例:
+
+```text
+impl-planner を使って実装 plan を作ってください。
+
+対象リポジトリ（ソフトウェアまたは構成管理ツールのリポジトリ）:
+やりたいこと:
+今回やること:
+今回やらないこと:
+守るべき設計・流儀:
+制約:
+受け入れ条件:
+検証方法:
+既知の地雷:
+未確定事項:
+詳細説明が必要な判断ポイント:
+```
+
+より詳しく渡す場合は、スコープ、制約、受け入れ条件、検証方法、既知の地雷、未確定事項、判断が必要なポイントまで書くと plan の精度が上がります。
+
+## 検証方法
+
+リポジトリルートで次を実行します。
+
+```bash
+apm audit --file .apm/skills/impl-planner/SKILL.md
+apm pack --dry-run
+apm pack --archive --dry-run -v
+```
+
+これで Skill のメタデータが正しく、パッケージ内容が想定どおりか確認できます。
+
+## 配布方法
+
+- `apm pack` で配布用 bundle を作る
+- 生成された artifact を downstream のインストールやリリース自動化に使う
+- `apm.yml` と `.apm/skills/impl-planner/` を source of truth として保つ
+
+## `apm` でインストールする方法
+
+この repository を clone しなくても、PC に Skill をインストールできます。
+リポジトリ参照を直接指定して install します。
+
+```bash
+apm install withforesight000/impl-planner --global --target codex
+```
+
+事前に内容を確認したい場合は、`--dry-run` を付けます。
+
+```bash
+apm install withforesight000/impl-planner --dry-run --global --target codex
+```
+
+他の対応先にも同じ package を入れられます。
+
+```bash
+apm install withforesight000/impl-planner --global --target claude,copilot
+```
+
+working copy を持っている場合は、`apm pack --archive` で bundle を作ってから同じ手順で install できます。
+
+## 補足
+
+- この Skill は計画専用です。
+- ファイル編集、破壊的コマンド、実装開始を促してはいけません。
+- 詳細説明を求められたら、複数案、推奨案、メリット・デメリット・トレードオフを返します。
