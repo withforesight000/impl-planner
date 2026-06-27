@@ -98,6 +98,24 @@ Use `impl-planner` to create an implementation plan.
 - Open questions
 ```
 
+Why each detailed field helps:
+
+- Repository / system: Anchors the plan to the correct codebase, runtime, and repository type. This is especially useful when the workspace has multiple packages, services, roles, or configuration-management targets.
+- Repository understanding: Helps the planner reason from the system's purpose and main flow before drilling into files. It also reduces plans that are locally plausible but misaligned with how the repository actually delivers value.
+- What you want to achieve: Defines the target outcome so milestones stay outcome-oriented. Without this, the plan can drift into a list of edits instead of describing the behavior or state that should exist after implementation.
+- Background: Explains why the change matters and which current problem the plan should solve. This helps the planner choose tradeoffs that fit the motivation instead of optimizing for an unrelated interpretation of the request.
+- Domain knowledge AI is likely to miss: Captures business rules, exceptions, and historical context that are hard to infer from code alone. Supplying this up front prevents the plan from flattening important edge cases into generic implementation steps.
+- In scope: Prevents the plan from becoming too narrow or leaving intended work implicit. It gives the planner permission to include all work that should be considered part of the change.
+- Out of scope: Prevents implementation drift and avoids planning work that should not happen now. This is useful when adjacent refactors, migrations, or cleanup tasks are tempting but would make the plan too broad.
+- Points that need detailed explanation or judgment from AI: Directs extra reasoning toward the decisions where AI help is most valuable. Use this for areas where you want tradeoffs, alternatives, or deeper explanation rather than a terse milestone list.
+- Design rules to keep: Preserves architecture, existing patterns, and implementation constraints. It helps the planner respect layer boundaries, module ownership, naming conventions, and approaches the repository already uses.
+- Impact surfaces to inspect: Reduces missed files by pointing to entrypoints, registration, tests, fixtures, and docs that may move together. This is one of the strongest fields for improving the `files / modules likely affected` section.
+- Constraints: Keeps compatibility, performance, security, operations, and runtime limits visible in the plan. Constraints make the plan more realistic by ruling out solutions that would be technically possible but unacceptable for this repository.
+- Acceptance criteria: Makes completion observable and reviewable. Clear criteria help the implementer and reviewer agree on when the change is actually done.
+- Validation steps: Aligns the plan with the checks the implementer should run. Providing known commands or manual checks helps the plan follow the repository's existing validation style instead of guessing.
+- Known pitfalls: Surfaces failure modes that may not be obvious from a normal code search. This helps the plan include mitigations, rollback notes, or focused validation for areas that have caused issues before.
+- Open questions: Separates blockers, assumptions, and items that can be confirmed during implementation. This prevents uncertainty from being hidden inside the plan as if it were already decided.
+
 For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, repository understanding, impact surfaces to inspect, and any points that need detailed explanation or judgment from AI up front.
 If you want the plan to be broad on impact, mention entrypoints, routing, registration, config, tests, fixtures, and docs that are likely to move together.
 If the repository already follows an architecture or layering convention, mention that explicitly so the plan can preserve the existing boundaries.
