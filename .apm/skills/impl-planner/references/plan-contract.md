@@ -5,7 +5,7 @@ This reference defines the required output shape for implementation planning. Us
 ## Required Top-Level Output
 
 Use the instructions below to choose the right level of detail and labels.
-The final plan output must start with the missing-context section, followed by `Assumptions`, then `Plan.md`.
+The final plan output must start with the repository-understanding section, followed by the missing-context section, `Assumptions`, then `Plan.md`.
 When the user explicitly asks for HTML, use the same content contract in a self-contained HTML report instead of Markdown while preserving the same information and ordering.
 
 - Write explanatory prose and bullet contents in the same language the user used for the request.
@@ -26,6 +26,7 @@ When the user explicitly asks for HTML, use the same content contract in a self-
 
 Use this label set for English requests:
 
+- `## Repository Understanding`
 - `## Missing Context and Ambiguities`
 - `### Blocking now`
 - `### Can proceed with assumptions`
@@ -43,6 +44,7 @@ Use this label set for English requests:
 
 Use this label set for Japanese requests:
 
+- `## リポジトリ理解`
 - `## 前提不足・曖昧点`
 - `### 今答えないと plan が破綻するもの`
 - `### 仮定を置けば進められるもの`
@@ -57,6 +59,12 @@ Use this label set for Japanese requests:
 - `### decision notes to avoid oscillation`
 - `### main risks`
 - `### rollback considerations`
+
+## Repository Understanding / リポジトリ理解
+
+- Summarize what the repository appears to achieve and how it achieves it.
+- Include detected architecture or layering, relevant entrypoints, likely impact surface, and existing validation style when discoverable.
+- Keep this section concise; use it to ground the plan rather than to repeat repository documentation.
 
 ## Missing Context and Ambiguities / 前提不足・曖昧点
 

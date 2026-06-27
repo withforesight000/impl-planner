@@ -7,6 +7,12 @@ Read this reference only when examples would help the user reuse the skill or wh
 This example shows the expected density for a small English request. Adapt language and labels to the user's request.
 
 ```md
+## Repository Understanding
+
+- This package defines a planning-only APM skill and keeps the skill contract, examples, and README usage guidance aligned.
+- The implementation is documentation-driven: `SKILL.md` is the entrypoint, `plan-contract.md` defines the output shape, and README files explain user-facing usage.
+- Validation is handled through APM audit and dry-run packaging commands.
+
 ## Missing Context and Ambiguities
 
 ### Blocking now

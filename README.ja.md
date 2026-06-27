@@ -9,6 +9,7 @@ English: [README.md](README.md)
 
 - Plan.md 形式の実装 plan を作る
 - 明示的に求められた場合は、自己完結した HTML レポートも出力できる
+- plan の前にリポジトリ理解を要約する
 - 先に前提不足や曖昧点を列挙する
 - Assumptions を明示する
 - タスク規模に応じて plan の構造を調整する
