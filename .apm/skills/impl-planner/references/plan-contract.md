@@ -99,6 +99,7 @@ Use `## Milestone N: <short title>` for each milestone. Keep the milestone headi
 ### files / modules likely affected
 
 - List likely files, modules, roles, playbooks, services, APIs, schemas, or docs.
+- For each likely affected file or module, include why it is likely affected.
 - Use paths when they are known from exploration.
 - If exact paths are unknown, name the module or subsystem and explain what will be discovered.
 - Prefer a complete impact surface over a minimal edit list. If discovery shows a likely dependency chain, include the upstream entrypoint and downstream tests or adjacent modules rather than only the file that the user named.
@@ -138,6 +139,7 @@ Before returning the plan, verify these points and revise the plan if any check 
 - Each meaningful risk has a corresponding rollback, mitigation, or decision note.
 - Blocking unknowns are not silently converted into assumptions.
 - The affected-file list reflects the discovered impact surface, not only the obvious edit target, when repository structure indicates additional touched areas.
+- Each likely affected file or module has a short reason tied to repository evidence or an explicit assumption.
 - The plan does not ignore an established architecture or layering pattern if repository evidence shows one is in use.
 - The plan size matches the task size and avoids filler sections.
 

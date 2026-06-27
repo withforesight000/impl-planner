@@ -42,9 +42,9 @@ This example shows the expected density for a small English request. Adapt langu
 
 ### files / modules likely affected
 
-- `README.md`
-- `README.ja.md`
-- `SKILL.md` and `plan-contract.md` if the prompt contract itself changes
+- `README.md`: English user-facing usage guidance must match the prompt contract.
+- `README.ja.md`: Japanese usage guidance must stay aligned with the English README.
+- `SKILL.md` and `plan-contract.md`: likely affected if the prompt contract itself changes.
 
 ### acceptance criteria
 

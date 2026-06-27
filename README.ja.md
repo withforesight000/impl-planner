@@ -21,6 +21,7 @@ English: [README.md](README.md)
   - decision notes to avoid oscillation
   - main risks
   - rollback considerations
+- 影響を受けそうなファイルや module には理由も付ける
 - エントリポイント、呼び出し元、設定、テスト、隣接するドキュメントまで含めて、影響範囲を広めにたどる
 - Clean Architecture, MVC, Hexagonal Architecture, DDD, feature-based structure などの既存アーキテクチャやレイヤリング規約がある場合は、それを確認して尊重する
 - 判断が難しいときは、推奨案つきの複数案を出す

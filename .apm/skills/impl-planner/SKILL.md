@@ -37,6 +37,7 @@ Use this skill to produce an implementation plan for a software repository chang
    - Include both a minimal prompt and a detailed prompt when you include the section.
 6. Self-check the plan before returning it.
    - Confirm acceptance criteria are observable.
+   - Confirm likely affected files or modules include reasons, not just paths.
    - Confirm validation commands are concrete or the validation class is explicit.
    - Confirm risks have matching rollback or mitigation notes when risk exists.
    - Confirm assumptions are explicit and do not hide blocking unknowns.
