@@ -21,6 +21,7 @@ When the user explicitly asks for HTML, use the same content contract in a self-
 - If the user asks for a concise plan, prefer fewer milestones and shorter bullets while preserving assumptions, observable acceptance criteria, and validation.
 - When identifying likely affected files, include the direct edit targets plus the surrounding surfaces that the repository evidence points to: entrypoints, callers, routing or registration, config, tests, fixtures, docs, and generated artifacts when applicable.
 - If the repository shows an established architecture or layering pattern, keep the plan aligned with that structure and avoid suggesting changes that would cross or collapse the existing boundaries without justification.
+- Make milestone ordering explicit when one milestone depends on another.
 
 ## Structural Labels
 
@@ -97,6 +98,7 @@ Use `## Milestone N: <short title>` for each milestone. Keep the milestone headi
 ### goal
 
 - Describe the milestone outcome, not just an activity.
+- If this milestone depends on a prior milestone, state the dependency.
 
 ### files / modules likely affected
 
@@ -152,6 +154,7 @@ Before returning the plan, verify these points and revise the plan if any check 
 - The affected-file list reflects the discovered impact surface, not only the obvious edit target, when repository structure indicates additional touched areas.
 - Each likely affected file or module has a short reason tied to repository evidence or an explicit assumption.
 - The plan does not ignore an established architecture or layering pattern if repository evidence shows one is in use.
+- Milestone ordering is explicit when a milestone depends on another milestone.
 - The plan size matches the task size and avoids filler sections.
 
 ## Optional References

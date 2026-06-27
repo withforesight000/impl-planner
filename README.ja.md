@@ -25,6 +25,7 @@ English: [README.md](README.md)
 - エントリポイント、呼び出し元、設定、テスト、隣接するドキュメントまで含めて、影響範囲を広めにたどる
 - validation command はリポジトリ既存の検証スタイルに合わせる
 - Clean Architecture, MVC, Hexagonal Architecture, DDD, feature-based structure などの既存アーキテクチャやレイヤリング規約がある場合は、それを確認して尊重する
+- milestone 間に依存関係がある場合は順序の理由を明示する
 - 判断が難しいときは、推奨案、却下した代替案、その理由を出す
 - acceptance criteria、validation、risk、mitigation、rollback が実行可能か自己点検する
 - 必要に応じて、次回そのまま使える短いプロンプト例を出す

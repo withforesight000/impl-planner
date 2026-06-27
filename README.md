@@ -25,6 +25,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Traces likely impact outward from entrypoints, call sites, configs, tests, and adjacent docs when estimating affected files
 - Aligns validation commands with the repository's existing validation style
 - Checks for an existing architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure and respects it when present
+- Makes milestone ordering explicit when milestones depend on one another
 - Supports detailed decision support and rejected-alternative notes when the answer is not obvious
 - Self-checks that acceptance criteria, validation, risks, mitigations, and rollback actions are actionable
 - Can include concise example prompts the user can reuse next time when helpful

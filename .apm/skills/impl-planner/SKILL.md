@@ -34,6 +34,7 @@ Use this skill to produce an implementation plan for a software repository chang
    - Use HTML output only when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
    - Keep HTML output self-contained, semantic, and free of JavaScript or external assets.
    - Scale the plan to the task size: small, low-risk changes can use one concise milestone and omit empty optional subsections; risky or cross-cutting changes should use the full structure.
+   - Make milestone ordering explicit when one milestone depends on another.
 5. Include usage prompts for future users when useful.
    - Prefer a short prompt example section only when it helps reuse the skill.
    - Include both a minimal prompt and a detailed prompt when you include the section.
