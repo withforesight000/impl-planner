@@ -55,15 +55,16 @@ What you want to do:
 What to do in this task:
 What not to do in this task:
 Required design rules:
+Domain knowledge that AI is likely to miss:
 Constraints:
 Acceptance criteria:
 Validation steps:
 Known pitfalls:
 Open questions:
-Decision points that need detailed discussion:
+Points that need detailed explanation or judgment from AI:
 ```
 
-For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, and any decision points that need tradeoff analysis up front.
+For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, and any points that need detailed explanation or judgment from AI up front.
 
 ## How to verify the package
 
