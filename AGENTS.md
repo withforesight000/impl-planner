@@ -44,7 +44,8 @@ Use these checks to confirm that the package metadata, skill contract, and bundl
 When preparing a version release, keep the release state easy to audit:
 
 - Update `apm.yml` to the target version.
-- Update install examples in both `README.md` and `README.ja.md` to use the explicit repository reference with the target version, such as `withforesight000/impl-planner@1.0.0`.
+- Update install examples in both `README.md` and `README.ja.md` to use the explicit Git tag reference with the target version, such as `withforesight000/impl-planner#1.0.0`.
+- Do not use `withforesight000/impl-planner@1.0.0` in APM install examples. APM treats `@...` as alias shorthand and rejects it for this repository reference; use `#<tag>` for Git tags.
 - Keep the version bump and install-guide updates in the same release commit when practical, so the released version and documented install command cannot drift.
 - Keep unrelated documentation or contract changes in separate commits before the release commit unless the user explicitly asks to combine them.
 - Run the full local APM validation listed above before tagging or publishing a release.
