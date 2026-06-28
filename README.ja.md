@@ -144,19 +144,19 @@ apm pack --archive --dry-run -v
 リポジトリ参照を直接指定して install します。
 
 ```bash
-apm install withforesight000/impl-planner --global --target codex
+apm install withforesight000/impl-planner#1.0.0 --global --target codex
 ```
 
 事前に内容を確認したい場合は、`--dry-run` を付けます。
 
 ```bash
-apm install withforesight000/impl-planner --dry-run --global --target codex
+apm install withforesight000/impl-planner#1.0.0 --dry-run --global --target codex
 ```
 
 他の対応先にも同じ package を入れられます。
 
 ```bash
-apm install withforesight000/impl-planner --global --target claude,copilot
+apm install withforesight000/impl-planner#1.0.0 --global --target claude,copilot
 ```
 
 working copy を持っている場合は、`apm pack --archive` で bundle を作ってから同じ手順で install できます。
