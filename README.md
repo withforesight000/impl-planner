@@ -50,7 +50,7 @@ Minimal prompt:
 ```text
 Use `impl-planner` to create an implementation plan for this task.
 
-- Purpose
+- What you want to achieve
   - [what you want to achieve]
 - Background
   - [why it is needed / what problem exists now]
@@ -117,10 +117,6 @@ Why each detailed field helps:
 | `Validation steps` | Aligns the plan with the checks the implementer should run. Providing known commands or manual checks helps the plan follow the repository's existing validation style instead of guessing. |
 | `Known pitfalls` | Surfaces failure modes that may not be obvious from a normal code search. This helps the plan include mitigations, rollback notes, or focused validation for areas that have caused issues before. |
 | `Open questions` | Separates blockers, assumptions, and items that can be confirmed during implementation. This prevents uncertainty from being hidden inside the plan as if it were already decided. |
-
-For better plans, provide the scope, constraints, acceptance criteria, validation steps, known risks, unresolved questions, domain knowledge that AI is likely to miss, repository understanding, impact surfaces to inspect, and any points that need detailed explanation or judgment from AI up front.
-If you want the plan to be broad on impact, mention entrypoints, routing, registration, config, tests, fixtures, and docs that are likely to move together.
-If the repository already follows an architecture or layering convention, mention that explicitly so the plan can preserve the existing boundaries.
 
 ## How to verify the package
 

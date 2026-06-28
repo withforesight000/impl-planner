@@ -82,7 +82,7 @@ Include both examples when you include the section:
 ```text
 impl-planner を使って、このタスクの実装 plan を作ってください。
 
-- 目的
+- やりたいこと
   - [何を実現したいか]
 - 背景
   - [なぜ必要か / 何が今の問題か]
