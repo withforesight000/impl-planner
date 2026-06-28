@@ -39,6 +39,19 @@ apm install --dry-run --target copilot
 
 Use these checks to confirm that the package metadata, skill contract, and bundle contents still match the intended layout.
 
+## Version Release Checklist
+
+When preparing a version release, keep the release state easy to audit:
+
+- Update `apm.yml` to the target version.
+- Update install examples in both `README.md` and `README.ja.md` to use the explicit repository reference with the target version, such as `withforesight000/impl-planner@1.0.0`.
+- Keep the version bump and install-guide updates in the same release commit when practical, so the released version and documented install command cannot drift.
+- Keep unrelated documentation or contract changes in separate commits before the release commit unless the user explicitly asks to combine them.
+- Run the full local APM validation listed above before tagging or publishing a release.
+- If a release tag already exists and the user asks to retag it, verify the current remote ref first, then update the tag so `refs/tags/<version>^{}` points at the intended HEAD.
+- After pushing, verify that `origin/main`, the release tag, and the GitHub Release all point to the intended commit.
+- Write GitHub Release notes that summarize the package version, install command changes, user-facing contract or README changes, and the validation commands that were run.
+
 ## Documentation Conventions
 
 - When adding user-facing usage examples, include both a minimal prompt and a detailed prompt.
