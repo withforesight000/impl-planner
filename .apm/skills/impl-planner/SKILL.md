@@ -81,6 +81,8 @@ Read `references/plan-contract.md` before producing the final plan. Follow that 
 Read optional references only when their trigger applies:
 
 - `references/detail-request.md`: when the user asks for detailed decision support, multiple options, tradeoffs, or cannot choose an implementation direction.
-- `references/examples.md`: when including usage prompt examples or a mini-example would help the user reuse the skill.
+- `references/examples.md`: when you want a short index of available example files.
+- `references/mini-example.md`: when a compact example would help calibrate plan density.
+- `references/prompt-templates.md`: when including reusable usage prompt examples would help the user reuse the skill.
 - `references/html-output.md`: when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
 - `references/formatting.md`: when formatting constraints are unclear or the output needs tables, code blocks, or unusually compact structure.
