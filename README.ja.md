@@ -14,13 +14,13 @@ English: [README.md](README.md)
 - Assumptions を明示する
 - タスク規模に応じて plan の構造を調整する
 - milestone ごとに次を整理する
-  - goal
-  - files / modules likely affected
-  - acceptance criteria
-  - validation commands
-  - decision notes to avoid oscillation
-  - main risks
-  - rollback considerations
+  - 目的
+  - 影響がありそうなファイル / モジュール
+  - 受け入れ条件
+  - 検証コマンド
+  - 判断メモ
+  - 主なリスク
+  - ロールバック時の考慮事項
 - 影響を受けそうなファイルや module には理由も付ける
 - エントリポイント、呼び出し元、設定、テスト、隣接するドキュメントまで含めて、影響範囲を広めにたどる
 - validation command はリポジトリ既存の検証スタイルに合わせる

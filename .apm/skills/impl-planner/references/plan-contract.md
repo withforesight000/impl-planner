@@ -54,14 +54,14 @@ Use this label set for Japanese requests:
 - `## Assumptions`
 - `## Plan.md`
 - `## Milestone N: <short title>`
-- `### goal`
-- `### files / modules likely affected`
-- `### out of scope`
-- `### acceptance criteria`
-- `### validation commands`
-- `### decision notes to avoid oscillation`
-- `### main risks`
-- `### rollback considerations`
+- `### 目的`
+- `### 影響がありそうなファイル / モジュール`
+- `### 対象外`
+- `### 受け入れ条件`
+- `### 検証コマンド`
+- `### 判断メモ`
+- `### 主なリスク`
+- `### ロールバック時の考慮事項`
 
 ## Repository Understanding / リポジトリ理解
 
