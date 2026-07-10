@@ -30,6 +30,9 @@ milestone includes the following labels in the request language:
 
 For a small, low-risk change, use one concise milestone and omit empty optional
 fields. Preserve the same information and ordering for explicit HTML output.
+Do not cap milestone count for larger work. Split milestones only at an
+independently verifiable outcome, dependency boundary, risk or rollback unit, or
+ownership boundary; do not split merely by file list.
 
 ## Grounding and Unknowns
 

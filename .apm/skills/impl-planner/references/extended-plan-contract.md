@@ -9,9 +9,11 @@ It extends `plan-contract.md`; do not repeat its general rules.
 - Label direct repository facts `[Observed]`, evidence-based conclusions
   `[Inferred]`, intended changes `[Proposed]`, and unresolved facts `[Unknown]`.
   Anchor observed claims to a path, symbol, config key, command, or equivalent.
-- In an interactive environment, ask at most three questions only when the
-  answer changes architecture, compatibility, data safety, security, operations,
-  or scope. Safe assumptions remain visible and do not stop the plan.
+- In an interactive environment, ask one to three questions per round only when
+  the answer changes architecture, compatibility, data safety, security,
+  operations, or scope. Re-research after each answer and ask another round only
+  for a remaining or newly discovered blocker. Safe assumptions remain visible
+  and do not stop the plan.
 - For a provisional plan, branch only the milestones changed by the unresolved
   decision and do not describe the result as ready for implementation.
 

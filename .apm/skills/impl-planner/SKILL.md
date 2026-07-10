@@ -14,7 +14,9 @@ migrations, run source-mutating commands, or tell another agent to implement.
    callers, configuration, tests, documentation, and existing validation. Use
    non-mutating commands only; do not ask for facts the repository can answer.
 2. Classify unknowns as blocking now, safe assumptions, or implementation-time
-   confirmation. Ask at most three high-impact questions after research. If
+   confirmation. Ask one to three high-impact questions per round after
+   research, then re-research the affected area. Ask another round only when a
+   remaining or newly discovered blocker materially changes the plan. If
    interaction is unavailable, return a clearly marked provisional plan.
 3. Before drafting, classify the change. For medium or larger, cross-cutting,
    data-affecting, security-sensitive, deployment-sensitive, or
