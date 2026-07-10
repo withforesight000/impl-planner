@@ -101,3 +101,7 @@ Read optional references only when their trigger applies:
 - `references/html-output.md`: when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
 - `references/formatting.md`: when formatting constraints are unclear or the output needs tables, code blocks, or unusually compact structure.
 - `references/research-and-critique.md`: for medium or larger changes, risky changes, delegated research, or when a critic pass needs the detailed handoff contract.
+- `references/software-task-profiles.md`: when the change concerns an API or public contract, UI, asynchronous work, dependency upgrade, monorepo, or shared package.
+- `references/risk-task-profiles.md`: when the change concerns a database migration, backfill, authentication, authorization, secrets, or security boundary.
+- `references/config-management-profile.md`: when planning Ansible or another configuration-management change.
+- `references/platform-notes.md`: when the user asks about Codex, Claude Code, GitHub Copilot, native Plan modes, subagents, or platform-specific operation.
