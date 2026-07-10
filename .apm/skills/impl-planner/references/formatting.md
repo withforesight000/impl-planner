@@ -8,5 +8,5 @@ Read this reference when formatting constraints are unclear or the output needs 
 - Close all code blocks.
 - Prefer concise, implementation-ready bullets over long prose.
 - Keep evidence, requirement, acceptance, and validation IDs readable where traceability is needed.
-- Preserve the existing `## Plan.md` and `## Milestone` heading levels for v1 compatibility.
+- Use `## Plan.md`, `### Milestone`, and `####` milestone subsections so plans have a consistent hierarchy.
 - Do not tell the implementer to start coding or proceed with execution.

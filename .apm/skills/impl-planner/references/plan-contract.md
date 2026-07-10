@@ -5,7 +5,7 @@ This reference defines the required output shape for implementation planning. Us
 ## Required Top-Level Output
 
 Use the instructions below to choose the right level of detail and labels.
-The final plan output must start with the repository-understanding section, followed by the missing-context section, `Assumptions`, then `Plan.md`. `## Plan.md` is a plan-start delimiter; keep its existing heading level for v1 compatibility.
+The final plan output must start with the repository-understanding section, followed by the missing-context section, `Assumptions`, then `Plan.md`.
 When the user explicitly asks for HTML, use the same content contract in a self-contained HTML report instead of Markdown while preserving the same information and ordering.
 
 - Write explanatory prose and bullet contents in the same language the user used for the request.
@@ -35,17 +35,17 @@ Use this label set for English requests:
 - `## Assumptions`
 - `## Plan.md`
 - `Plan status: Final | Provisional`
-- `## Milestone N: <short title>`
-- `### goal`
-- `### requirements covered`
-- `### implementation approach`
-- `### files / modules likely affected`
-- `### out of scope`
-- `### acceptance criteria`
-- `### validation commands`
-- `### decision notes to avoid oscillation`
-- `### main risks`
-- `### rollback considerations`
+- `### Milestone N: <short title>`
+- `#### goal`
+- `#### requirements covered`
+- `#### implementation approach`
+- `#### files / modules likely affected`
+- `#### out of scope`
+- `#### acceptance criteria`
+- `#### validation commands`
+- `#### decision notes to avoid oscillation`
+- `#### main risks`
+- `#### rollback considerations`
 
 Use this label set for Japanese requests:
 
@@ -57,17 +57,17 @@ Use this label set for Japanese requests:
 - `## Assumptions`
 - `## Plan.md`
 - `Plan status: Final | Provisional`
-- `## Milestone N: <short title>`
-- `### 目的`
-- `### 対応する要件`
-- `### 実装方針`
-- `### 影響がありそうなファイル / モジュール`
-- `### 対象外`
-- `### 受け入れ条件`
-- `### 検証コマンド`
-- `### 判断メモ`
-- `### 主なリスク`
-- `### ロールバック時の考慮事項`
+- `### Milestone N: <short title>`
+- `#### 目的`
+- `#### 対応する要件`
+- `#### 実装方針`
+- `#### 影響がありそうなファイル / モジュール`
+- `#### 対象外`
+- `#### 受け入れ条件`
+- `#### 検証コマンド`
+- `#### 判断メモ`
+- `#### 主なリスク`
+- `#### ロールバック時の考慮事項`
 
 ## Repository Understanding / リポジトリ理解
 
@@ -102,27 +102,27 @@ Use this label set for Japanese requests:
 
 ## Plan.md
 
-Use `## Milestone N: <short title>` for each milestone. Keep the milestone heading structure consistent within the plan.
+Use `### Milestone N: <short title>` for each milestone and `####` for its subsections. Keep the milestone heading structure consistent within the plan.
 
 Write `Plan status: Final` immediately below this heading when no blocker remains. Use `Plan status: Provisional` only under the blocker policy above.
 
-### goal
+#### goal
 
 - Describe the milestone outcome, not just an activity.
 - If this milestone depends on a prior milestone, state the dependency.
 
-### requirements covered
+#### requirements covered
 
 - Assign stable requirement or constraint IDs such as `R1` when the request has more than one meaningful requirement, constraint, or acceptance condition.
 - Reference the IDs in the affected surfaces, acceptance criteria, and validation items. Small, low-risk plans may use one concise requirement ID.
 
-### implementation approach
+#### implementation approach
 
 - Describe the change order an implementer should follow.
 - Identify observed or inferred current behavior, the proposed target behavior, and the connection between existing boundaries.
 - Cover relevant APIs, data flow, state, error handling, configuration, compatibility, or rollout behavior. Do not invent details not supported by the request or evidence.
 
-### files / modules likely affected
+#### files / modules likely affected
 
 - List likely files, modules, roles, playbooks, services, APIs, schemas, or docs.
 - For each likely affected file or module, include why it is likely affected.
@@ -130,17 +130,17 @@ Write `Plan status: Final` immediately below this heading when no blocker remain
 - If exact paths are unknown, name the module or subsystem and explain what will be discovered.
 - Prefer a complete impact surface over a minimal edit list. If discovery shows a likely dependency chain, include the upstream entrypoint and downstream tests or adjacent modules rather than only the file that the user named.
 
-### out of scope
+#### out of scope
 
 - State notable excluded areas when naming them prevents implementation drift.
 - Omit this subsection for small changes when there is no meaningful exclusion to record.
 
-### acceptance criteria
+#### acceptance criteria
 
 - Define observable completion criteria.
 - Include behavior, compatibility, error handling, and non-regression criteria where relevant.
 
-### validation commands
+#### validation commands
 
 - List concrete commands when known.
 - Prefer commands and validation classes that match the repository's existing validation style.
@@ -148,19 +148,19 @@ Write `Plan status: Final` immediately below this heading when no blocker remain
 - Do not include commands that mutate source as a validation step unless the user explicitly wants implementation execution.
 - Prefix each item with `[Observed]` when the command was found in repository instructions or tooling, `[Recommended]` when it is a safe proposal not observed locally, or `[Unknown]` when only the validation class is known.
 
-### decision notes to avoid oscillation
+#### decision notes to avoid oscillation
 
 - Record decisions that should not be reopened during implementation unless new facts invalidate them.
 - Include recommended defaults and rejected alternatives when they are likely to cause rework.
 - When the implementation direction is not obvious, include the recommended option, rejected alternatives, and why the recommendation fits the discovered constraints.
 
-### main risks
+#### main risks
 
 - List the highest-risk technical or operational failure modes.
 - Include data safety, compatibility, rollout, security, idempotence, and dependency risks where relevant.
 - Tie each meaningful risk to a concrete mitigation, validation step, or rollback action.
 
-### rollback considerations
+#### rollback considerations
 
 - Explain how to revert or disable the change.
 - For configuration-management tool repositories, include configuration rollback, inventory rollback, role/play rollback, and service state concerns when applicable.
