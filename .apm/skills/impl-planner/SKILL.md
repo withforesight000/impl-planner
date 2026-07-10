@@ -46,21 +46,22 @@ migrations, run source-mutating commands, or tell another agent to implement.
 
 Read only the reference whose trigger applies:
 
-- `plan-contract.md`: always; the compact, required output structure.
-- `extended-plan-contract.md`: medium or larger, cross-cutting, data-affecting,
+- `references/plan-contract.md`: always; the compact, required output structure.
+- `references/extended-plan-contract.md`: medium or larger, cross-cutting, data-affecting,
   security-sensitive, deployment-sensitive, or configuration-management work.
-- `research-and-critique.md`: delegated research or the required critic pass for
+- `references/research-and-critique.md`: delegated research or the required critic pass for
   work using the extended contract.
-- `detail-request.md`: detailed decision support, multiple options, or an
+- `references/detail-request.md`: detailed decision support, multiple options, or an
   undecided implementation direction.
-- `software-task-profiles.md`: API/public contract, UI, async work, dependency
+- `references/software-task-profiles.md`: API/public contract, UI, async work, dependency
   upgrade, monorepo, or shared package changes.
-- `risk-task-profiles.md`: migration, backfill, authentication, authorization,
+- `references/risk-task-profiles.md`: migration, backfill, authentication, authorization,
   secrets, or security-boundary changes.
-- `config-management-profile.md`: Ansible or another configuration-management
+- `references/config-management-profile.md`: Ansible or another configuration-management
   change.
-- `html-output.md`: explicit HTML, browser-readable artifact, or visual report.
-- `examples.md`, `mini-example.md`, or `prompt-templates.md`: only when an
-  example or reusable prompt would help the user.
-- `platform-notes.md`: Codex, Claude Code, GitHub Copilot, native Plan modes,
+- `references/html-output.md`: explicit HTML, browser-readable artifact, or visual report.
+- `references/examples.md`, `references/mini-example.md`, or
+  `references/prompt-templates.md`: only when an example or reusable prompt
+  would help the user.
+- `references/platform-notes.md`: Codex, Claude Code, GitHub Copilot, native Plan modes,
   subagents, or platform-specific operation.
