@@ -17,7 +17,14 @@ migrations, run source-mutating commands, or tell another agent to implement.
    confirmation. Ask one to three high-impact questions per round after
    research, then re-research the affected area. Ask another round only when a
    remaining or newly discovered blocker materially changes the plan. If
-   interaction is unavailable, return a clearly marked provisional plan.
+   interaction is unavailable, return a clearly marked provisional plan without
+   rendering unresolved questions or option lists in prose.
+   When the environment provides a native structured-question tool, use it
+   instead of rendering questions or options in Markdown. In Codex, use
+   `request_user_input` only when it is available in Plan mode; do not imitate
+   native choices in prose, and use a provisional plan when it is unavailable.
+   On other platforms, use their structured-question tool when exposed, or their
+   normal concise interactive question format when it is not.
 3. Before drafting, classify the change. For medium or larger, cross-cutting,
    data-affecting, security-sensitive, deployment-sensitive, or
    configuration-management work, read `references/extended-plan-contract.md`.
