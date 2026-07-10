@@ -9,6 +9,13 @@ This repository contains the `impl-planner` APM package. The source of truth is:
 - `.apm/skills/impl-planner/references/detail-request.md`
 - `.apm/skills/impl-planner/references/html-output.md`
 - `.apm/skills/impl-planner/references/formatting.md`
+- `.apm/skills/impl-planner/references/mini-example.md`
+- `.apm/skills/impl-planner/references/prompt-templates.md`
+- `.apm/skills/impl-planner/references/research-and-critique.md`
+- `.apm/skills/impl-planner/references/software-task-profiles.md`
+- `.apm/skills/impl-planner/references/risk-task-profiles.md`
+- `.apm/skills/impl-planner/references/config-management-profile.md`
+- `.apm/skills/impl-planner/references/platform-notes.md`
 - `README.md`
 - `README.ja.md`
 
@@ -38,6 +45,7 @@ apm install --dry-run --target copilot
 ```
 
 Use these checks to confirm that the package metadata, skill contract, and bundle contents still match the intended layout.
+
 
 ## Version Release Checklist
 

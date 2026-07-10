@@ -12,9 +12,11 @@ English: [README.md](README.md)
 - plan の前にリポジトリ理解を要約する
 - 先に前提不足や曖昧点を列挙する
 - Assumptions を明示する
+- リポジトリで確認済みの事実、推論、提案、不明点を区別する
+- milestoneごとに実装方針と要件から検証までの対応関係を整理する
 - タスク規模に応じて plan の構造を調整する
 - milestone ごとに次を整理する
-  - 目的
+- やりたいこと
   - 影響がありそうなファイル / モジュール
   - 受け入れ条件
   - 検証コマンド
@@ -29,6 +31,7 @@ English: [README.md](README.md)
 - 判断が難しいときは、推奨案、却下した代替案、その理由を出す
 - acceptance criteria、validation、risk、mitigation、rollback が実行可能か自己点検する
 - 必要に応じて、次回そのまま使える短いプロンプト例を出す
+- API、UI、非同期処理、migration、security、monorepo、依存更新、構成管理向けの条件付きprofileを使える
 
 ## リポジトリ構成
 
@@ -41,6 +44,9 @@ English: [README.md](README.md)
 - `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
 - `.apm/skills/impl-planner/references/html-output.md`: 必要時に読む HTML レポート制約
 - `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
+- `.apm/skills/impl-planner/references/research-and-critique.md`: 証拠、委譲、critic passの契約
+- `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
+- `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
 
 ## 使い方
 
@@ -126,11 +132,15 @@ impl-planner を使って実装 plan を作ってください。
 
 ```bash
 apm audit --file .apm/skills/impl-planner/SKILL.md
+apm audit --file apm.yml
 apm pack --dry-run
 apm pack --archive --dry-run -v
+apm install --dry-run --target codex
+apm install --dry-run --target claude
+apm install --dry-run --target copilot
 ```
 
-これで Skill のメタデータが正しく、パッケージ内容が想定どおりか確認できます。
+これで Skill とmanifestのメタデータ、各targetへのinstall、パッケージ内容が想定どおりか確認できます。
 
 ## 配布方法
 

@@ -12,6 +12,8 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Summarizes repository understanding before planning
 - Lists ambiguities before planning
 - Records assumptions explicitly
+- Labels repository facts, inferences, proposals, and unknowns separately
+- Adds implementation approach and requirement-to-validation traceability to milestones
 - Scales the amount of structure to the task size
 - Breaks the plan into milestones with:
   - goal
@@ -29,6 +31,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Supports detailed decision support and rejected-alternative notes when the answer is not obvious
 - Self-checks that acceptance criteria, validation, risks, mitigations, and rollback actions are actionable
 - Can include concise example prompts the user can reuse next time when helpful
+- Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management
 
 ## Repository layout
 
@@ -41,6 +44,9 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
 - `.apm/skills/impl-planner/references/html-output.md`: Optional HTML report constraints
 - `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
+- `.apm/skills/impl-planner/references/research-and-critique.md`: Evidence, delegation, and critic-pass contract
+- `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
+- `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
 
 ## How to use the skill
 
@@ -126,11 +132,15 @@ From the repository root:
 
 ```bash
 apm audit --file .apm/skills/impl-planner/SKILL.md
+apm audit --file apm.yml
 apm pack --dry-run
 apm pack --archive --dry-run -v
+apm install --dry-run --target codex
+apm install --dry-run --target claude
+apm install --dry-run --target copilot
 ```
 
-These checks confirm that the skill metadata is valid and that the package resolves to the expected bundle contents.
+These checks confirm that the skill metadata is valid, that all supported installation targets resolve, and that the package resolves to the expected bundle contents.
 
 ## How to distribute
 
