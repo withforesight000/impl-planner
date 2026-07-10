@@ -1,6 +1,6 @@
 # Delegation and Critique Contract
 
-Read this only when delegating research or running a fresh-context critic pass.
+Read this only when delegating research or running a critic pass.
 
 ## Delegation Handoff
 

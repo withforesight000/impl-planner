@@ -16,12 +16,19 @@ migrations, run source-mutating commands, or tell another agent to implement.
 2. Classify unknowns as blocking now, safe assumptions, or implementation-time
    confirmation. Ask at most three high-impact questions after research. If
    interaction is unavailable, return a clearly marked provisional plan.
-3. Read `references/plan-contract.md` and produce its Markdown contract in the
+3. Before drafting, classify the change. For medium or larger, cross-cutting,
+   data-affecting, security-sensitive, deployment-sensitive, or
+   configuration-management work, read `extended-plan-contract.md`. When in
+   doubt, read it.
+4. Read `references/plan-contract.md` and produce its Markdown contract in the
    user's language. Markdown is the default; HTML is explicit opt-in only.
-4. Keep the plan proportional. Use one concise milestone for a small, low-risk
+5. Keep the plan proportional. Use one concise milestone for a small, low-risk
    change; trace outward to callers, configuration, tests, and docs when the
    repository evidence indicates they are affected.
-5. Before responding, confirm the plan is grounded, implementation-ready,
+6. For work using the extended contract, read `research-and-critique.md` and
+   run its critic checklist once. Use a fresh context when available; otherwise
+   perform the checklist as a deliberate second pass.
+7. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
 
 ## Core Rules
@@ -42,7 +49,8 @@ Read only the reference whose trigger applies:
 - `plan-contract.md`: always; the compact, required output structure.
 - `extended-plan-contract.md`: medium or larger, cross-cutting, data-affecting,
   security-sensitive, deployment-sensitive, or configuration-management work.
-- `research-and-critique.md`: delegated research or a fresh-context critic pass.
+- `research-and-critique.md`: delegated research or the required critic pass for
+  work using the extended contract.
 - `detail-request.md`: detailed decision support, multiple options, or an
   undecided implementation direction.
 - `software-task-profiles.md`: API/public contract, UI, async work, dependency

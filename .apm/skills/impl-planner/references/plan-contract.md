@@ -13,6 +13,12 @@ Start in this order:
 - `## Plan.md`
 - `Plan status: Final | Provisional`
 
+Within `Missing Context and Ambiguities` / `前提不足・曖昧点`, use:
+
+- `### Blocking now` / `### 今答えないと plan が破綻するもの`
+- `### Can proceed with assumptions` / `### 仮定を置けば進められるもの`
+- `### Can confirm during implementation` / `### 実装中に確認すればよいもの`
+
 Use `### Milestone N: <short title>` and `####` milestone fields. Every
 milestone includes the following labels in the request language:
 
