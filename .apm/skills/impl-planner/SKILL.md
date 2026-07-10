@@ -15,13 +15,18 @@ Use this skill to produce an implementation plan for a software repository chang
    - Trace the likely change surface outward from entrypoints, call sites, import chains, routing or registration points, and adjacent tests or fixtures.
    - Identify the repository's existing validation style before proposing validation commands.
    - When a file is clearly central, inspect the surrounding module boundaries and any direct dependents before deciding the plan's affected files.
+   - Mark planning claims as `[Observed]`, `[Inferred]`, `[Proposed]`, or `[Unknown]`. Attach an observed path, symbol, config key, command, or other repository anchor whenever it is available.
+   - Stop broad exploration once you have inspected the relevant entrypoint or repository boundary, its direct dependents, and the available validation style. Continue only with a targeted follow-up when a concrete gap affects the plan.
    - Use non-mutating commands only. Dry-run checks and tests are allowed when they do not edit tracked source.
    - Do not ask the user for facts that can be discovered from the repository.
    - Accept user prompts in Japanese or English.
-2. Separate unknowns before planning.
+2. Separate unknowns before planning and resolve true blockers consistently.
    - List what would break the plan if unanswered now.
    - List what can proceed under explicit assumptions.
    - List what can be confirmed during implementation.
+   - In an interactive environment, ask at most three questions after research only when the answer changes architecture, compatibility, data safety, security, operations, or scope.
+   - If interaction is unavailable or the user requests a best-effort answer, return a `Plan status: Provisional` plan. Branch only the affected milestones, identify the decision owner, and do not present it as ready for implementation.
+   - For safe assumptions, continue without stopping and record the assumption visibly.
 3. State assumptions explicitly.
    - Prefer conservative assumptions that follow repository conventions.
    - If an assumption affects architecture, data safety, compatibility, security, or operations, call it out.
@@ -35,20 +40,28 @@ Use this skill to produce an implementation plan for a software repository chang
    - Keep HTML output self-contained, semantic, and free of JavaScript or external assets.
    - Scale the plan to the task size: small, low-risk changes can use one concise milestone and omit empty optional subsections; risky or cross-cutting changes should use the full structure.
    - Make milestone ordering explicit when one milestone depends on another.
+   - Include `requirements covered / 対応する要件` and `implementation approach / 実装方針` in every milestone. Link requirement IDs through affected surfaces, acceptance criteria, and validation.
 5. Include usage prompts for future users when useful.
    - Prefer a short prompt example section only when it helps reuse the skill.
    - Include both a minimal prompt and a detailed prompt when you include the section.
-6. Self-check the plan before returning it.
+6. Run one critic pass before returning the plan.
+   - If a fresh-context reviewer is available, ask it to inspect only requirement gaps, unsupported paths or symbols, dependency-direction mistakes, missing interfaces or data/error flows, weak validation, and scope creep.
+   - Otherwise, perform the same checklist as a separate second pass.
+   - Make at most one targeted re-research pass in response to the critique unless it reveals a new blocker.
+7. Self-check the plan before returning it.
    - Confirm acceptance criteria are observable.
    - Confirm likely affected files or modules include reasons, not just paths.
    - Confirm validation follows the repository's existing validation style when discoverable.
    - Confirm validation commands are concrete or the validation class is explicit.
    - Confirm each meaningful risk has a concrete mitigation, validation step, or rollback action.
    - Confirm assumptions are explicit and do not hide blocking unknowns.
+   - Confirm evidence labels and validation provenance distinguish repository facts from proposals.
+   - Confirm delegated work, if used, repeated the goal, in/out of scope, read-only boundary, known evidence, expected evidence format, and stopping condition.
 
 ## Planning Rules
 
 - Prefer existing codebase conventions, frameworks, module boundaries, helper APIs, and validation style.
+- Do not assume a delegated agent inherits the parent conversation, loaded skills, repository instructions, or files already read. Repeat the information it needs in the delegation prompt.
 - Before planning, check whether the repository already follows a recognizable architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure, and respect those boundaries if present.
 - Preserve type safety.
 - Avoid silent failure. Plans must require visible errors, validation, or explicit fallback behavior where failure is possible.
@@ -57,6 +70,7 @@ Use this skill to produce an implementation plan for a software repository chang
 - For configuration-management tool repositories, account for inventory/group vars, idempotence, handler behavior, check mode, secrets, role boundaries, and rollback implications.
 - For software repositories, account for public interfaces, compatibility, migrations, data flow, failure modes, test coverage, and deployment or rollout risk when relevant.
 - Do not invent detailed schemas, flags, APIs, or validation rules unless the request or discovered code requires them. Where a choice matters, present the decision and a recommended default.
+- Do not present an unobserved path, symbol, command, or behavior as an existing repository fact.
 - When the implementation direction is not obvious, include the recommended option, rejected alternatives, and the reason for the recommendation.
 - Prefer Markdown headings and bullet lists. Tables are allowed only when they make comparisons or file lists easier to scan.
 - Close every code block if one is used.
@@ -86,3 +100,4 @@ Read optional references only when their trigger applies:
 - `references/prompt-templates.md`: when including reusable usage prompt examples would help the user reuse the skill.
 - `references/html-output.md`: when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
 - `references/formatting.md`: when formatting constraints are unclear or the output needs tables, code blocks, or unusually compact structure.
+- `references/research-and-critique.md`: for medium or larger changes, risky changes, delegated research, or when a critic pass needs the detailed handoff contract.
