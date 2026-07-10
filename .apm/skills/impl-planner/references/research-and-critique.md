@@ -1,44 +1,19 @@
-# Research, Delegation, and Critique Contract
+# Delegation and Critique Contract
 
-Read this reference for medium or larger changes, risky changes, delegated research, or a critic pass.
-
-## Evidence Contract
-
-Use these labels consistently:
-
-- `[Observed]`: directly read in the repository, command output, or user-provided material; include a path, symbol, config key, command, or equivalent anchor when available.
-- `[Inferred]`: conclusion drawn from observed evidence; name the evidence it follows from.
-- `[Proposed]`: intended new behavior, file, interface, or validation.
-- `[Unknown]`: cannot be established from available evidence and may require a question or implementation-time confirmation.
-
-Never label an unverified path, symbol, command, or behavior as observed. Prefer an explicit unknown over a plausible invention.
-
-## Exploration Stop Conditions
-
-Before drafting, establish the relevant repository boundary, direct dependents, and available validation style. Stop broad exploration when those are known. Re-open only the smallest affected area after a critic identifies a concrete gap; make at most one such pass unless a new blocker appears.
+Read this only when delegating research or running a fresh-context critic pass.
 
 ## Delegation Handoff
 
-When delegating research, repeat all of the following in the worker prompt:
-
-1. User goal and success criteria.
-2. In-scope and out-of-scope boundaries.
-3. Read-only boundary; do not implement or edit files.
-4. Known evidence with paths and symbols already inspected.
-5. Questions the worker must answer and the required `[Observed]`, `[Inferred]`, `[Unknown]` response format.
-6. Expected impact surfaces and validation style to inspect.
-7. Stop condition: return once the requested evidence is gathered; do not broaden the task.
-
-Do not assume the worker inherited conversation history, repository instructions, loaded skills, or files already read.
+Repeat the user goal, success criteria, in-scope and out-of-scope boundaries,
+read-only constraint, known evidence, questions to answer, expected evidence
+format, impact surfaces to inspect, and stopping condition. Do not assume the
+worker inherits conversation history, repository instructions, loaded skills, or
+files already read.
 
 ## Critic Pass
 
-Use a fresh-context critic when available. Ask it to check only:
-
-- requirement or constraint omissions;
-- unsupported paths, symbols, APIs, commands, or repository claims;
-- dependency direction, public interface, data flow, state, and error-handling gaps;
-- missing validation, rollout, risk, or rollback coverage;
-- scope creep and planning-only violations.
-
-If no independent critic is available, run the same list as a deliberate second pass. Incorporate only findings supported by evidence or explicitly label them as unknown/proposed.
+Use a fresh-context critic when available; otherwise use a deliberate second
+pass. Check requirement gaps, unsupported claims, dependency direction, missing
+interfaces or data/error flows, weak validation, risks, rollback, scope creep,
+and planning-only violations. Re-research only the smallest affected area, once,
+unless a new blocker appears.

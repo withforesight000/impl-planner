@@ -9,7 +9,7 @@ The HTML report must preserve the same information as the Markdown plan:
 - Assumptions
 - Plan status
 - Plan milestones
-- Requirements covered and implementation approach
+- Implementation approach and, when the extended contract applies, requirements covered
 - Affected files / modules and out of scope
 - Acceptance criteria
 - Validation commands

@@ -5,103 +5,54 @@ description: "Create implementation plans for software repositories or configura
 
 # impl-planner
 
-Use this skill to produce an implementation plan for a software repository change or a configuration-management tool repository change. Stay in planning mode. Do not implement code, edit files, apply migrations, run formatters that rewrite files, or issue commands whose purpose is to perform the change.
+Create an implementation plan, not an implementation. Do not edit files, apply
+migrations, run source-mutating commands, or tell another agent to implement.
 
-## Workflow
+## Core Workflow
 
-1. Ground the plan in the environment before asking questions.
-   - First understand what the repository is trying to achieve and how it achieves it at a high level.
-   - Read or search relevant files, configs, schemas, types, manifests, docs, tests, and existing patterns.
-   - Trace the likely change surface outward from entrypoints, call sites, import chains, routing or registration points, and adjacent tests or fixtures.
-   - Identify the repository's existing validation style before proposing validation commands.
-   - When a file is clearly central, inspect the surrounding module boundaries and any direct dependents before deciding the plan's affected files.
-   - Mark planning claims as `[Observed]`, `[Inferred]`, `[Proposed]`, or `[Unknown]`. Attach an observed path, symbol, config key, command, or other repository anchor whenever it is available.
-   - Stop broad exploration once you have inspected the relevant entrypoint or repository boundary, its direct dependents, and the available validation style. Continue only with a targeted follow-up when a concrete gap affects the plan.
-   - Use non-mutating commands only. Dry-run checks and tests are allowed when they do not edit tracked source.
-   - Do not ask the user for facts that can be discovered from the repository.
-   - Accept user prompts in Japanese or English.
-2. Separate unknowns before planning and resolve true blockers consistently.
-   - List what would break the plan if unanswered now.
-   - List what can proceed under explicit assumptions.
-   - List what can be confirmed during implementation.
-   - In an interactive environment, ask at most three questions after research only when the answer changes architecture, compatibility, data safety, security, operations, or scope.
-   - If interaction is unavailable or the user requests a best-effort answer, return a `Plan status: Provisional` plan. Branch only the affected milestones, identify the decision owner, and do not present it as ready for implementation.
-   - For safe assumptions, continue without stopping and record the assumption visibly.
-3. State assumptions explicitly.
-   - Prefer conservative assumptions that follow repository conventions.
-   - If an assumption affects architecture, data safety, compatibility, security, or operations, call it out.
-   - Do not shrink the affected-file list to only the most obvious edited file when repository evidence suggests surrounding code, tests, config, docs, or generated artifacts will likely move as well.
-   - State notable out-of-scope areas when excluding them prevents implementation drift.
-4. Produce the final plan in Plan.md style using the core contract in `references/plan-contract.md`.
-   - Start with a concise repository-understanding summary before listing ambiguities.
-   - Write explanatory prose and bullet contents in the same language the user used for the request.
-   - Use the English or Japanese structural labels from the contract based on the user's request language, unless the user explicitly asks for a different variant.
-   - Use HTML output only when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
-   - Keep HTML output self-contained, semantic, and free of JavaScript or external assets.
-   - Scale the plan to the task size: small, low-risk changes can use one concise milestone and omit empty optional subsections; risky or cross-cutting changes should use the full structure.
-   - Make milestone ordering explicit when one milestone depends on another.
-   - Include `requirements covered / 対応する要件` and `implementation approach / 実装方針` in every milestone. Link requirement IDs through affected surfaces, acceptance criteria, and validation.
-5. Include usage prompts for future users when useful.
-   - Prefer a short prompt example section only when it helps reuse the skill.
-   - Include both a minimal prompt and a detailed prompt when you include the section.
-6. Run one critic pass before returning the plan.
-   - If a fresh-context reviewer is available, ask it to inspect only requirement gaps, unsupported paths or symbols, dependency-direction mistakes, missing interfaces or data/error flows, weak validation, and scope creep.
-   - Otherwise, perform the same checklist as a separate second pass.
-   - Make at most one targeted re-research pass in response to the critique unless it reveals a new blocker.
-7. Self-check the plan before returning it.
-   - Confirm acceptance criteria are observable.
-   - Confirm likely affected files or modules include reasons, not just paths.
-   - Confirm validation follows the repository's existing validation style when discoverable.
-   - Confirm validation commands are concrete or the validation class is explicit.
-   - Confirm each meaningful risk has a concrete mitigation, validation step, or rollback action.
-   - Confirm assumptions are explicit and do not hide blocking unknowns.
-   - Confirm evidence labels and validation provenance distinguish repository facts from proposals.
-   - Confirm delegated work, if used, repeated the goal, in/out of scope, read-only boundary, known evidence, expected evidence format, and stopping condition.
+1. Inspect the repository before asking questions. Read relevant entrypoints,
+   callers, configuration, tests, documentation, and existing validation. Use
+   non-mutating commands only; do not ask for facts the repository can answer.
+2. Classify unknowns as blocking now, safe assumptions, or implementation-time
+   confirmation. Ask at most three high-impact questions after research. If
+   interaction is unavailable, return a clearly marked provisional plan.
+3. Read `references/plan-contract.md` and produce its Markdown contract in the
+   user's language. Markdown is the default; HTML is explicit opt-in only.
+4. Keep the plan proportional. Use one concise milestone for a small, low-risk
+   change; trace outward to callers, configuration, tests, and docs when the
+   repository evidence indicates they are affected.
+5. Before responding, confirm the plan is grounded, implementation-ready,
+   planning-only, and has observable acceptance criteria and validation.
 
-## Planning Rules
+## Core Rules
 
-- Prefer existing codebase conventions, frameworks, module boundaries, helper APIs, and validation style.
-- Do not assume a delegated agent inherits the parent conversation, loaded skills, repository instructions, or files already read. Repeat the information it needs in the delegation prompt.
-- Before planning, check whether the repository already follows a recognizable architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure, and respect those boundaries if present.
-- Preserve type safety.
-- Avoid silent failure. Plans must require visible errors, validation, or explicit fallback behavior where failure is possible.
-- Markdown is the default output format; HTML is an explicit opt-in variant.
-- HTML output must preserve the same planning contract as Markdown output and must not rely on external CSS, JavaScript, remote assets, or framework-specific components.
-- For configuration-management tool repositories, account for inventory/group vars, idempotence, handler behavior, check mode, secrets, role boundaries, and rollback implications.
-- For software repositories, account for public interfaces, compatibility, migrations, data flow, failure modes, test coverage, and deployment or rollout risk when relevant.
-- Do not invent detailed schemas, flags, APIs, or validation rules unless the request or discovered code requires them. Where a choice matters, present the decision and a recommended default.
-- Do not present an unobserved path, symbol, command, or behavior as an existing repository fact.
-- When the implementation direction is not obvious, include the recommended option, rejected alternatives, and the reason for the recommendation.
-- Prefer Markdown headings and bullet lists. Tables are allowed only when they make comparisons or file lists easier to scan.
-- Close every code block if one is used.
+- Respect existing architecture, module boundaries, conventions, and validation
+  style. Preserve type safety and require visible failure handling or fallback.
+- Do not present an unobserved path, symbol, command, or behavior as fact.
+- For software work, consider public interfaces, compatibility, data flow, and
+  rollout when relevant. For configuration management, consider inventory,
+  variables, idempotence, handlers, check mode, secrets, and rollback.
+- When the direction is genuinely undecided, give viable options, a recommended
+  default, and the reason. Keep tables and examples only when they improve use.
 
-## Detail-Request Mode
+## Conditional References
 
-Read `references/detail-request.md` when this mode applies.
+Read only the reference whose trigger applies:
 
-When the user asks for more detail, asks for decision support, or cannot choose an implementation direction, respond with Markdown bullets that include:
-
-- A clearly marked recommended option.
-- Multiple viable options.
-- For each option: merits, drawbacks, tradeoffs, and when it applies.
-- Any information still needed to decide, without pretending certainty.
-
-After a choice is made, reflect it in the plan's `Assumptions` or milestone `decision notes to avoid oscillation`.
-
-## Output Contract
-
-Read `references/plan-contract.md` before producing the final plan. Follow that core structure exactly unless the user explicitly asks for a different format.
-
-Read optional references only when their trigger applies:
-
-- `references/detail-request.md`: when the user asks for detailed decision support, multiple options, tradeoffs, or cannot choose an implementation direction.
-- `references/examples.md`: when you want a short index of available example files.
-- `references/mini-example.md`: when a compact example would help calibrate plan density.
-- `references/prompt-templates.md`: when including reusable usage prompt examples would help the user reuse the skill.
-- `references/html-output.md`: when the user explicitly asks for HTML, a browser-readable artifact, or a visual report.
-- `references/formatting.md`: when formatting constraints are unclear or the output needs tables, code blocks, or unusually compact structure.
-- `references/research-and-critique.md`: for medium or larger changes, risky changes, delegated research, or when a critic pass needs the detailed handoff contract.
-- `references/software-task-profiles.md`: when the change concerns an API or public contract, UI, asynchronous work, dependency upgrade, monorepo, or shared package.
-- `references/risk-task-profiles.md`: when the change concerns a database migration, backfill, authentication, authorization, secrets, or security boundary.
-- `references/config-management-profile.md`: when planning Ansible or another configuration-management change.
-- `references/platform-notes.md`: when the user asks about Codex, Claude Code, GitHub Copilot, native Plan modes, subagents, or platform-specific operation.
+- `plan-contract.md`: always; the compact, required output structure.
+- `extended-plan-contract.md`: medium or larger, cross-cutting, data-affecting,
+  security-sensitive, deployment-sensitive, or configuration-management work.
+- `research-and-critique.md`: delegated research or a fresh-context critic pass.
+- `detail-request.md`: detailed decision support, multiple options, or an
+  undecided implementation direction.
+- `software-task-profiles.md`: API/public contract, UI, async work, dependency
+  upgrade, monorepo, or shared package changes.
+- `risk-task-profiles.md`: migration, backfill, authentication, authorization,
+  secrets, or security-boundary changes.
+- `config-management-profile.md`: Ansible or another configuration-management
+  change.
+- `html-output.md`: explicit HTML, browser-readable artifact, or visual report.
+- `examples.md`, `mini-example.md`, or `prompt-templates.md`: only when an
+  example or reusable prompt would help the user.
+- `platform-notes.md`: Codex, Claude Code, GitHub Copilot, native Plan modes,
+  subagents, or platform-specific operation.

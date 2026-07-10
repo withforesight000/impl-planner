@@ -5,6 +5,7 @@ This repository contains the `impl-planner` APM package. The source of truth is:
 - `apm.yml`
 - `.apm/skills/impl-planner/SKILL.md`
 - `.apm/skills/impl-planner/references/plan-contract.md`
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`
 - `.apm/skills/impl-planner/references/examples.md`
 - `.apm/skills/impl-planner/references/detail-request.md`
 - `.apm/skills/impl-planner/references/html-output.md`

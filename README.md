@@ -38,13 +38,14 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - `apm.yml`: APM package manifest
 - `.apm/skills/impl-planner/SKILL.md`: Skill entrypoint
 - `.apm/skills/impl-planner/references/plan-contract.md`: Core output contract
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`: Conditional contract for complex or risky changes
 - `.apm/skills/impl-planner/references/examples.md`: Index of optional example files
 - `.apm/skills/impl-planner/references/mini-example.md`: Compact plan-density example
 - `.apm/skills/impl-planner/references/prompt-templates.md`: Reusable prompt templates
 - `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
 - `.apm/skills/impl-planner/references/html-output.md`: Optional HTML report constraints
 - `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
-- `.apm/skills/impl-planner/references/research-and-critique.md`: Evidence, delegation, and critic-pass contract
+- `.apm/skills/impl-planner/references/research-and-critique.md`: Conditional delegation and critic-pass contract
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
 - `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
 

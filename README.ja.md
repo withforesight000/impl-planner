@@ -38,13 +38,14 @@ English: [README.md](README.md)
 - `apm.yml`: APM package manifest
 - `.apm/skills/impl-planner/SKILL.md`: Skill 本体
 - `.apm/skills/impl-planner/references/plan-contract.md`: 中核の出力契約
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`: 複雑または高リスクな変更用の条件付き契約
 - `.apm/skills/impl-planner/references/examples.md`: 例ファイルへの案内
 - `.apm/skills/impl-planner/references/mini-example.md`: plan 密度の確認用の短い例
 - `.apm/skills/impl-planner/references/prompt-templates.md`: 再利用用のプロンプトテンプレート
 - `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
 - `.apm/skills/impl-planner/references/html-output.md`: 必要時に読む HTML レポート制約
 - `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
-- `.apm/skills/impl-planner/references/research-and-critique.md`: 証拠、委譲、critic passの契約
+- `.apm/skills/impl-planner/references/research-and-critique.md`: 条件付きの委譲・critic pass契約
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
 - `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
 
