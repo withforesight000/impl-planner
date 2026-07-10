@@ -20,15 +20,15 @@ migrations, run source-mutating commands, or tell another agent to implement.
    interaction is unavailable, return a clearly marked provisional plan.
 3. Before drafting, classify the change. For medium or larger, cross-cutting,
    data-affecting, security-sensitive, deployment-sensitive, or
-   configuration-management work, read `extended-plan-contract.md`. When in
-   doubt, read it.
+   configuration-management work, read `references/extended-plan-contract.md`.
+   When in doubt, read it.
 4. Read `references/plan-contract.md` and produce its Markdown contract in the
    user's language. Markdown is the default; HTML is explicit opt-in only.
 5. Keep the plan proportional. Use one concise milestone for a small, low-risk
    change; trace outward to callers, configuration, tests, and docs when the
    repository evidence indicates they are affected.
-6. For work using the extended contract, read `research-and-critique.md` and
-   run its critic checklist once. Use a fresh context when available; otherwise
+6. For work using the extended contract, read `references/research-and-critique.md`
+7. and run its critic checklist once. Use a fresh context when available; otherwise
    perform the checklist as a deliberate second pass.
 7. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
