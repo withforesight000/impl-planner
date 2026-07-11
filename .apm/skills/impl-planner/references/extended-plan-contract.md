@@ -23,6 +23,8 @@ The core contract already requires every milestone field. Use this reference to
 add the following detail where it materially improves a complex plan:
 
 - `requirements covered` / `対応する要件`: assign stable IDs such as `R1`.
+  (ex. `R1`: Logging must include timestamp and log level and must not expose
+  sensitive information.)
 - `out of scope` / `対象外`: prevent adjacent work from expanding the change.
 - `decision notes to avoid oscillation` / `判断のぶれを防ぐメモ`: record a
   selected default and rejected alternatives that should not be reopened.
