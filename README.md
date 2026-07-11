@@ -8,6 +8,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 ## What this package does
 
 - Produces a Plan.md-style implementation plan
+- Starts with purpose and background before repository understanding
 - Can optionally produce a self-contained HTML report when explicitly requested
 - Summarizes repository understanding before planning
 - Lists ambiguities before planning
@@ -17,7 +18,10 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Scales the amount of structure to the task size
 - Breaks the plan into milestones with:
   - goal
+  - requirements covered
+  - implementation approach
   - files / modules likely affected
+  - out of scope
   - acceptance criteria
   - validation commands
   - decision notes to avoid oscillation

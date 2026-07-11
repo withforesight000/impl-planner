@@ -3,6 +3,12 @@
 This example shows the expected density for a small English request. Adapt language and labels to the user's request.
 
 ```md
+## Purpose and Background
+
+- The goal is to make reusable planning prompts consistent across the package.
+- The current problem is terminology drift between examples and the output contract.
+- User-provided constraints: keep the package planning-only and preserve bilingual guidance.
+
 ## Repository Understanding
 
 - This package defines a planning-only APM skill and keeps the skill contract, examples, and README usage guidance aligned.
@@ -75,4 +81,13 @@ Plan status: Final
 
 - Prefer list-based prompt templates over prose-heavy examples for the detailed input section.
 - When improving prompt templates, bias toward prompting for likely impact surfaces instead of only the obvious edit target.
+
+#### main risks
+
+- A terminology change can leave English and Japanese examples out of sync.
+- Mitigation: review both README files and prompt templates together.
+
+#### rollback considerations
+
+- Revert the terminology change as one documentation-only commit if it causes confusion.
 ```

@@ -17,9 +17,10 @@ It extends `plan-contract.md`; do not repeat its general rules.
 - For a provisional plan, branch only the milestones changed by the unresolved
   decision and do not describe the result as ready for implementation.
 
-## Extended Milestone Fields
+## Extended Milestone Detail
 
-In addition to the core fields, include these labels when they add information:
+The core contract already requires every milestone field. Use this reference to
+add the following detail where it materially improves a complex plan:
 
 - `requirements covered` / `対応する要件`: assign stable IDs such as `R1`.
 - `out of scope` / `対象外`: prevent adjacent work from expanding the change.

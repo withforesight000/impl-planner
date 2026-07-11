@@ -4,12 +4,13 @@ Read this reference only when the user explicitly asks for HTML, a browser-reada
 
 The HTML report must preserve the same information as the Markdown plan:
 
+- Purpose and background
 - Repository understanding and evidence labels
 - Missing context and ambiguities
 - Assumptions
 - Plan status
 - Plan milestones
-- Implementation approach and, when the extended contract applies, requirements covered
+- Requirements covered and implementation approach
 - Affected files / modules and out of scope
 - Acceptance criteria
 - Validation commands

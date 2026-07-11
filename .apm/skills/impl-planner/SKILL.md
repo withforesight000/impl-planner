@@ -31,6 +31,9 @@ migrations, run source-mutating commands, or tell another agent to implement.
    When in doubt, read it.
 4. Read `references/plan-contract.md` and produce its Markdown contract in the
    user's language. Markdown is the default; HTML is explicit opt-in only.
+   Include every required top-level section and milestone field, even for a
+   small change; use concise `None.` / `なし。` or `Not applicable.` / `該当なし。`
+   content where a field has nothing material to report.
 5. Keep the plan proportional. Use one concise milestone for a small, low-risk
    change; trace outward to callers, configuration, tests, and docs when the
    repository evidence indicates they are affected.
