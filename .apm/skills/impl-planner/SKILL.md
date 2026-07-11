@@ -13,6 +13,7 @@ migrations, run source-mutating commands, or tell another agent to implement.
 1. Inspect the repository before asking questions. Read relevant entrypoints,
    callers, configuration, tests, documentation, and existing validation. Use
    non-mutating commands only; do not ask for facts the repository can answer.
+   Inspect direct dependents of a central file before fixing the affected surface.
 2. Classify unknowns as blocking now, safe assumptions, or implementation-time
    confirmation. Ask one to three high-impact questions per round after
    research, then re-research the affected area. Ask another round only when a
@@ -44,6 +45,8 @@ migrations, run source-mutating commands, or tell another agent to implement.
    perform the checklist as a deliberate second pass.
 7. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
+8. When reusable prompts would help and the user did not ask for a concise
+   answer, append both a minimal and a detailed prompt example after the plan.
 
 ## Core Rules
 

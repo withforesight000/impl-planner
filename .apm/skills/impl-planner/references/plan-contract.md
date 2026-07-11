@@ -17,6 +17,8 @@ Start in this order:
 
 The title is the first non-empty output. Derive it from the requested outcome;
 do not use a generic title such as `Plan.md` or put explanatory prose before it.
+Use the English label before `/` for English requests and the Japanese label
+after `/` for Japanese requests; do not mix the two label sets.
 
 In `Purpose and Background` / `目的と背景`, state the requested outcome, why it
 matters, the current problem or motivation, and known user-provided constraints.
@@ -30,7 +32,8 @@ Within `Missing Context and Ambiguities` / `前提不足・曖昧点`, use:
 - `### Can confirm during implementation` / `### 実装中に確認すればよいもの`
 
 Use `### Milestone N: <short title>` and `####` milestone fields. Every
-milestone includes the following labels in the request language:
+milestone includes the following labels once, in this order, in the request
+language:
 
 - `goal` / `目的`
 - `requirements covered` / `対応する要件`
@@ -58,6 +61,9 @@ ownership boundary; do not split merely by file list.
 - State what blocks a correct plan, what can proceed under an assumption, and
   what can be confirmed during implementation. Say `None.` / `なし。` when no
   blocker remains.
+- Prefer conservative assumptions that follow repository conventions. Call out
+  assumptions affecting architecture, compatibility, data safety, security, or
+  operations.
 - Use `Plan status: Final` only when no blocker remains. In a non-interactive
   best-effort response, use `Provisional` and identify the unresolved decision.
 - Give a reason for each affected file or module. Mark a command as
@@ -83,5 +89,14 @@ ownership boundary; do not split merely by file list.
 - Affected surfaces, acceptance criteria, and validation agree with each other.
 - Every milestone contains each required field and every plan contains the
   purpose-and-background section.
+- Each affected file or module has a reason, validation follows the discovered
+  repository style, and milestone ordering respects existing architecture.
 - Risks have a mitigation, validation, or rollback action where relevant.
 - The plan remains concise enough for the change and never begins implementation.
+
+## Optional Reuse Prompts
+
+When reusable prompts would help and the user did not ask for a concise plan,
+append `## Future Usage Prompts` / `## Skill 利用時のプロンプト例` after `Plan.md`.
+Include both a minimal and a detailed prompt example in the request language.
+Omit this section when it would add noise.
