@@ -8,6 +8,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 ## What this package does
 
 - Produces a Plan.md-style implementation plan
+- Starts with a concise plan title derived from the requested outcome
 - Starts with purpose and background before repository understanding
 - Can optionally produce a self-contained HTML report when explicitly requested
 - Summarizes repository understanding before planning

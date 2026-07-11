@@ -3,6 +3,8 @@
 This example shows the expected density for a small English request. Adapt language and labels to the user's request.
 
 ```md
+# Align planning prompt terminology
+
 ## Purpose and Background
 
 - The goal is to make reusable planning prompts consistent across the package.

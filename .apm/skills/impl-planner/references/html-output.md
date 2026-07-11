@@ -4,6 +4,7 @@ Read this reference only when the user explicitly asks for HTML, a browser-reada
 
 The HTML report must preserve the same information as the Markdown plan:
 
+- A single plan title as the first `h1`
 - Purpose and background
 - Repository understanding and evidence labels
 - Missing context and ambiguities

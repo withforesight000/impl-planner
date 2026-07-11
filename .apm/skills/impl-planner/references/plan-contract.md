@@ -7,12 +7,16 @@ user's language. Use the extended contract only when its trigger applies.
 
 Start in this order:
 
+- `# <concise implementation plan title>` / `# <短い実装計画のタイトル>`
 - `## Purpose and Background` / `## 目的と背景`
 - `## Repository Understanding` / `## リポジトリ理解`
 - `## Missing Context and Ambiguities` / `## 前提不足・曖昧点`
 - `## Assumptions`
 - `## Plan.md`
 - `Plan status: Final | Provisional`
+
+The title is the first non-empty output. Derive it from the requested outcome;
+do not use a generic title such as `Plan.md` or put explanatory prose before it.
 
 In `Purpose and Background` / `目的と背景`, state the requested outcome, why it
 matters, the current problem or motivation, and known user-provided constraints.

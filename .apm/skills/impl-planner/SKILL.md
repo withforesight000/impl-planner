@@ -31,6 +31,8 @@ migrations, run source-mutating commands, or tell another agent to implement.
    When in doubt, read it.
 4. Read `references/plan-contract.md` and produce its Markdown contract in the
    user's language. Markdown is the default; HTML is explicit opt-in only.
+   Start the response with the required plan title; do not put a preamble before
+   it.
    Include every required top-level section and milestone field, even for a
    small change; use concise `None.` / `なし。` or `Not applicable.` / `該当なし。`
    content where a field has nothing material to report.
