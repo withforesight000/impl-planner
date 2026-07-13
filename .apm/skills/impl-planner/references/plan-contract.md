@@ -15,10 +15,9 @@ Start in this order:
 - `## Plan.md`
 - `Plan status: Final | Provisional`
 
-The title is the first non-empty output. Derive it from the requested outcome;
-do not use a generic title such as `Plan.md` or put explanatory prose before it.
-Use the English label before `/` for English requests and the Japanese label
-after `/` for Japanese requests; do not mix the two label sets.
+The title is the first non-empty output. Derive it from the requested outcome; do not use a generic title such as `Plan.md` or put explanatory prose before it.
+In this document, `/` separates alternative labels; in the actual plan output, emit only the variant that matches the request language.
+`## Assumptions` stays `## Assumptions` for both English and Japanese requests.
 
 In `Purpose and Background` / `目的と背景`, state the requested outcome, why it
 matters, the current problem or motivation, and known user-provided constraints.
