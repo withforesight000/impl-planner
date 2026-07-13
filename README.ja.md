@@ -16,22 +16,34 @@ English: [README.md](README.md)
 - 明示的に求められた場合は、自己完結した HTML レポートも出力できる
 - API、UI、非同期処理、migration、security、monorepo、依存更新、構成管理向けの条件付き profile を使える
 
-## リポジトリ構成
+## 補足
 
-- `apm.yml`: APM package manifest
-- `.apm/skills/impl-planner/SKILL.md`: Skill 本体
-- `.apm/skills/impl-planner/references/plan-contract.md`: 中核の出力契約
-- `.apm/skills/impl-planner/references/extended-plan-contract.md`: 複雑または高リスクな変更用の条件付き契約
-- `.apm/skills/impl-planner/references/examples.md`: 例ファイルへの案内
-- `.apm/skills/impl-planner/references/mini-example.md`: plan 密度の確認用の短い例
-- `.apm/skills/impl-planner/references/prompt-templates.md`: 再利用用のプロンプトテンプレート
-- `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
-- `.apm/skills/impl-planner/references/html-output.md`: 必要時に読む HTML レポート制約
-- `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
-- `.apm/skills/impl-planner/references/research-and-critique.md`: 条件付きの委譲・critic pass契約
-- `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
-- `.apm/skills/impl-planner/references/config-management-profile.md`: 構成管理向けの条件付き profile
-- `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
+- この Skill は計画専用です。
+- ファイル編集、破壊的コマンド、実装開始を促してはいけません。
+- 詳細説明を求められたら、複数案、推奨案、メリット・デメリット・トレードオフを返します。
+
+## `apm` でインストールする方法
+
+この repository を clone しなくても、PC に Skill をインストールできます。
+リポジトリ参照を直接指定して install します。
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --global --target codex
+```
+
+事前に内容を確認したい場合は、`--dry-run` を付けます。
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
+```
+
+他の対応先にも同じ package を入れられます。
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
+```
+
+working copy を持っている場合は、`apm pack --archive` で bundle を作ってから同じ手順で install できます。
 
 ## 使い方
 
@@ -111,6 +123,23 @@ impl-planner を使って実装 plan を作ってください。
 | `既知の地雷` | 通常のコード探索だけでは見えにくい失敗パターンを先に避けられます。過去に問題になった箇所を渡すことで、mitigation、rollback、重点的な検証を plan に入れやすくなります。 |
 | `未確定事項` | blocking、assumptions、実装中に確認するものを分けやすくなります。不確実なことを、決定済みの前提のように plan に混ぜ込むリスクを下げられます。 |
 
+## リポジトリ構成
+
+- `apm.yml`: APM package manifest
+- `.apm/skills/impl-planner/SKILL.md`: Skill 本体
+- `.apm/skills/impl-planner/references/plan-contract.md`: 中核の出力契約
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`: 複雑または高リスクな変更用の条件付き契約
+- `.apm/skills/impl-planner/references/examples.md`: 例ファイルへの案内
+- `.apm/skills/impl-planner/references/mini-example.md`: plan 密度の確認用の短い例
+- `.apm/skills/impl-planner/references/prompt-templates.md`: 再利用用のプロンプトテンプレート
+- `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
+- `.apm/skills/impl-planner/references/html-output.md`: 必要時に読む HTML レポート制約
+- `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
+- `.apm/skills/impl-planner/references/research-and-critique.md`: 条件付きの委譲・critic pass契約
+- `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
+- `.apm/skills/impl-planner/references/config-management-profile.md`: 構成管理向けの条件付き profile
+- `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
+
 ## 検証方法
 
 リポジトリルートで次を実行します。
@@ -132,32 +161,3 @@ apm install --dry-run --target copilot
 - `apm pack` で配布用 bundle を作る
 - 生成された artifact を downstream のインストールやリリース自動化に使う
 - `apm.yml` と `.apm/skills/impl-planner/` を source of truth として保つ
-
-## `apm` でインストールする方法
-
-この repository を clone しなくても、PC に Skill をインストールできます。
-リポジトリ参照を直接指定して install します。
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --global --target codex
-```
-
-事前に内容を確認したい場合は、`--dry-run` を付けます。
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
-```
-
-他の対応先にも同じ package を入れられます。
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
-```
-
-working copy を持っている場合は、`apm pack --archive` で bundle を作ってから同じ手順で install できます。
-
-## 補足
-
-- この Skill は計画専用です。
-- ファイル編集、破壊的コマンド、実装開始を促してはいけません。
-- 詳細説明を求められたら、複数案、推奨案、メリット・デメリット・トレードオフを返します。
