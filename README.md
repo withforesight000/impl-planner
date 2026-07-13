@@ -7,35 +7,14 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 
 ## What this package does
 
-- Produces a Plan.md-style implementation plan
-- Starts with a concise plan title derived from the requested outcome
-- Starts with purpose and background before repository understanding
-- Can optionally produce a self-contained HTML report when explicitly requested
-- Summarizes repository understanding before planning
-- Lists ambiguities before planning
-- Records assumptions explicitly
-- Labels repository facts, inferences, proposals, and unknowns separately
-- Adds implementation approach and requirement-to-validation traceability to milestones
-- Scales the amount of structure to the task size
-- Breaks the plan into milestones with:
-  - goal
-  - requirements covered
-  - implementation approach
-  - files / modules likely affected
-  - out of scope
-  - acceptance criteria
-  - validation commands
-  - decision notes to avoid oscillation
-  - main risks
-  - rollback considerations
-- Requires reasons for likely affected files and modules
-- Traces likely impact outward from entrypoints, call sites, configs, tests, and adjacent docs when estimating affected files
-- Aligns validation commands with the repository's existing validation style
-- Checks for an existing architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure and respects it when present
-- Makes milestone ordering explicit when milestones depend on one another
-- Supports detailed decision support and rejected-alternative notes when the answer is not obvious
-- Self-checks that acceptance criteria, validation, risks, mitigations, and rollback actions are actionable
-- Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management
+- Produces a Plan.md-style implementation plan grounded in repository evidence.
+- Organizes the plan around the requested outcome, purpose and background, repository understanding, assumptions, unknowns, and task-sized milestones.
+- Gives each milestone an implementation approach, affected files or modules with reasons, scope, acceptance criteria, validation, decision notes, risks, and rollback considerations.
+- Traces impact across entrypoints, call sites, configuration, tests, and adjacent documentation, while aligning validation with the repository's existing style.
+- Distinguishes facts, inferences, proposals, and unknowns, and respects existing architecture or layering patterns.
+- Provides recommended and rejected alternatives when detailed decision support is needed, and checks that acceptance criteria and risk actions are actionable.
+- Supports an optional self-contained HTML report when explicitly requested.
+- Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management.
 
 ## Repository layout
 
