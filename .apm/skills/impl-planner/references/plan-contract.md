@@ -92,10 +92,3 @@ ownership boundary; do not split merely by file list.
   repository style, and milestone ordering respects existing architecture.
 - Risks have a mitigation, validation, or rollback action where relevant.
 - The plan remains concise enough for the change and never begins implementation.
-
-## Optional Reuse Prompts
-
-When reusable prompts would help and the user did not ask for a concise plan,
-append `## Future Usage Prompts` / `## Skill 利用時のプロンプト例` after `Plan.md`.
-Include both a minimal and a detailed prompt example in the request language.
-Omit this section when it would add noise.

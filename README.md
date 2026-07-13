@@ -35,7 +35,6 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Makes milestone ordering explicit when milestones depend on one another
 - Supports detailed decision support and rejected-alternative notes when the answer is not obvious
 - Self-checks that acceptance criteria, validation, risks, mitigations, and rollback actions are actionable
-- Can include concise example prompts the user can reuse next time when helpful
 - Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management
 
 ## Repository layout

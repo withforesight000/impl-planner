@@ -45,9 +45,6 @@ migrations, run source-mutating commands, or tell another agent to implement.
    perform the checklist as a deliberate second pass.
 7. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
-8. When reusable prompts would help and the user did not ask for a concise
-   answer, append both a minimal and a detailed prompt example after the plan.
-
 ## Core Rules
 
 - Respect existing architecture, module boundaries, conventions, and validation
@@ -78,7 +75,6 @@ Read only the reference whose trigger applies:
   change.
 - `references/html-output.md`: explicit HTML, browser-readable artifact, or visual report.
 - `references/examples.md`, `references/mini-example.md`, or
-  `references/prompt-templates.md`: only when an example or reusable prompt
-  would help the user.
+  `references/prompt-templates.md`: only when an example would help the user.
 - `references/platform-notes.md`: Codex, Claude Code, GitHub Copilot, native Plan modes,
   subagents, or platform-specific operation.
