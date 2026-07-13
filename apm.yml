@@ -1,5 +1,5 @@
 name: impl-planner
-version: 2.0.0
+version: 3.0.0
 description: Planning-only skill for software and configuration-management repositories.
 author: withforesight000
 license: MIT
