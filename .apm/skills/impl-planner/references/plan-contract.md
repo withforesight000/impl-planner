@@ -13,7 +13,7 @@ Start in this order:
 - `## Missing Context and Ambiguities` / `## 前提不足・曖昧点`
 - `## Assumptions`
 - `## Plan.md`
-- `Plan status: Final | Provisional`
+- First line inside `## Plan.md`: `Plan status: Final | Provisional`
 
 The title is the first non-empty output. Derive it from the requested outcome; do not use a generic title such as `Plan.md` or put explanatory prose before it.
 In this document, `/` separates alternative labels; in the actual plan output, emit only the variant that matches the request language.
