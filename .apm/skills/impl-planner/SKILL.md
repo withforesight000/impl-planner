@@ -41,7 +41,7 @@ migrations, run source-mutating commands, or tell another agent to implement.
    change; trace outward to callers, configuration, tests, and docs when the
    repository evidence indicates they are affected.
 6. For work using the extended contract, read `references/research-and-critique.md`
-7. and run its critic checklist once. Use a fresh context when available; otherwise
+   and run its critic checklist once. Use a fresh context when available; otherwise
    perform the checklist as a deliberate second pass.
 7. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
