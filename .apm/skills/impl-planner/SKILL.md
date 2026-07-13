@@ -45,6 +45,7 @@ migrations, run source-mutating commands, or tell another agent to implement.
    perform the checklist as a deliberate second pass.
 7. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
+
 ## Core Rules
 
 - Respect existing architecture, module boundaries, conventions, and validation
