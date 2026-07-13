@@ -52,6 +52,7 @@ English: [README.md](README.md)
 - `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
 - `.apm/skills/impl-planner/references/research-and-critique.md`: 条件付きの委譲・critic pass契約
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
+- `.apm/skills/impl-planner/references/config-management-profile.md`: 構成管理向けの条件付き profile
 - `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
 
 ## 使い方
