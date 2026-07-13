@@ -3,11 +3,20 @@
 This example shows the expected density for a small English request. Adapt language and labels to the user's request.
 
 ```md
+# Align planning prompt terminology
+
+## Purpose and Background
+
+- The goal is to make reusable planning prompts consistent across the package.
+- The current problem is terminology drift between examples and the output contract.
+- User-provided constraints: keep the package planning-only and preserve bilingual guidance.
+
 ## Repository Understanding
 
 - This package defines a planning-only APM skill and keeps the skill contract, examples, and README usage guidance aligned.
 - The implementation is documentation-driven: `SKILL.md` is the entrypoint, `plan-contract.md` defines the output shape, and README files explain user-facing usage.
 - Validation is handled through APM audit and dry-run packaging commands.
+- `[Observed]` evidence refers to files and commands actually inspected; proposed changes are labeled separately.
 
 ## Missing Context and Ambiguities
 
@@ -30,37 +39,57 @@ This example shows the expected density for a small English request. Adapt langu
 
 ## Plan.md
 
-## Milestone 1: Update prompt examples
+Plan status: Final
 
-### goal
+### Milestone 1: Update prompt examples
+
+#### goal
 
 - Document a compact prompt shape for small requests and a template-heavy prompt shape for detailed requests.
 
-### files / modules likely affected
+#### requirements covered
 
-- `README.md`: English user-facing usage guidance must match the prompt contract.
-- `README.ja.md`: Japanese usage guidance must stay aligned with the English README.
-- `SKILL.md` and `plan-contract.md`: likely affected if the prompt contract itself changes.
+- `R1`: Prompt templates consistently capture the desired outcome and relevant repository context.
 
-### out of scope
+#### implementation approach
+
+- `[Observed]` Align the existing English and Japanese templates with the contract's input terminology.
+- `[Proposed]` Update the minimal template first, then apply the same wording to the detailed template and README references.
+
+#### files / modules likely affected
+
+- `README.md`: `[Observed]` English user-facing usage guidance must match the prompt contract.
+- `README.ja.md`: `[Observed]` Japanese usage guidance must stay aligned with the English README.
+- `SKILL.md` and `plan-contract.md`: `[Proposed]` change only if the prompt contract itself changes.
+
+#### out of scope
 
 - Reworking APM packaging behavior or adding implementation-time automation.
 
-### acceptance criteria
+#### acceptance criteria
 
-- English and Japanese READMEs both show the list-based minimal prompt and detailed prompt.
+- `AC1 [R1]` English and Japanese READMEs both show the list-based minimal prompt and detailed prompt.
 - The detailed prompt includes fields for domain knowledge that AI is likely to miss.
 - The detailed prompt includes a field for points that need detailed explanation or judgment from AI.
 - The detailed prompt asks for broad impact surfaces when that matters, including entrypoints, routing, registration, tests, fixtures, and docs.
 - The wording stays planning-only and does not imply implementation work.
 
-### validation commands
+#### validation commands
 
-- `apm audit --file .apm/skills/impl-planner/SKILL.md`
-- `apm pack --dry-run`
+- `V1 [AC1][Observed]` `apm audit --file .apm/skills/impl-planner/SKILL.md`
+- `V2 [AC1][Observed]` `apm pack --dry-run`
 
-### decision notes to avoid oscillation
+#### decision notes to avoid oscillation
 
 - Prefer list-based prompt templates over prose-heavy examples for the detailed input section.
 - When improving prompt templates, bias toward prompting for likely impact surfaces instead of only the obvious edit target.
+
+#### main risks
+
+- A terminology change can leave English and Japanese examples out of sync.
+- Mitigation: review both README files and prompt templates together.
+
+#### rollback considerations
+
+- Revert the terminology change as one documentation-only commit if it causes confusion.
 ```

@@ -9,7 +9,7 @@ Use these when you want reusable prompt examples without reading the full README
 ```text
 Use `impl-planner` to create an implementation plan for this task.
 
-- Purpose
+- What you want to achieve
   - [what you want to achieve]
 - Background
   - [why it is needed / what problem exists now]
@@ -64,7 +64,7 @@ Use `impl-planner` to create an implementation plan.
 ```text
 impl-planner を使って、このタスクの実装 plan を作ってください。
 
-- 目的
+- やりたいこと
   - [何を実現したいか]
 - 背景
   - [なぜ必要か / 何が今の問題か]

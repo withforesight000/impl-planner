@@ -8,17 +8,24 @@ English: [README.md](README.md)
 ## この package でできること
 
 - Plan.md 形式の実装 plan を作る
+- 依頼された目的から導いた短い計画タイトルで開始する
+- リポジトリ理解の前に目的と背景を整理する
 - 明示的に求められた場合は、自己完結した HTML レポートも出力できる
 - plan の前にリポジトリ理解を要約する
 - 先に前提不足や曖昧点を列挙する
 - Assumptions を明示する
+- リポジトリで確認済みの事実、推論、提案、不明点を区別する
+- milestone ごとに実装方針と要件から検証までの対応関係を整理する
 - タスク規模に応じて plan の構造を調整する
 - milestone ごとに次を整理する
-  - 目的
+  - やりたいこと
+  - 対応する要件
+  - 実装方針
   - 影響がありそうなファイル / モジュール
+  - 対象外
   - 受け入れ条件
   - 検証コマンド
-  - 判断メモ
+  - 判断のぶれを防ぐメモ
   - 主なリスク
   - ロールバック時の考慮事項
 - 影響を受けそうなファイルや module には理由も付ける
@@ -29,18 +36,24 @@ English: [README.md](README.md)
 - 判断が難しいときは、推奨案、却下した代替案、その理由を出す
 - acceptance criteria、validation、risk、mitigation、rollback が実行可能か自己点検する
 - 必要に応じて、次回そのまま使える短いプロンプト例を出す
+- API、UI、非同期処理、migration、security、monorepo、依存更新、構成管理向けの条件付き profile を使える
 
 ## リポジトリ構成
 
 - `apm.yml`: APM package manifest
 - `.apm/skills/impl-planner/SKILL.md`: Skill 本体
 - `.apm/skills/impl-planner/references/plan-contract.md`: 中核の出力契約
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`: 複雑または高リスクな変更用の条件付き契約
 - `.apm/skills/impl-planner/references/examples.md`: 例ファイルへの案内
 - `.apm/skills/impl-planner/references/mini-example.md`: plan 密度の確認用の短い例
 - `.apm/skills/impl-planner/references/prompt-templates.md`: 再利用用のプロンプトテンプレート
 - `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
 - `.apm/skills/impl-planner/references/html-output.md`: 必要時に読む HTML レポート制約
 - `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
+- `.apm/skills/impl-planner/references/research-and-critique.md`: 条件付きの委譲・critic pass契約
+- `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
+- `.apm/skills/impl-planner/references/config-management-profile.md`: 構成管理向けの条件付き profile
+- `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
 
 ## 使い方
 
@@ -126,11 +139,15 @@ impl-planner を使って実装 plan を作ってください。
 
 ```bash
 apm audit --file .apm/skills/impl-planner/SKILL.md
+apm audit --file apm.yml
 apm pack --dry-run
 apm pack --archive --dry-run -v
+apm install --dry-run --target codex
+apm install --dry-run --target claude
+apm install --dry-run --target copilot
 ```
 
-これで Skill のメタデータが正しく、パッケージ内容が想定どおりか確認できます。
+これで Skill とmanifestのメタデータ、各targetへのinstall、パッケージ内容が想定どおりか確認できます。
 
 ## 配布方法
 
@@ -144,19 +161,19 @@ apm pack --archive --dry-run -v
 リポジトリ参照を直接指定して install します。
 
 ```bash
-apm install withforesight000/impl-planner#1.0.0 --global --target codex
+apm install withforesight000/impl-planner#2.0.0 --global --target codex
 ```
 
 事前に内容を確認したい場合は、`--dry-run` を付けます。
 
 ```bash
-apm install withforesight000/impl-planner#1.0.0 --dry-run --global --target codex
+apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
 ```
 
 他の対応先にも同じ package を入れられます。
 
 ```bash
-apm install withforesight000/impl-planner#1.0.0 --global --target claude,copilot
+apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
 ```
 
 working copy を持っている場合は、`apm pack --archive` で bundle を作ってから同じ手順で install できます。

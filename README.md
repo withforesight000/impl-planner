@@ -8,14 +8,21 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 ## What this package does
 
 - Produces a Plan.md-style implementation plan
+- Starts with a concise plan title derived from the requested outcome
+- Starts with purpose and background before repository understanding
 - Can optionally produce a self-contained HTML report when explicitly requested
 - Summarizes repository understanding before planning
 - Lists ambiguities before planning
 - Records assumptions explicitly
+- Labels repository facts, inferences, proposals, and unknowns separately
+- Adds implementation approach and requirement-to-validation traceability to milestones
 - Scales the amount of structure to the task size
 - Breaks the plan into milestones with:
   - goal
+  - requirements covered
+  - implementation approach
   - files / modules likely affected
+  - out of scope
   - acceptance criteria
   - validation commands
   - decision notes to avoid oscillation
@@ -29,18 +36,24 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Supports detailed decision support and rejected-alternative notes when the answer is not obvious
 - Self-checks that acceptance criteria, validation, risks, mitigations, and rollback actions are actionable
 - Can include concise example prompts the user can reuse next time when helpful
+- Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management
 
 ## Repository layout
 
 - `apm.yml`: APM package manifest
 - `.apm/skills/impl-planner/SKILL.md`: Skill entrypoint
 - `.apm/skills/impl-planner/references/plan-contract.md`: Core output contract
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`: Conditional contract for complex or risky changes
 - `.apm/skills/impl-planner/references/examples.md`: Index of optional example files
 - `.apm/skills/impl-planner/references/mini-example.md`: Compact plan-density example
 - `.apm/skills/impl-planner/references/prompt-templates.md`: Reusable prompt templates
 - `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
 - `.apm/skills/impl-planner/references/html-output.md`: Optional HTML report constraints
 - `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
+- `.apm/skills/impl-planner/references/research-and-critique.md`: Conditional delegation and critic-pass contract
+- `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
+- `.apm/skills/impl-planner/references/config-management-profile.md`: Conditional configuration-management checklist
+- `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
 
 ## How to use the skill
 
@@ -126,11 +139,15 @@ From the repository root:
 
 ```bash
 apm audit --file .apm/skills/impl-planner/SKILL.md
+apm audit --file apm.yml
 apm pack --dry-run
 apm pack --archive --dry-run -v
+apm install --dry-run --target codex
+apm install --dry-run --target claude
+apm install --dry-run --target copilot
 ```
 
-These checks confirm that the skill metadata is valid and that the package resolves to the expected bundle contents.
+These checks confirm that the skill metadata is valid, that all supported installation targets resolve, and that the package resolves to the expected bundle contents.
 
 ## How to distribute
 
@@ -144,19 +161,19 @@ You do not need to clone this repository to install the skill on your PC.
 Install it directly from the repository reference:
 
 ```bash
-apm install withforesight000/impl-planner#1.0.0 --global --target codex
+apm install withforesight000/impl-planner#2.0.0 --global --target codex
 ```
 
 If you want to preview the install before applying it, use:
 
 ```bash
-apm install withforesight000/impl-planner#1.0.0 --dry-run --global --target codex
+apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
 ```
 
 You can also install the same package for other supported targets:
 
 ```bash
-apm install withforesight000/impl-planner#1.0.0 --global --target claude,copilot
+apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
 ```
 
 If you do have a working copy, you can still pack it first with `apm pack --archive` and install the resulting bundle the same way.
