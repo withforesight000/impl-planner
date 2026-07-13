@@ -7,58 +7,49 @@ English: [README.md](README.md)
 
 ## この package でできること
 
-- Plan.md 形式の実装 plan を作る
-- 依頼された目的から導いた短い計画タイトルで開始する
-- リポジトリ理解の前に目的と背景を整理する
-- 明示的に求められた場合は、自己完結した HTML レポートも出力できる
-- plan の前にリポジトリ理解を要約する
-- 先に前提不足や曖昧点を列挙する
-- Assumptions を明示する
-- リポジトリで確認済みの事実、推論、提案、不明点を区別する
-- milestone ごとに実装方針と要件から検証までの対応関係を整理する
-- タスク規模に応じて plan の構造を調整する
-- milestone ごとに次を整理する
-  - やりたいこと
-  - 対応する要件
-  - 実装方針
-  - 影響がありそうなファイル / モジュール
-  - 対象外
-  - 受け入れ条件
-  - 検証コマンド
-  - 判断のぶれを防ぐメモ
-  - 主なリスク
-  - ロールバック時の考慮事項
-- 影響を受けそうなファイルや module には理由も付ける
-- エントリポイント、呼び出し元、設定、テスト、隣接するドキュメントまで含めて、影響範囲を広めにたどる
-- validation command はリポジトリ既存の検証スタイルに合わせる
-- Clean Architecture, MVC, Hexagonal Architecture, DDD, feature-based structure などの既存アーキテクチャやレイヤリング規約がある場合は、それを確認して尊重する
-- milestone 間に依存関係がある場合は順序の理由を明示する
-- 判断が難しいときは、推奨案、却下した代替案、その理由を出す
-- acceptance criteria、validation、risk、mitigation、rollback が実行可能か自己点検する
-- 必要に応じて、次回そのまま使える短いプロンプト例を出す
+- リポジトリの根拠に基づいた Plan.md 形式の実装 plan を作る
+- 目的、背景、リポジトリ理解、前提、未確定事項を整理し、タスク規模に応じた milestone に分ける
+- 各 milestone に実装方針、理由付きの影響ファイル / module、対象外、受け入れ条件、検証、判断メモ、リスク、rollback を含める
+- entrypoint、呼び出し元、設定、テスト、隣接ドキュメントまで影響範囲をたどり、検証方法を既存のリポジトリの流儀に合わせる
+- 確認済みの事実、推論、提案、不明点を区別し、既存のアーキテクチャやレイヤリング規約を尊重する
+- 詳細な判断が必要な場合は、推奨案と却下した代替案を理由付きで示し、受け入れ条件やリスク対応が実行可能か確認する
 - API、UI、非同期処理、migration、security、monorepo、依存更新、構成管理向けの条件付き profile を使える
 
-## リポジトリ構成
+## 補足
 
-- `apm.yml`: APM package manifest
-- `.apm/skills/impl-planner/SKILL.md`: Skill 本体
-- `.apm/skills/impl-planner/references/plan-contract.md`: 中核の出力契約
-- `.apm/skills/impl-planner/references/extended-plan-contract.md`: 複雑または高リスクな変更用の条件付き契約
-- `.apm/skills/impl-planner/references/examples.md`: 例ファイルへの案内
-- `.apm/skills/impl-planner/references/mini-example.md`: plan 密度の確認用の短い例
-- `.apm/skills/impl-planner/references/prompt-templates.md`: 再利用用のプロンプトテンプレート
-- `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
-- `.apm/skills/impl-planner/references/html-output.md`: 必要時に読む HTML レポート制約
-- `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
-- `.apm/skills/impl-planner/references/research-and-critique.md`: 条件付きの委譲・critic pass契約
-- `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
-- `.apm/skills/impl-planner/references/config-management-profile.md`: 構成管理向けの条件付き profile
-- `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
+- この Skill は計画専用です。
+- ファイル編集、破壊的コマンド、実装開始を促してはいけません。
+- 詳細説明を求められたら、複数案、推奨案、メリット・デメリット・トレードオフを返します。
+- この Skill は日本語と英語の prompt を受け付けます。
+
+## `apm` でインストールする方法
+
+この repository を clone しなくても、PC に Skill をインストールできます。
+リポジトリ参照を直接指定して install します。
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --global --target codex
+```
+
+事前に内容を確認したい場合は、`--dry-run` を付けます。
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
+```
+
+他の対応先にも同じ package を入れられます。
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
+```
+
+working copy を持っている場合は、`apm pack --archive` で bundle を作ってから同じ手順で install できます。
 
 ## 使い方
 
+**この Skill は、利用するツールの Plan モードで使うことを推奨します。**
+
 新機能、リファクタ、構成管理ツールの変更、設計判断などで「まず plan が欲しい」ときにこの Skill を使います。
-ブラウザで見やすいレビュー用の成果物が欲しい場合だけ、HTML 出力を明示してください。
 
 最小入力の例:
 
@@ -133,6 +124,22 @@ impl-planner を使って実装 plan を作ってください。
 | `既知の地雷` | 通常のコード探索だけでは見えにくい失敗パターンを先に避けられます。過去に問題になった箇所を渡すことで、mitigation、rollback、重点的な検証を plan に入れやすくなります。 |
 | `未確定事項` | blocking、assumptions、実装中に確認するものを分けやすくなります。不確実なことを、決定済みの前提のように plan に混ぜ込むリスクを下げられます。 |
 
+## リポジトリ構成
+
+- `apm.yml`: APM package manifest
+- `.apm/skills/impl-planner/SKILL.md`: Skill 本体
+- `.apm/skills/impl-planner/references/plan-contract.md`: 中核の出力契約
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`: 複雑または高リスクな変更用の条件付き契約
+- `.apm/skills/impl-planner/references/examples.md`: 例ファイルへの案内
+- `.apm/skills/impl-planner/references/mini-example.md`: plan 密度の確認用の短い例
+- `.apm/skills/impl-planner/references/prompt-templates.md`: 再利用用のプロンプトテンプレート
+- `.apm/skills/impl-planner/references/detail-request.md`: 必要時に読む判断材料提示の構造
+- `.apm/skills/impl-planner/references/formatting.md`: 必要時に読む formatting 制約
+- `.apm/skills/impl-planner/references/research-and-critique.md`: 条件付きの委譲・critic pass契約
+- `.apm/skills/impl-planner/references/*-task-profiles.md`: 条件付きタスク別チェックリスト
+- `.apm/skills/impl-planner/references/config-management-profile.md`: 構成管理向けの条件付き profile
+- `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
+
 ## 検証方法
 
 リポジトリルートで次を実行します。
@@ -154,32 +161,3 @@ apm install --dry-run --target copilot
 - `apm pack` で配布用 bundle を作る
 - 生成された artifact を downstream のインストールやリリース自動化に使う
 - `apm.yml` と `.apm/skills/impl-planner/` を source of truth として保つ
-
-## `apm` でインストールする方法
-
-この repository を clone しなくても、PC に Skill をインストールできます。
-リポジトリ参照を直接指定して install します。
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --global --target codex
-```
-
-事前に内容を確認したい場合は、`--dry-run` を付けます。
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
-```
-
-他の対応先にも同じ package を入れられます。
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
-```
-
-working copy を持っている場合は、`apm pack --archive` で bundle を作ってから同じ手順で install できます。
-
-## 補足
-
-- この Skill は計画専用です。
-- ファイル編集、破壊的コマンド、実装開始を促してはいけません。
-- 詳細説明を求められたら、複数案、推奨案、メリット・デメリット・トレードオフを返します。

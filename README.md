@@ -7,58 +7,49 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 
 ## What this package does
 
-- Produces a Plan.md-style implementation plan
-- Starts with a concise plan title derived from the requested outcome
-- Starts with purpose and background before repository understanding
-- Can optionally produce a self-contained HTML report when explicitly requested
-- Summarizes repository understanding before planning
-- Lists ambiguities before planning
-- Records assumptions explicitly
-- Labels repository facts, inferences, proposals, and unknowns separately
-- Adds implementation approach and requirement-to-validation traceability to milestones
-- Scales the amount of structure to the task size
-- Breaks the plan into milestones with:
-  - goal
-  - requirements covered
-  - implementation approach
-  - files / modules likely affected
-  - out of scope
-  - acceptance criteria
-  - validation commands
-  - decision notes to avoid oscillation
-  - main risks
-  - rollback considerations
-- Requires reasons for likely affected files and modules
-- Traces likely impact outward from entrypoints, call sites, configs, tests, and adjacent docs when estimating affected files
-- Aligns validation commands with the repository's existing validation style
-- Checks for an existing architecture or layering pattern such as Clean Architecture, MVC, Hexagonal Architecture, DDD, or feature-based structure and respects it when present
-- Makes milestone ordering explicit when milestones depend on one another
-- Supports detailed decision support and rejected-alternative notes when the answer is not obvious
-- Self-checks that acceptance criteria, validation, risks, mitigations, and rollback actions are actionable
-- Can include concise example prompts the user can reuse next time when helpful
-- Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management
+- Produces a Plan.md-style implementation plan grounded in repository evidence.
+- Organizes the plan around the requested outcome, purpose and background, repository understanding, assumptions, unknowns, and task-sized milestones.
+- Gives each milestone an implementation approach, affected files or modules with reasons, scope, acceptance criteria, validation, decision notes, risks, and rollback considerations.
+- Traces impact across entrypoints, call sites, configuration, tests, and adjacent documentation, while aligning validation with the repository's existing style.
+- Distinguishes facts, inferences, proposals, and unknowns, and respects existing architecture or layering patterns.
+- Provides recommended and rejected alternatives when detailed decision support is needed, and checks that acceptance criteria and risk actions are actionable.
+- Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management.
 
-## Repository layout
+## Notes
 
-- `apm.yml`: APM package manifest
-- `.apm/skills/impl-planner/SKILL.md`: Skill entrypoint
-- `.apm/skills/impl-planner/references/plan-contract.md`: Core output contract
-- `.apm/skills/impl-planner/references/extended-plan-contract.md`: Conditional contract for complex or risky changes
-- `.apm/skills/impl-planner/references/examples.md`: Index of optional example files
-- `.apm/skills/impl-planner/references/mini-example.md`: Compact plan-density example
-- `.apm/skills/impl-planner/references/prompt-templates.md`: Reusable prompt templates
-- `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
-- `.apm/skills/impl-planner/references/html-output.md`: Optional HTML report constraints
-- `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
-- `.apm/skills/impl-planner/references/research-and-critique.md`: Conditional delegation and critic-pass contract
-- `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
-- `.apm/skills/impl-planner/references/config-management-profile.md`: Conditional configuration-management checklist
-- `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
+- The skill is planning-only.
+- It must not instruct the agent to edit files, run mutating commands, or proceed to implementation.
+- When the user asks for more detail, the skill should return multiple options, a recommended option, and tradeoffs.
+- The skill accepts prompts in both Japanese and English.
+
+## How to install with `apm`
+
+You do not need to clone this repository to install the skill on your PC.
+Install it directly from the repository reference:
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --global --target codex
+```
+
+If you want to preview the install before applying it, use:
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
+```
+
+You can also install the same package for other supported targets:
+
+```bash
+apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
+```
+
+If you do have a working copy, you can still pack it first with `apm pack --archive` and install the resulting bundle the same way.
 
 ## How to use the skill
 
+**We recommend using this skill in your tool’s Plan mode.**
+
 Use this skill when you need an implementation plan for a new feature, a refactor, an Ansible change, or a design decision.
-Ask for HTML output only when you want a browser-readable review artifact or visual report.
 
 Minimal prompt:
 
@@ -133,6 +124,22 @@ Why each detailed field helps:
 | `Known pitfalls` | Surfaces failure modes that may not be obvious from a normal code search. This helps the plan include mitigations, rollback notes, or focused validation for areas that have caused issues before. |
 | `Open questions` | Separates blockers, assumptions, and items that can be confirmed during implementation. This prevents uncertainty from being hidden inside the plan as if it were already decided. |
 
+## Repository layout
+
+- `apm.yml`: APM package manifest
+- `.apm/skills/impl-planner/SKILL.md`: Skill entrypoint
+- `.apm/skills/impl-planner/references/plan-contract.md`: Core output contract
+- `.apm/skills/impl-planner/references/extended-plan-contract.md`: Conditional contract for complex or risky changes
+- `.apm/skills/impl-planner/references/examples.md`: Index of optional example files
+- `.apm/skills/impl-planner/references/mini-example.md`: Compact plan-density example
+- `.apm/skills/impl-planner/references/prompt-templates.md`: Reusable prompt templates
+- `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
+- `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
+- `.apm/skills/impl-planner/references/research-and-critique.md`: Conditional delegation and critic-pass contract
+- `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
+- `.apm/skills/impl-planner/references/config-management-profile.md`: Conditional configuration-management checklist
+- `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
+
 ## How to verify the package
 
 From the repository root:
@@ -154,33 +161,3 @@ These checks confirm that the skill metadata is valid, that all supported instal
 - Use `apm pack` to create a distributable bundle.
 - Use the packed artifact for downstream installation or release automation.
 - Keep `apm.yml` and `.apm/skills/impl-planner/` as the package source of truth.
-
-## How to install with `apm`
-
-You do not need to clone this repository to install the skill on your PC.
-Install it directly from the repository reference:
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --global --target codex
-```
-
-If you want to preview the install before applying it, use:
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --dry-run --global --target codex
-```
-
-You can also install the same package for other supported targets:
-
-```bash
-apm install withforesight000/impl-planner#2.0.0 --global --target claude,copilot
-```
-
-If you do have a working copy, you can still pack it first with `apm pack --archive` and install the resulting bundle the same way.
-
-## Notes
-
-- The skill is planning-only.
-- It must not instruct the agent to edit files, run mutating commands, or proceed to implementation.
-- When the user asks for more detail, the skill should return multiple options, a recommended option, and tradeoffs.
-- The skill accepts prompts in both Japanese and English.

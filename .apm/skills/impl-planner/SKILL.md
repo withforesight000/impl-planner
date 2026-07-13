@@ -31,7 +31,7 @@ migrations, run source-mutating commands, or tell another agent to implement.
    configuration-management work, read `references/extended-plan-contract.md`.
    When in doubt, read it.
 4. Read `references/plan-contract.md` and produce its Markdown contract in the
-   user's language. Markdown is the default; HTML is explicit opt-in only.
+   user's language.
    Start the response with the required plan title; do not put a preamble before
    it.
    Include every required top-level section and milestone field, even for a
@@ -45,8 +45,6 @@ migrations, run source-mutating commands, or tell another agent to implement.
    perform the checklist as a deliberate second pass.
 7. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
-8. When reusable prompts would help and the user did not ask for a concise
-   answer, append both a minimal and a detailed prompt example after the plan.
 
 ## Core Rules
 
@@ -76,9 +74,7 @@ Read only the reference whose trigger applies:
   secrets, or security-boundary changes.
 - `references/config-management-profile.md`: Ansible or another configuration-management
   change.
-- `references/html-output.md`: explicit HTML, browser-readable artifact, or visual report.
 - `references/examples.md`, `references/mini-example.md`, or
-  `references/prompt-templates.md`: only when an example or reusable prompt
-  would help the user.
+  `references/prompt-templates.md`: only when an example would help the user.
 - `references/platform-notes.md`: Codex, Claude Code, GitHub Copilot, native Plan modes,
   subagents, or platform-specific operation.

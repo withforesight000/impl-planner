@@ -47,8 +47,7 @@ language:
 
 For a small, low-risk change, use one concise milestone and retain every field.
 Write `None.` / `なし。` or `Not applicable.` / `該当なし。` when a required field
-has no material content. Preserve the same information and ordering for explicit
-HTML output.
+has no material content.
 Do not cap milestone count for larger work. Split milestones only at an
 independently verifiable outcome, dependency boundary, risk or rollback unit, or
 ownership boundary; do not split merely by file list.
@@ -92,10 +91,3 @@ ownership boundary; do not split merely by file list.
   repository style, and milestone ordering respects existing architecture.
 - Risks have a mitigation, validation, or rollback action where relevant.
 - The plan remains concise enough for the change and never begins implementation.
-
-## Optional Reuse Prompts
-
-When reusable prompts would help and the user did not ask for a concise plan,
-append `## Future Usage Prompts` / `## Skill 利用時のプロンプト例` after `Plan.md`.
-Include both a minimal and a detailed prompt example in the request language.
-Omit this section when it would add noise.
