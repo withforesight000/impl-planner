@@ -31,7 +31,7 @@ migrations, run source-mutating commands, or tell another agent to implement.
    configuration-management work, read `references/extended-plan-contract.md`.
    When in doubt, read it.
 4. Read `references/plan-contract.md` and produce its Markdown contract in the
-   user's language. Markdown is the default; HTML is explicit opt-in only.
+   user's language.
    Start the response with the required plan title; do not put a preamble before
    it.
    Include every required top-level section and milestone field, even for a
@@ -73,7 +73,6 @@ Read only the reference whose trigger applies:
   secrets, or security-boundary changes.
 - `references/config-management-profile.md`: Ansible or another configuration-management
   change.
-- `references/html-output.md`: explicit HTML, browser-readable artifact, or visual report.
 - `references/examples.md`, `references/mini-example.md`, or
   `references/prompt-templates.md`: only when an example would help the user.
 - `references/platform-notes.md`: Codex, Claude Code, GitHub Copilot, native Plan modes,

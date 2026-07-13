@@ -13,7 +13,6 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - Traces impact across entrypoints, call sites, configuration, tests, and adjacent documentation, while aligning validation with the repository's existing style.
 - Distinguishes facts, inferences, proposals, and unknowns, and respects existing architecture or layering patterns.
 - Provides recommended and rejected alternatives when detailed decision support is needed, and checks that acceptance criteria and risk actions are actionable.
-- Supports an optional self-contained HTML report when explicitly requested.
 - Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management.
 
 ## Notes
@@ -51,7 +50,6 @@ If you do have a working copy, you can still pack it first with `apm pack --arch
 **We recommend using this skill in your tool’s Plan mode.**
 
 Use this skill when you need an implementation plan for a new feature, a refactor, an Ansible change, or a design decision.
-Ask for HTML output only when you want a browser-readable review artifact or visual report.
 
 Minimal prompt:
 
@@ -136,7 +134,6 @@ Why each detailed field helps:
 - `.apm/skills/impl-planner/references/mini-example.md`: Compact plan-density example
 - `.apm/skills/impl-planner/references/prompt-templates.md`: Reusable prompt templates
 - `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
-- `.apm/skills/impl-planner/references/html-output.md`: Optional HTML report constraints
 - `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
 - `.apm/skills/impl-planner/references/research-and-critique.md`: Conditional delegation and critic-pass contract
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists

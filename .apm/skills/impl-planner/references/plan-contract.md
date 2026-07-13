@@ -47,8 +47,7 @@ language:
 
 For a small, low-risk change, use one concise milestone and retain every field.
 Write `None.` / `なし。` or `Not applicable.` / `該当なし。` when a required field
-has no material content. Preserve the same information and ordering for explicit
-HTML output.
+has no material content.
 Do not cap milestone count for larger work. Split milestones only at an
 independently verifiable outcome, dependency boundary, risk or rollback unit, or
 ownership boundary; do not split merely by file list.
