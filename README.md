@@ -52,6 +52,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
 - `.apm/skills/impl-planner/references/research-and-critique.md`: Conditional delegation and critic-pass contract
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
+- `.apm/skills/impl-planner/references/config-management-profile.md`: Conditional configuration-management checklist
 - `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
 
 ## How to use the skill
