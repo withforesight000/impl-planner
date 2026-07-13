@@ -36,7 +36,7 @@ English: [README.md](README.md)
 - 判断が難しいときは、推奨案、却下した代替案、その理由を出す
 - acceptance criteria、validation、risk、mitigation、rollback が実行可能か自己点検する
 - 必要に応じて、次回そのまま使える短いプロンプト例を出す
-- API、UI、非同期処理、migration、security、monorepo、依存更新、構成管理向けの条件付きprofileを使える
+- API、UI、非同期処理、migration、security、monorepo、依存更新、構成管理向けの条件付き profile を使える
 
 ## リポジトリ構成
 
