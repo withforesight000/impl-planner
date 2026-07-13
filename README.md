@@ -48,6 +48,8 @@ If you do have a working copy, you can still pack it first with `apm pack --arch
 
 ## How to use the skill
 
+**We recommend using this skill in your tool’s Plan mode.**
+
 Use this skill when you need an implementation plan for a new feature, a refactor, an Ansible change, or a design decision.
 Ask for HTML output only when you want a browser-readable review artifact or visual report.
 
