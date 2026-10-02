@@ -30,6 +30,7 @@ This repository contains the `impl-planner` APM package. The source of truth is:
 - Keep `README.ja.md` in Japanese.
 - Keep `impl-planner` skill prompts and documentation consistent across README files and the Skill contract.
 - The skill accepts prompts in both Japanese and English.
+- For planning work in this repository, follow the Skill's conditional delegation rule: when an extended-contract plan has independent read-only research or critique, delegate at least one task if subagent tools are available. If they are unavailable, use the Skill's second-pass fallback.
 
 ## Validation
 

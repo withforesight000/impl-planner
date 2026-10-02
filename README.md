@@ -19,6 +19,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 
 - The skill is planning-only.
 - It must not instruct the agent to edit files, run mutating commands, or proceed to implementation.
+- For extended plans with independent read-only research or critique, the skill delegates at least one task when subagents are available; otherwise it uses a deliberate second pass. Small or strictly sequential plans do not require delegation.
 - When the user asks for more detail, the skill should return multiple options, a recommended option, and tradeoffs.
 - The skill accepts prompts in both Japanese and English.
 

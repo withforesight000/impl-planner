@@ -1,6 +1,6 @@
 # Platform Notes
 
-This reference is intentionally separate from the portable output contract. Verify vendor behavior again before relying on it; the sources below were checked on 2026-07-10.
+This reference is intentionally separate from the portable output contract. Verify vendor behavior again before relying on it. Codex sources were checked on 2026-09-24; Claude Code and GitHub Copilot sources were checked on 2026-07-10.
 
 ## Shared Rule
 
@@ -10,10 +10,13 @@ Native Plan modes provide a write boundary and approval flow. `impl-planner` sup
 
 - Give the planner the repository goal, constraints, and expected validation, then let it inspect local entrypoints and module boundaries before drafting.
 - Keep repository instructions and Skill requirements concise and non-duplicative so critical constraints remain visible in the shared context.
+- Current local Codex clients can delegate when applicable `AGENTS.md` or Skill
+  instructions request it. Follow the shared delegation rule in `SKILL.md`;
+  use its second-pass fallback when subagent tools are unavailable.
 - When a plan needs user input, run in Plan mode and use `request_user_input` to
   present native structured choices. If the tool is unavailable, do not imitate
   that UI by listing options in Markdown; return a provisional plan instead.
-- Official context: [How OpenAI uses Codex](https://cdn.openai.com/pdf/6a2631dc-783e-479b-b1a4-af0cfbd38630/how-openai-uses-codex.pdf).
+- Official context: [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) and [GPT-6 model guidance](https://developers.openai.com/api/docs/guides/latest-model).
 
 ## Claude Code
 

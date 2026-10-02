@@ -9,6 +9,10 @@ read-only constraint, known evidence, questions to answer, expected evidence
 format, impact surfaces to inspect, and stopping condition. Do not assume the
 worker inherits conversation history, repository instructions, loaded skills, or
 files already read.
+For delegated critique, also provide the draft plan and the applicable output
+contract, or accessible paths the critic must read.
+The main planner must verify delegated repository paths and claims before using
+them as evidence. Do not claim delegation occurred when no subagent was used.
 
 ## Critic Pass
 
@@ -17,3 +21,5 @@ pass. Check requirement gaps, unsupported claims, dependency direction, missing
 interfaces or data/error flows, weak validation, risks, rollback, scope creep,
 and planning-only violations. Re-research only the smallest affected area, once,
 unless a new blocker appears.
+Delegated research does not replace this critic pass; a delegated critic can
+fulfill it.
