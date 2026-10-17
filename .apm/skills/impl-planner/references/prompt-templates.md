@@ -37,11 +37,21 @@ Use `impl-planner` to create an implementation plan.
 - Out of scope
   - [related changes to exclude or defer]
 - Constraints
-  - [existing usage, APIs, or data formats that must remain compatible]
-  - [acceptable processing time or load; include numbers only when justified]
-  - [information that must not be stored or displayed and permission boundaries to preserve]
-  - [operational conditions such as acceptable downtime, execution environments, or recovery requirements]
-  - [required runtimes or libraries, or ones that cannot change, and why]
+  - Backward compatibility
+    - [operations, APIs, settings, or data formats that must keep working unchanged, and who uses them]
+    - [acceptable changes and conditions requiring migration steps or advance notice]
+  - Performance
+    - [operations that must not slow down, expected data volumes, or concurrent usage]
+    - [desired response time, throughput, or memory usage; include numbers or comparison baselines only if available]
+  - Security
+    - [guidelines or internal policies to follow or consult, and whether they are mandatory or advisory; you may ask AI to select suitable references]
+    - [who should be able to view or modify what, and information that must not be stored, displayed, or logged]
+  - Operations
+    - [environments, operating procedures, periods when downtime is unacceptable, or acceptable downtime]
+    - [conditions to preserve during recovery or rollback, and data that must not be lost]
+  - Runtime / library constraints
+    - [required or unchangeable technologies, versions, or execution environments, and why]
+    - [conditions on adding or updating dependencies, licenses, or support periods]
 - Domain knowledge AI is likely to miss
   - [behavior or decisions that seem reasonable in general but are wrong for this business]
   - [conditions where the usual rules do not apply and the expected behavior in those cases]
@@ -137,11 +147,21 @@ impl-planner を使って実装 plan を作ってください。
 - 今回やらないこと
   - [関連していても、今回は含めない変更や後回しにする作業]
 - 制約
-  - [維持すべき既存の使い方・API・データ形式などの互換性]
-  - [許容できる処理時間や負荷。数値は根拠がある場合だけ]
-  - [保存・表示してはいけない情報や、守るべき権限の境界]
-  - [許容できる停止時間、実行環境、復旧などの運用上の条件]
-  - [利用必須または変更できないランタイム・ライブラリと、その理由]
+  - 後方互換性
+    - [変更後もそのまま使える必要がある操作・API・設定・データ形式と、その利用者]
+    - [変更を許容できる範囲や、移行手順・事前告知が必要になる条件]
+  - 性能
+    - [遅くなると困る操作や、想定するデータ量・同時利用数]
+    - [満たしたい応答時間・処理量・メモリ使用量など。数値や比較対象がある場合だけ]
+  - セキュリティ
+    - [準拠・参照したいガイドラインや社内規程と、必須要件か参考か。選定をAIに任せてもよい]
+    - [誰が何を閲覧・操作できるべきか、保存・表示・ログ出力してはいけない情報など]
+  - 運用
+    - [利用する環境・運用手順や、停止できない時間帯・許容できる停止時間]
+    - [障害時の復旧・切り戻しで守りたい条件や、失ってはいけないデータ]
+  - ランタイム / ライブラリ制約
+    - [利用必須または変更できない技術・バージョン・実行環境と、その理由]
+    - [依存関係の追加・更新や、ライセンス・サポート期間についての条件]
 - AIが気づきにくいドメイン知識
   - [一般的には妥当に見えても、この業務では困る動作や判断]
   - [通常のルールが当てはまらない条件と、その場合に期待する動作]

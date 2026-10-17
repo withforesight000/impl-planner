@@ -85,11 +85,21 @@ Use `impl-planner` to create an implementation plan.
 - Out of scope
   - [related changes to exclude or defer]
 - Constraints
-  - [existing usage, APIs, or data formats that must remain compatible]
-  - [acceptable processing time or load; include numbers only when justified]
-  - [information that must not be stored or displayed and permission boundaries to preserve]
-  - [operational conditions such as acceptable downtime, execution environments, or recovery requirements]
-  - [required runtimes or libraries, or ones that cannot change, and why]
+  - Backward compatibility
+    - [operations, APIs, settings, or data formats that must keep working unchanged, and who uses them]
+    - [acceptable changes and conditions requiring migration steps or advance notice]
+  - Performance
+    - [operations that must not slow down, expected data volumes, or concurrent usage]
+    - [desired response time, throughput, or memory usage; include numbers or comparison baselines only if available]
+  - Security
+    - [guidelines or internal policies to follow or consult, and whether they are mandatory or advisory; you may ask AI to select suitable references]
+    - [who should be able to view or modify what, and information that must not be stored, displayed, or logged]
+  - Operations
+    - [environments, operating procedures, periods when downtime is unacceptable, or acceptable downtime]
+    - [conditions to preserve during recovery or rollback, and data that must not be lost]
+  - Runtime / library constraints
+    - [required or unchangeable technologies, versions, or execution environments, and why]
+    - [conditions on adding or updating dependencies, licenses, or support periods]
 - Domain knowledge AI is likely to miss
   - [behavior or decisions that seem reasonable in general but are wrong for this business]
   - [conditions where the usual rules do not apply and the expected behavior in those cases]
