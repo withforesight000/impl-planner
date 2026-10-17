@@ -42,7 +42,9 @@ affected surface, observable acceptance criterion, and validation item.
 ## Extended Final Check
 
 - Current behavior, proposed behavior, public interfaces, data flow, state, and
-  error handling are covered where the change affects them.
+  error handling are covered where the change affects them. Distribute this
+  detail across the core contract's designated fields; an extended plan does
+  not require repeating all of it in the implementation approach.
 - Migration, compatibility, rollout, security, idempotence, and dependency risks
   have an explicit mitigation, validation, or rollback path when relevant.
 - No unsupported path, symbol, command, or repository behavior is labeled as an

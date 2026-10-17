@@ -45,3 +45,7 @@ response, and planned validation is not presented as an executed result.
 Check that non-command validation has a parenthesized method label in the command
 cell, needed but unidentified commands remain explicit, and execution results
 are reported outside the table by check ID.
+Check that the implementation approach retains mechanisms, responsibility
+boundaries, and critical constraints while detailed checks and completion
+conditions live in their designated fields. Reject duplicated procedures and
+unsupported numerical precision; distinguish proposed techniques from requirements.

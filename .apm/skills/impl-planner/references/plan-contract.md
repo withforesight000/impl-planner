@@ -134,6 +134,21 @@ ownership boundary; do not split merely by file list.
 
 ## Milestone Rules
 
+- In `implementation approach`, explain the change mechanism, responsibility
+  boundaries, and critical conditions that prevent incorrect implementation.
+  Keep necessary ordering and state, failure, compatibility, or safety constraints;
+  do not turn the section into a line-by-line coding or testing procedure.
+  Put observable completion conditions in `acceptance criteria`, detailed test
+  and measurement procedures in `validation commands`, and choice rationale
+  and tradeoffs in `decision notes to avoid oscillation`. Refer to their IDs
+  instead of repeating their details; retain enough local context to understand
+  the approach without chasing references for every sentence.
+  For consequential concrete values or prescribed techniques, identify whether
+  they come from user requirements, inspected existing behavior, or a planner
+  proposal. Give the basis for proposals and distinguish adjustable choices
+  from mandatory conditions; do not invent precision where evidence is missing.
+  Scale detail to decision needs and implementation risk, not a fixed word or
+  bullet count. Shortening must not erase important constraints.
 - In `files / modules likely affected`, use a Markdown table with exactly two
   columns: `File / module` and `Reason and planned change` in English, or
   `ファイル / モジュール` and `変更理由・内容` in Japanese. Use one row per file
@@ -203,6 +218,9 @@ ownership boundary; do not split merely by file list.
 
 ## Final Check
 
+- The implementation approach explains how the change works and preserves its
+  critical constraints without duplicating acceptance, validation, or decision
+  details. Consequential values and techniques have a clear source and basis.
 - The plan follows repository evidence and does not hide a blocker as an
   assumption.
 - Affected surfaces, acceptance criteria, and validation agree with each other.

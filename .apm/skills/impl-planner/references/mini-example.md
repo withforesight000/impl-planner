@@ -50,7 +50,7 @@ The changes and checks below have not been performed.
 
 #### implementation approach
 
-- Planner proposal: align terminology in the bundled minimal and detailed templates, then mirror the corresponding language in each README. Apply A1 to any additional copies found.
+- Planner proposal: edit the bundled minimal and detailed templates directly, then mirror the corresponding language in each README, following A1. Preserve the planning-only boundary in R2; completion conditions and comparison procedures are defined in AC1–AC3 and V1–V2.
 
 #### files / modules likely affected
 
@@ -94,7 +94,7 @@ apm install --dry-run --target copilot
 
 #### decision notes to avoid oscillation
 
-- User decision: retain bilingual, planning-only guidance. Planner proposal: reuse the existing list structure to keep prompts easy to copy; this preserves some duplication, checked by V1.
+- The direct-edit approach follows the inspected duplication and avoids adding tooling for this wording change. It preserves some duplication, checked by V1. This is a planner choice under A1, not an additional user requirement.
 
 #### main risks
 
