@@ -9,7 +9,10 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 
 - [What this package does](#what-this-package-does)
 - [Reading the plan](#reading-the-plan)
-- [Notes](#notes)
+  - [Purpose and unresolved matters](#purpose-and-unresolved-matters)
+  - [Milestone contents](#milestone-contents)
+  - [Plan status and validation results](#plan-status-and-validation-results)
+- [Planning scope and review](#planning-scope-and-review)
 - [How to install with apm](#how-to-install-with-apm)
 - [How to use the skill](#how-to-use-the-skill)
   - [Detailed input guide](#detailed-input-guide)
@@ -20,34 +23,52 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 
 ## What this package does
 
-- Produces a Plan.md-style implementation plan grounded in repository evidence.
-- Organizes the plan around the requested outcome, purpose and background, repository understanding, assumptions, unknowns, and task-sized milestones.
-- Gives each milestone an implementation approach, affected files or modules with reasons, scope, acceptance criteria, validation, decision notes, risks, and rollback considerations.
-- Traces impact across entrypoints, call sites, configuration, tests, and adjacent documentation, while aligning validation with the repository's existing style.
-- Distinguishes facts, inferences, proposals, and unknowns, and respects existing architecture or layering patterns.
-- Provides recommended and rejected alternatives when detailed decision support is needed, and checks that acceptance criteria and risk actions are actionable.
-- Uses conditional task profiles for APIs, UI, async work, migrations, security, monorepos, dependency upgrades, and configuration management.
+The skill inspects repository code, configuration, tests, and documentation to create an evidence-based implementation plan. It traces affected entrypoints and callers, then aligns the proposed change with existing architecture and validation practices.
+
+The plan is divided into milestones with verifiable outcomes. Each describes the implementation approach, affected files and reasons, exclusions, acceptance criteria, validation, decisions, risks, and rollback.
+
+The skill distinguishes facts, inferences, proposals, and unknowns, and compares options with a recommendation when a decision is needed. Additional checks apply to APIs, UI, asynchronous work, migrations, security, monorepos, dependency upgrades, and configuration management.
 
 ## Reading the plan
 
-- Start with `Purpose and Background` for the current problem, intended result, and main exclusions. `Repository Understanding` identifies what was inspected and how consequential missing references affect the plan.
-- `Missing Context and Ambiguities` collects blockers, safe assumptions, and implementation-time checks in its three existing subsections; there is no separate assumptions section. Assumptions include their basis and consequences, while explicit user decisions remain decisions. Each subsection has at most five items in ordinary plans or ten in extended plans, selected by scope, uncertainty, and risk rather than line count. These are ceilings, not targets; material overflow must be resolved, split, or explicitly disclosed rather than omitted.
-- Each milestone describes an observable result. Its decision notes explain the source, reason, and main tradeoff of important choices without repeating the overview.
-- The implementation approach explains how the change works, how responsibilities are divided, and critical conditions that prevent incorrect implementation. Completion conditions, detailed test and measurement procedures, and choice rationale belong in acceptance criteria, validation, and decision notes respectively, with references instead of repeated details. Consequential values and techniques distinguish user requirements, existing behavior, and planner proposals, with a basis for proposals. Detail follows the change's risk and decision needs, without a fixed length limit or omission of important constraints.
-- Affected files and modules use a two-column table: `File / module` and `Reason and planned change`. Each explanation combines why that location needs attention and what will change. Investigation-only candidates explicitly state that modification is unconfirmed.
-- File entries include verified repository-root-relative paths, prefixed with repository names when multiple repositories are involved. Proposed new paths are marked `New file planned`; unidentified locations are marked `Path unknown` with their investigation scope, never guessed.
-- The plan includes a fixed explanation on its status line: `Plan status: Final (No planning blockers; does not indicate approval, implementation, or validation completion.)` or `Plan status: Provisional (Important facts or decisions remain unresolved; resolve them before finalizing the implementation approach.)`. A provisional plan also identifies its specific blocker and dependent scope immediately below.
-- Validation uses three columns: `Condition to verify`, `Validation method`, and `Command`. Non-command checks use parenthesized labels such as `(Document review)` or `(Manual check)` in the command cell; needed but unknown commands are marked `Not yet identified`. Long commands appear in referenced code blocks below the table. Execution status and results are reported outside the table, by check ID when needed; a listed command is not evidence that a check passed. Risks retain the two columns `Risk / impact` and `Mitigation`. These conventions apply to small plans too, using the required file, validation, and risk tables and short prose or bullets elsewhere.
+### Purpose and unresolved matters
 
-See the [compact Final example](.apm/skills/impl-planner/references/mini-example.md) and the [Japanese Provisional example](.apm/skills/impl-planner/references/provisional-example.md). The latter illustrates missing external evidence when interaction is unavailable; it does not replace clarification when questions can be asked.
+`Purpose and Background` explains the current problem, intended result, and main exclusions. `Repository Understanding` identifies the inspected scope and the impact of consequential references that could not be checked.
 
-## Notes
+`Missing Context and Ambiguities` separates blockers, matters that can proceed under assumptions, and implementation-time checks. Assumptions include their basis and consequences if wrong. Explicit user decisions remain decisions; there is no separate assumptions chapter.
 
-- The skill is planning-only.
-- It must not instruct the agent to edit files, run mutating commands, or proceed to implementation.
-- For extended plans with independent read-only research or critique, the skill delegates at least one task when subagents are available; otherwise it uses a deliberate second pass. Small or strictly sequential plans do not require delegation.
-- When the user asks for more detail, the skill should return multiple options, a recommended option, and tradeoffs.
-- The skill accepts prompts in both Japanese and English.
+Each subsection has at most five items in ordinary plans or ten in plans using additional planning requirements (the extended contract). The applicable requirements depend on scope, uncertainty, and risk, not changed-line count alone. These are ceilings, not targets. Material overflow is handled through investigation or questions, splitting the plan, or explicit disclosure of the excess and its impact; it is not omitted.
+
+### Milestone contents
+
+Each milestone's goal states an observable completion result. The implementation approach focuses on the change mechanism, responsibility boundaries, and conditions that prevent incorrect implementation. Acceptance criteria hold completion conditions; validation holds detailed tests and measurements. Decision notes explain the source, reason, and main tradeoff of choices without repeating the same explanation.
+
+Consequential values and techniques distinguish user requirements, existing behavior, and planner proposals. Proposals include their basis. Detail follows decision needs and risk; shortening must not remove important constraints.
+
+Affected files use a two-column table: `File / module` and `Reason and planned change`. File paths are verified and relative to the repository root, with repository prefixes for multi-repository work. Proposed paths are marked `New file planned`; unidentified locations are marked `Path unknown` with their investigation scope. Investigation-only entries explicitly state that modification is unconfirmed.
+
+### Plan status and validation results
+
+The plan includes one of these fixed status lines:
+
+- `Plan status: Final (No planning blockers; does not indicate approval, implementation, or validation completion.)`
+- `Plan status: Provisional (Important facts or decisions remain unresolved; resolve them before finalizing the implementation approach.)`
+
+A provisional plan identifies its unresolved matters and dependent scope immediately below the status. When interaction is available, the planner seeks clarification rather than using a provisional plan to bypass questions.
+
+Validation uses three columns: `Condition to verify`, `Validation method`, and `Command`. Non-command checks use labels such as `(Document review)` or `(Manual check)`; needed but unidentified commands are marked `Not yet identified`. Long commands appear in referenced code blocks below the table.
+
+Execution status and results appear outside the table, by check ID when needed. A listed command is not evidence that a check passed. Risks use the two columns `Risk / impact` and `Mitigation`. Small plans retain the prescribed file, validation, and risk tables, with short prose or bullets elsewhere.
+
+See the [compact Final example](.apm/skills/impl-planner/references/mini-example.md) and the [Japanese Provisional example](.apm/skills/impl-planner/references/provisional-example.md). The latter illustrates unavailable external evidence and no opportunity for user interaction.
+
+## Planning scope and review
+
+The skill accepts Japanese and English requests. It does not edit files, run state-changing commands, or instruct an agent to begin implementation. Requests for more detail receive multiple options, a recommendation, and their benefits and drawbacks.
+
+For extended-contract plans with independent read-only research or review, the planner delegates at least one task when subagents are available. Small plans and work that must proceed strictly in sequence do not require delegation.
+
+Extended-contract plans also receive a review after drafting. When a separate agent does not perform that review, the authoring agent reviews the complete draft against a checklist after writing it. This review checks missing requirements, unsupported claims, affected scope, validation, risks, and rollback. Delegating research does not remove the requirement to review the draft.
 
 ## How to install with `apm`
 
@@ -70,7 +91,7 @@ You can also install the same package for other supported targets:
 apm install withforesight000/impl-planner#3.1.0 --global --target claude,copilot
 ```
 
-If you do have a working copy, you can still pack it first with `apm pack --archive` and install the resulting bundle the same way.
+For a local working copy, run `apm pack --archive`, then pass the generated archive path to `apm install`.
 
 ## How to use the skill
 
@@ -216,7 +237,7 @@ It is fine to say either “I don't know the current behavior” or “I haven't
 - `.apm/skills/impl-planner/references/prompt-templates.md`: Reusable prompt templates
 - `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
 - `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints
-- `.apm/skills/impl-planner/references/research-and-critique.md`: Conditional delegation and critic-pass contract
+- `.apm/skills/impl-planner/references/research-and-critique.md`: Research delegation and post-draft review procedure
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
 - `.apm/skills/impl-planner/references/config-management-profile.md`: Conditional configuration-management checklist
 - `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
@@ -235,10 +256,8 @@ apm install --dry-run --target claude
 apm install --dry-run --target copilot
 ```
 
-These checks confirm that the skill metadata is valid, that all supported installation targets resolve, and that the package resolves to the expected bundle contents.
+These commands check skill and package definitions, planned installation for each target, and bundle contents. Bilingual meaning and generated-plan quality require separate review.
 
 ## How to distribute
 
-- Use `apm pack` to create a distributable bundle.
-- Use the packed artifact for downstream installation or release automation.
-- Keep `apm.yml` and `.apm/skills/impl-planner/` as the package source of truth.
+Use `apm pack` to create a bundle for installation or release automation. Maintain the original sources in `apm.yml` and `.apm/skills/impl-planner/`.

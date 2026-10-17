@@ -37,7 +37,7 @@ migrations, run source-mutating commands, or tell another agent to implement.
    only independent critique is useful, defer delegation until step 7. Read
    `references/research-and-critique.md` before delegating. Small or strictly
    sequential work needs no delegation. If subagent tools are unavailable,
-   use the deliberate second-pass fallback in step 7.
+   have the authoring agent review the completed draft as described in step 7.
 5. Read `references/plan-contract.md` and produce its Markdown contract in the
    user's language, including its required structure for small plans.
 6. Apply its milestone sizing rules; trace outward to callers, configuration,
@@ -46,7 +46,8 @@ migrations, run source-mutating commands, or tell another agent to implement.
    and run its critic checklist after drafting. If independent critique is the
    qualifying task from step 4, delegate it now when subagent tools are available.
    Otherwise prefer a fresh-context critic when useful and available; if not,
-   perform the checklist as a deliberate second pass. Delegated research does
+   have the authoring agent review the complete draft against the checklist
+   after writing it. Delegated research does
    not replace critique.
 8. Apply `references/plan-contract.md` → `Final Check` to every plan before responding.
 
