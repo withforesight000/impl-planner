@@ -77,8 +77,10 @@ The changes and checks below have not been performed.
 
 All checks below are unexecuted. `[Observed]` identifies documented commands only.
 
-- `V1 [AC1, AC2]` Compare the minimal and detailed prompts in both READMEs and the bundled reference, including meaning, fields, and planning-only wording against the Skill contract.
-- `V2 [AC3][Observed]` Run the package's complete validation list from `AGENTS.md`: both `apm audit --file` checks, both `apm pack` dry runs, and all three target-specific `apm install --dry-run` checks. Inspect the file list for the bundled prompt reference.
+| Condition to verify | Validation method / command |
+| --- | --- |
+| AC1, AC2: Prompts agree across languages and copies and remain planning-only. | V1: Compare the minimal and detailed prompts in both READMEs and the bundled reference, including meaning, fields, and planning-only wording against the Skill contract. |
+| AC3: Required package checks pass and the prompt reference is bundled. | V2 [Observed]: Run the complete validation list from `AGENTS.md`: both `apm audit --file` checks, both `apm pack` dry runs, and all three target-specific `apm install --dry-run` checks. Inspect the bundle file list for the prompt reference. |
 
 #### decision notes to avoid oscillation
 
@@ -86,8 +88,9 @@ All checks below are unexecuted. `[Observed]` identifies documented commands onl
 
 #### main risks
 
-- A terminology change can leave English and Japanese examples out of sync.
-- Mitigation: review both README files and prompt templates together.
+| Risk / impact | Mitigation |
+| --- | --- |
+| A terminology change can leave English and Japanese examples out of sync, giving readers different planning instructions. | Review both READMEs and the bundled templates together using V1. |
 
 #### rollback considerations
 

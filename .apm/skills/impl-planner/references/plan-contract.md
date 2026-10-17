@@ -147,6 +147,23 @@ ownership boundary; do not split merely by file list.
 - Map each criterion to a check that can actually establish it. Package checks
   do not establish semantic agreement between documents; specify a content review
   for such criteria. Do not treat a proposed check as a successful result.
+- In `validation commands`, use a Markdown table with exactly two columns:
+  `Condition to verify` and `Validation method / command` in English, or
+  `確認する条件` and `検証方法・コマンド` in Japanese. Identify the observable
+  condition and applicable acceptance IDs in the first cell, and the check ID,
+  method or known command in the second. Include manual reviews or checks when
+  appropriate; unknown commands remain unknown rather than being invented.
+  Keep the shared execution-status statement before the table. If execution
+  statuses differ, state the result or unexecuted status in each method cell.
+- In `main risks`, use a Markdown table with exactly two columns: `Risk / impact`
+  and `Mitigation` in English, or `リスク・影響` and `対応策` in Japanese. Each
+  row pairs a concrete failure and its consequence with a prevention, detection,
+  or recovery action; reference validation IDs when useful. Do not invent a
+  resolved mitigation if an unresolved dependency still blocks the plan.
+- These validation and risk tables are required for small plans too when entries
+  exist. If there is genuinely nothing applicable, use `None.` / `なし。` or
+  `Not applicable.` / `該当なし。` instead of an empty table; unknown validation
+  commands alone do not make validation inapplicable.
 - State scope exclusions, decisions that should not be reopened, risks, and
   rollback considerations in every milestone; keep a no-op field concise. Use
   the extended contract when evidence, traceability, or risk treatment needs
@@ -167,7 +184,10 @@ ownership boundary; do not split merely by file list.
   Each file entry follows the two-column table format and explains why that location
   needs a change or investigation, not just what action is proposed.
 - Risks have a mitigation, validation, or rollback action where relevant.
+- Validation and risk entries use their prescribed two-column tables, pairing
+  conditions with appropriate checks and risks with concrete responses. Execution
+  status remains explicit and is not implied by a row's presence.
 - The plan remains concise enough for the change and never begins implementation.
-  Apply these rules to small plans too, using the required file table and short
+  Apply these rules to small plans too, using the required file, validation, and risk tables and short
   prose or bullets elsewhere within the existing headings. Keep shared context in one place and specialize it in
   milestones instead of duplicating it.

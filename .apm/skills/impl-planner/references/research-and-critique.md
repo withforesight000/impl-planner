@@ -35,3 +35,6 @@ For each affected file or module, verify the core contract's two-column table:
 the reason explains its responsibility and the requirement gap or investigation
 need, together with the planned change in the explanation cell. Reject action-only reasons and invented
 defects; conditional entries must not imply confirmed modifications.
+Verify that validation and risk subsections use their prescribed two-column
+tables: every condition has an appropriate method, every risk has a concrete
+response, and planned validation is not presented as an executed result.

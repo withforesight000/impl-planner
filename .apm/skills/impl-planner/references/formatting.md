@@ -4,7 +4,7 @@ Read this reference when formatting constraints are unclear or the output needs 
 
 - Use Markdown headings and bullet lists.
 - Tables are allowed when they make comparisons, option tradeoffs, or file lists easier to scan.
-- The affected-files subsection specifically requires the core contract's two-column table when entries exist; other subsections retain their existing flexible format.
+- The affected-files, validation-commands, and main-risks subsections require the core contract's respective two-column tables when entries exist; other subsections retain their existing flexible format.
 - Keep the core contract's required headings, order, and milestone fields for every plan, including small changes. Make small plans concise through shorter content, not omitted headings.
 - Close all code blocks.
 - Prefer concise, implementation-ready bullets over long prose.
