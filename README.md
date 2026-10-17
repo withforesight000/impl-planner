@@ -84,6 +84,10 @@ Use `impl-planner` to create an implementation plan.
   - [work and coverage to include in this change to achieve the goal]
 - Out of scope
   - [related changes to exclude or defer]
+- Business and system context AI is likely to miss
+  - [business rules to preserve, exceptional conditions, and reasons behind existing specifications]
+  - [paths or URLs of specifications, sequence diagrams, or other documents to prioritize, and the specific parts to inspect]
+  - [related repositories that make up the service, their roles, and how they relate to this change]
 - Constraints
   - Backward compatibility
     - [operations, APIs, settings, or data formats that must keep working unchanged, and who uses them]
@@ -100,10 +104,6 @@ Use `impl-planner` to create an implementation plan.
   - Runtime / library constraints
     - [required or unchangeable technologies, versions, or execution environments, and why]
     - [conditions on adding or updating dependencies, licenses, or support periods]
-- Domain knowledge AI is likely to miss
-  - [behavior or decisions that seem reasonable in general but are wrong for this business]
-  - [conditions where the usual rules do not apply and the expected behavior in those cases]
-  - [business reasons behind the existing specifications]
 - Known pitfalls
   - [what broke in a similar past change and under which conditions]
 - Open questions
@@ -148,12 +148,12 @@ The examples below describe one fictional task: improving recovery after an orde
 | `Acceptance criteria` | Makes completion observable. | What result would demonstrate success, including failure cases? | Failed saves retain input and display an error. Retrying saves the order once, even if the first response was lost. |
 | `In scope` | Identifies the work to include. | What changes must this task cover? | Preserve input after failure, show an error, and support manual retry without duplicating the same submission. |
 | `Out of scope` | Prevents unwanted expansion. | What related work should wait? | Automatic retries and restoring input after the page is closed. |
+| `Business and system context AI is likely to miss` | Captures business rules and system relationships not visible in the target repository alone. | Which business assumptions must hold? What should be checked in which documents? What do related repositories handle? | Two identical orders can be intentional. Check retry submission identity in docs/order-sequence.md in the order-specs repository. The order-api repository stores orders and prevents duplicates from retries. |
 | `Constraints: Backward compatibility` | Defines the impact on existing users and migration boundaries. | What must keep working unchanged, and for whom? Which changes are acceptable, and when are migration or notice required? | Existing API clients must work without modification. Optional fields may be added, but new required fields need migration and advance notice. |
 | `Constraints: Performance` | Identifies operations to protect and comparison baselines. | Which operations or usage volumes matter? Are there target values or comparison baselines? | Avoid slowing down order saves. Usage volumes and targets are unknown; use the current save operation as the comparison baseline. |
 | `Constraints: Security` | Separates reference standards from task-specific protections. | Which guidelines are mandatory or advisory? Who may act, and what information needs protection? | Use relevant OWASP guidelines as design references; ask AI to select suitable documents. Do not persist order input in browser storage or write it to logs. |
 | `Constraints: Operations` | Clarifies conditions to preserve during changes and failures. | What environment, procedure, or downtime conditions apply? What must recovery or rollback preserve? | Order intake must remain available during business hours. Rollback must not lose orders already saved. |
 | `Constraints: Runtime / library constraints` | Bounds technology choices and dependency changes. | Which technologies, versions, or environments must remain, and why? What conditions apply to dependencies, licenses, or support periods? | Keep the existing runtime so deployment needs no operational environment changes. Add dependencies only if existing functionality is insufficient, and check their licenses and support status. |
-| `Domain knowledge AI is likely to miss` | Captures business rules and their context. | What seemingly reasonable behavior would be wrong for this business? | Two identical orders can be intentional. Matching contents alone must not be treated as proof of a duplicate. |
 | `Known pitfalls` | Highlights past failures. | What went wrong with a similar change, and under what conditions? | A previous retry fix created duplicates when the server had saved successfully but the client timed out. |
 | `Open questions` | Keeps uncertainty separate from decisions. | What is unknown, and what has not been decided? | Unknown: whether the API already recognizes repeated submissions. Undecided: whether the UI should offer canceling a pending retry. |
 | `Points that need detailed explanation or judgment from AI` | Focuses comparison and explanation. | Which decision needs options and a recommendation? | Compare ways to prevent duplicates when the server saves an order but its response never arrives. |
@@ -162,7 +162,7 @@ The examples below describe one fictional task: improving recovery after an orde
 | `Impact surfaces to inspect` | Provides leads for repository investigation. | Which screens, callers, tests, or docs might be affected? | Inspect the order form, shared API client, order-creation API, and save-related tests; exact paths are unknown. |
 | `Validation steps` | Explains how to check the expected results. | Which known checks or manual steps can demonstrate those results? | Disconnect before saving and check retained input and the error. Also simulate a lost response after a successful save, retry, and verify one stored order. Test commands are unknown. |
 
-`What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules belong under domain knowledge, implementation conventions under design rules, and limits on acceptable solutions under constraints.
+`What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules, reference documents, and related repositories belong under business and system context, implementation conventions under design rules, and limits on acceptable solutions under constraints.
 
 ## Repository layout
 
