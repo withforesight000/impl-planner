@@ -10,14 +10,15 @@ Use these when you want reusable prompt examples without reading the full README
 Use `impl-planner` to create an implementation plan for this task.
 
 - What you want to achieve
-  - [what you want to achieve]
+  - [who should be able to do what, and in which situation]
 - Background
-  - [why it is needed / what problem exists now]
+  - [what happens now, who is affected, and how it causes problems]
+  - [why you want to address it now]
 ```
 
 ### Detailed Input
 
-Fill in only what you know, focusing on the goal and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below. You do not need to repeat “follow AGENTS.md” in each field.
+Fill in only what you know, focusing on the goal and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below.
 
 ```text
 Use `impl-planner` to create an implementation plan.
@@ -100,7 +101,7 @@ The examples below describe one fictional task: improving recovery after an orde
 | `Acceptance criteria` | Makes completion observable. | What result would demonstrate success, including failure cases? | Failed saves retain input and display an error. Retrying saves the order once, even if the first response was lost. |
 | `In scope` | Identifies the work to include. | What changes must this task cover? | Preserve input after failure, show an error, and support manual retry without duplicating the same submission. |
 | `Out of scope` | Prevents unwanted expansion. | What related work should wait? | Automatic retries and restoring input after the page is closed. |
-| `Business and system context AI is likely to miss` | Captures business rules and system relationships not visible in the target repository alone. | Which business assumptions must hold? What should be checked in which documents? What do related repositories handle? | Two identical orders can be intentional. Check retry submission identity in docs/order-sequence.md in the order-specs repository. The order-api repository stores orders and prevents duplicates from retries. |
+| `Business and system context AI is likely to miss` | Captures business rules and system relationships not visible in the target repository alone. | Which business assumptions must hold? What should be checked in which documents? What do related repositories handle? | Two identical orders can be intentional. Check retry submission identity in docs/order-sequence.md in the order-specs repository. The order-api repository is responsible for order storage and retry deduplication; its current retry-identification behavior needs investigation. |
 | `Constraints: Backward compatibility` | Defines the impact on existing users and migration boundaries. | What must keep working unchanged, and for whom? Which changes are acceptable, and when are migration or notice required? | Existing API clients must work without modification. Optional fields may be added, but new required fields need migration and advance notice. |
 | `Constraints: Performance` | Identifies operations to protect and comparison baselines. | Which operations or usage volumes matter? Are there target values or comparison baselines? | Avoid slowing down order saves. Usage volumes and targets are unknown; use the current save operation as the comparison baseline. |
 | `Constraints: Security` | Separates reference standards from task-specific protections. | Which guidelines are mandatory or advisory? Who may act, and what information needs protection? | Use relevant OWASP guidelines as design references; ask AI to select suitable documents. Do not persist order input in browser storage or write it to logs. |
@@ -124,14 +125,15 @@ The examples below describe one fictional task: improving recovery after an orde
 impl-planner を使って、このタスクの実装 plan を作ってください。
 
 - やりたいこと
-  - [何を実現したいか]
+  - [誰が、どの状況で、何をできるようにしたいか]
 - 背景
-  - [なぜ必要か / 何が今の問題か]
+  - [現在何が起きていて、誰がどのように困っているか]
+  - [なぜ今回対応したいか]
 ```
 
 ### 詳細入力
 
-今回の目的や固有の条件を中心に、分かる範囲で記入してください。未記入の項目は適用される指示やリポジトリの慣例で補います。詳しくは下の記入ガイドを参照してください。各項目に「AGENTS.md に従う」と繰り返す必要はありません。
+今回の目的や固有の条件を中心に、分かる範囲だけでもいいので記入してください。未記入の項目は適用される指示やリポジトリの慣例で補います。詳しくは下の記入ガイドを参照してください。
 
 ```text
 impl-planner を使って実装 plan を作ってください。
@@ -214,7 +216,7 @@ impl-planner を使って実装 plan を作ってください。
 | `受け入れ条件` | 完了を観測可能にできます。 | 失敗時も含め、どんな結果を確認できれば成功ですか？ | 保存失敗時に入力が残り、エラーが表示される。初回の応答が失われても、再試行による保存は1件だけになる。 |
 | `今回やること` | 含める作業を明確にできます。 | 今回、どの変更まで含める必要がありますか？ | 失敗時の入力保持、エラー表示、同じ送信を重複登録しない手動再試行。 |
 | `今回やらないこと` | 意図しない範囲拡大を防げます。 | 関連していても、今回は後回しにすることは何ですか？ | 自動再試行と、画面を閉じた後の入力復元。 |
-| `AIが気づきにくい業務・システムの前提` | 業務ルールと、対象リポジトリだけでは分からないシステムの関係を補えます。 | 守るべき業務上の前提は何ですか？ どの資料の何を確認すべきですか？ 関連リポジトリは何を担当していますか？ | 同じ内容の注文を意図的に2件作ることがある。仕様リポジトリ order-specs の docs/order-sequence.md で再試行時の送信識別を確認してほしい。注文を保存する order-api リポジトリが、再試行による重複防止を担当する。 |
+| `AIが気づきにくい業務・システムの前提` | 業務ルールと、対象リポジトリだけでは分からないシステムの関係を補えます。 | 守るべき業務上の前提は何ですか？ どの資料の何を確認すべきですか？ 関連リポジトリは何を担当していますか？ | 同じ内容の注文を意図的に2件作ることがある。仕様リポジトリ order-specs の docs/order-sequence.md で再試行時の送信識別を確認してほしい。order-api リポジトリは注文保存と再試行による重複防止を担当する。再送識別の実装状況は調査が必要。 |
 | `制約：後方互換性` | 既存利用者への影響と移行の境界を明確にできます。 | 何を誰がそのまま使える必要がありますか？ どこまで変更でき、移行や告知はいつ必要ですか？ | 既存の API 利用クライアントは変更せず使えること。任意の項目追加は許容するが、必須項目の追加は移行と事前告知が必要。 |
 | `制約：性能` | 性能を守る対象と比較基準を伝えられます。 | 遅くなると困る操作や利用規模は何ですか？ 達成したい数値や比較対象はありますか？ | 注文の保存操作を遅くしたくない。具体的な利用規模や目標値は不明なので、現行の保存処理を比較対象にしてほしい。 |
 | `制約：セキュリティ` | 参照する基準と今回固有の保護条件を区別できます。 | どのガイドラインを必須要件または参考にしますか？ 誰の操作を許可し、どの情報を保護しますか？ | OWASP の関連ガイドラインを設計の参考にしたい。適切な文書の選定は AI に任せる。注文の入力内容をブラウザーのストレージに永続化したり、ログに出力したりしない。 |

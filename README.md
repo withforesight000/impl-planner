@@ -58,14 +58,15 @@ Minimal prompt:
 Use `impl-planner` to create an implementation plan for this task.
 
 - What you want to achieve
-  - [what you want to achieve]
+  - [who should be able to do what, and in which situation]
 - Background
-  - [why it is needed / what problem exists now]
+  - [what happens now, who is affected, and how it causes problems]
+  - [why you want to address it now]
 ```
 
 Detailed prompt:
 
-Fill in only what you know, focusing on the goal and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below. You do not need to repeat “follow AGENTS.md” in each field.
+Fill in only what you know, focusing on the goal and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below.
 
 ```text
 Use `impl-planner` to create an implementation plan.
@@ -148,7 +149,7 @@ The examples below describe one fictional task: improving recovery after an orde
 | `Acceptance criteria` | Makes completion observable. | What result would demonstrate success, including failure cases? | Failed saves retain input and display an error. Retrying saves the order once, even if the first response was lost. |
 | `In scope` | Identifies the work to include. | What changes must this task cover? | Preserve input after failure, show an error, and support manual retry without duplicating the same submission. |
 | `Out of scope` | Prevents unwanted expansion. | What related work should wait? | Automatic retries and restoring input after the page is closed. |
-| `Business and system context AI is likely to miss` | Captures business rules and system relationships not visible in the target repository alone. | Which business assumptions must hold? What should be checked in which documents? What do related repositories handle? | Two identical orders can be intentional. Check retry submission identity in docs/order-sequence.md in the order-specs repository. The order-api repository stores orders and prevents duplicates from retries. |
+| `Business and system context AI is likely to miss` | Captures business rules and system relationships not visible in the target repository alone. | Which business assumptions must hold? What should be checked in which documents? What do related repositories handle? | Two identical orders can be intentional. Check retry submission identity in docs/order-sequence.md in the order-specs repository. The order-api repository is responsible for order storage and retry deduplication; its current retry-identification behavior needs investigation. |
 | `Constraints: Backward compatibility` | Defines the impact on existing users and migration boundaries. | What must keep working unchanged, and for whom? Which changes are acceptable, and when are migration or notice required? | Existing API clients must work without modification. Optional fields may be added, but new required fields need migration and advance notice. |
 | `Constraints: Performance` | Identifies operations to protect and comparison baselines. | Which operations or usage volumes matter? Are there target values or comparison baselines? | Avoid slowing down order saves. Usage volumes and targets are unknown; use the current save operation as the comparison baseline. |
 | `Constraints: Security` | Separates reference standards from task-specific protections. | Which guidelines are mandatory or advisory? Who may act, and what information needs protection? | Use relevant OWASP guidelines as design references; ask AI to select suitable documents. Do not persist order input in browser storage or write it to logs. |
