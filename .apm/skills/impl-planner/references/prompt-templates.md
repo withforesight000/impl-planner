@@ -18,7 +18,7 @@ Use `impl-planner` to create an implementation plan for this task.
 
 ### Detailed Input
 
-Fill in only what you know, focusing on the goal and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below.
+**You do not need to fill in every field.** Fill in what you know, focusing on your goal, background, and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below.
 
 ```text
 Use `impl-planner` to create an implementation plan.
@@ -81,7 +81,7 @@ Use `impl-planner` to create an implementation plan.
 
 ### Detailed input guide
 
-**You do not need to fill in every field.** Focus on your goal, background, and task-specific conditions. You do not need to repeat instructions already documented in `AGENTS.md`, relevant skills, or other repository documentation, or write “follow AGENTS.md” in each field. Name a particular skill or reference if you want to ensure it is considered.
+You do not need to repeat instructions already documented in `AGENTS.md`, relevant skills, or other repository documentation, or write “follow AGENTS.md” in each field. Name a particular skill or reference if you want to ensure it is considered.
 
 For omitted fields, the planner uses the following approach:
 
@@ -133,7 +133,7 @@ impl-planner を使って、このタスクの実装 plan を作ってくださ�
 
 ### 詳細入力
 
-今回の目的や固有の条件を中心に、分かる範囲だけでもいいので記入してください。未記入の項目は適用される指示やリポジトリの慣例で補います。詳しくは下の記入ガイドを参照してください。
+**すべての項目を埋める必要はありません。** 今回の目的・背景・固有の条件を中心に、分かる範囲で記入してください。未記入の項目は適用される指示やリポジトリの慣例で補います。詳しくは下の記入ガイドを参照してください。
 
 ```text
 impl-planner を使って実装 plan を作ってください。
@@ -196,7 +196,7 @@ impl-planner を使って実装 plan を作ってください。
 
 ### 詳細入力の記入ガイド
 
-**すべての項目を埋める必要はありません。** 今回の目的・背景・固有の条件を中心に記入してください。`AGENTS.md`・関連スキル・リポジトリのドキュメントに記載済みの指示を転記したり、各項目に「AGENTS.md に従ってください」と繰り返したりする必要はありません。特に参照してほしいスキルや資料がある場合は、その名前や参照先を明示してください。
+`AGENTS.md`・関連スキル・リポジトリのドキュメントに記載済みの指示を転記したり、各項目に「AGENTS.md に従ってください」と繰り返したりする必要はありません。特に参照してほしいスキルや資料がある場合は、その名前や参照先を明示してください。
 
 未記入の項目は、次の方針で補います。
 
