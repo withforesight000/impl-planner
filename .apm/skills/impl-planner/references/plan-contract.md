@@ -107,8 +107,9 @@ ownership boundary; do not split merely by file list.
   plan-specific information; do not repeat the fixed definition. Report actual
   implementation or validation progress separately where relevant. The templates
   do not change status-selection rules or introduce a routine approval gate.
-- Give a reason for each affected file or module. Mark a command as
-  `[Observed]`, `[Recommended]`, or `[Unknown]` when its provenance matters.
+- Describe each affected file or module using the fixed entry format below.
+  Mark a command as `[Observed]`, `[Recommended]`, or `[Unknown]` when its
+  provenance matters.
 - In `validation commands`, separate command discovery from execution results.
   `[Observed]` on a command means its existence or documented use was inspected,
   not that it ran successfully. If all checks are unexecuted, one shared statement
@@ -116,6 +117,20 @@ ownership boundary; do not split merely by file list.
 
 ## Milestone Rules
 
+- In `files / modules likely affected`, use a path/module bullet followed by
+  exactly two labeled child bullets, in this order:
+  - English: `Why change:` then `Planned change:`.
+  - Japanese: `変更が必要な理由：` then `変更内容：`.
+  The reason must connect the file's responsibility and the current gap or
+  consequence of leaving it unchanged to a requirement (use its ID when defined).
+  The planned change states what will be modified. An action such as "align
+  wording" alone is not a reason. Apply this format to small plans too; usually
+  one sentence per child bullet is enough. Group paths only when both the reason
+  and planned change genuinely apply to every path; otherwise use separate entries.
+  For investigation-only or conditional candidates, say why investigation is
+  needed, what remains unknown, and the condition for a change; explicitly state
+  that modification is not yet confirmed. Do not invent a current defect or imply
+  that every listed file must change merely to fill these fields.
 - Describe the outcome, then the change order that connects current boundaries
   to the target behavior. Do not invent unsupported APIs, schemas, or commands.
 - Each milestone's `goal` describes an observable result at its completion, not
@@ -147,6 +162,8 @@ ownership boundary; do not split merely by file list.
   the status explanation agrees with the evidence and unresolved blockers.
 - Each affected file or module has a reason, validation follows the discovered
   repository style, and milestone ordering respects existing architecture.
+  Each file entry follows the two-label format and explains why that location
+  needs a change or investigation, not just what action is proposed.
 - Risks have a mitigation, validation, or rollback action where relevant.
 - The plan remains concise enough for the change and never begins implementation.
   Apply these rules to small plans too, using short prose or bullets within the

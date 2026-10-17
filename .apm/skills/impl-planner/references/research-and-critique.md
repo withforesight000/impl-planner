@@ -31,3 +31,7 @@ gaps agree with the status explanation, that command discovery is not reported a
 execution, and that each check can establish its linked acceptance criterion.
 Preserve required headings while removing duplicated explanations. Do not introduce
 approval gates for decisions that do not require user input.
+For each affected file or module, verify the core contract's two-label format:
+the reason explains its responsibility and the requirement gap or investigation
+need, separately from the planned change. Reject action-only reasons and invented
+defects; conditional entries must not imply confirmed modifications.
