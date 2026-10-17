@@ -21,40 +21,49 @@ Use `impl-planner` to create an implementation plan for this task.
 Use `impl-planner` to create an implementation plan.
 
 - Repository / system
-  - [software repository or configuration-management tool repository name]
+  - [repository to change and the target application, feature, or operational system]
 - Repository understanding
-  - [what this repository is meant to achieve]
-  - [main implementation approach / primary processing flow]
+  - [whose needs the system serves and what it helps them achieve]
+  - [the main flow you know: from input through processing and storage to output]
 - What you want to achieve
-  - [what you want to implement]
+  - [who should be able to do what, and in which situation]
 - Background
-  - [why it is needed / what problem exists now]
+  - [what happens now, who is affected, and how it causes problems]
+  - [why you want to address it now]
 - Domain knowledge AI is likely to miss
-  - [business rules]
-  - [exception handling]
-  - [background of existing specifications]
+  - [behavior or decisions that seem reasonable in general but are wrong for this business]
+  - [conditions where the usual rules do not apply and the expected behavior in those cases]
+  - [business reasons behind the existing specifications]
 - In scope
+  - [work and coverage to include in this change to achieve the goal]
 - Out of scope
+  - [related changes to exclude or defer]
 - Points that need detailed explanation or judgment from AI
+  - [decisions you are unsure about, options to compare, and points needing a recommendation and rationale]
 - Design rules to keep
-  - [architecture constraints]
-  - [existing patterns]
-  - [implementations to avoid]
+  - [layer or module responsibilities to preserve and why]
+  - [existing patterns or shared functionality to follow]
+  - [implementation approaches to avoid and why]
 - Impact surfaces to inspect
-  - [entrypoint / routing / registration]
-  - [related test / fixture / docs]
+  - [likely related screens, entrypoints, callers, or registration code; include paths only if known]
+  - [likely related tests, fixtures, or documentation]
 - Constraints
-  - [backward compatibility]
-  - [performance]
-  - [security]
-  - [operations]
-  - [runtime / library constraints]
+  - [existing usage, APIs, or data formats that must remain compatible]
+  - [acceptable processing time or load; include numbers only when justified]
+  - [information that must not be stored or displayed and permission boundaries to preserve]
+  - [operational conditions such as acceptable downtime, execution environments, or recovery requirements]
+  - [required runtimes or libraries, or ones that cannot change, and why]
 - Acceptance criteria
+  - [the situation or action and the resulting behavior that would demonstrate completion]
+  - [behavior or state to preserve during failures or exceptional cases]
 - Validation steps
-  - [build / test / lint / typecheck / e2e]
-  - [manual verification steps]
+  - [known build, test, lint, typecheck, or e2e commands that check the acceptance criteria]
+  - [conditions to reproduce manually, actions to take, and results to inspect]
 - Known pitfalls
+  - [what broke in a similar past change and under which conditions]
 - Open questions
+  - [unknown: facts about the current system that need investigation]
+  - [undecided: choices where options exist but no direction has been selected]
 ```
 
 ### Detailed input guide
@@ -102,40 +111,49 @@ impl-planner を使って、このタスクの実装 plan を作ってくださ�
 impl-planner を使って実装 plan を作ってください。
 
 - 対象リポジトリ
-  - [ソフトウェアまたは構成管理ツールのリポジトリ名]
+  - [変更するリポジトリ名と、対象のアプリ・機能・運用対象]
 - リポジトリ全体の理解
-  - [このリポジトリが何を達成するものか]
-  - [主な実現方法 / 主要な処理の流れ]
+  - [誰のどんな目的を達成するシステムか]
+  - [分かっている主な処理の流れ：入力から処理・保存・出力まで]
 - やりたいこと
-  - [何を実現したいか]
+  - [誰が、どの状況で、何をできるようにしたいか]
 - 背景
-  - [なぜ必要か / 何が今の問題か]
+  - [現在何が起きていて、誰がどのように困っているか]
+  - [なぜ今回対応したいか]
 - AIが気づきにくいドメイン知識
-  - [業務ルール]
-  - [例外処理]
-  - [既存仕様の背景]
+  - [一般的には妥当に見えても、この業務では困る動作や判断]
+  - [通常のルールが当てはまらない条件と、その場合に期待する動作]
+  - [既存の仕様が今の形になった業務上の理由]
 - 今回やること
+  - [目的を達成するために、今回の変更に含める作業や対応範囲]
 - 今回やらないこと
+  - [関連していても、今回は含めない変更や後回しにする作業]
 - AIに詳しく解説・判断してほしいポイント
+  - [迷っている判断、比較してほしい選択肢、推奨案と理由を知りたい点]
 - 守るべき設計・流儀
-  - [アーキテクチャ制約]
-  - [既存パターン]
-  - [避けたい実装]
+  - [維持すべきレイヤーやモジュールの役割分担と、その理由]
+  - [合わせるべき既存パターンや共通処理]
+  - [避けたい実装方法と、それを避ける理由]
 - 影響範囲として見てほしい箇所
-  - [entrypoint / routing / registration]
-  - [関連しそうな test / fixture / docs]
+  - [関連しそうな画面・処理の入口・呼び出し元・登録処理。パスは分かる範囲で]
+  - [関連しそうなテスト・テストデータ・ドキュメント]
 - 制約
-  - [後方互換性]
-  - [性能]
-  - [セキュリティ]
-  - [運用]
-  - [ランタイム / ライブラリ制約]
+  - [維持すべき既存の使い方・API・データ形式などの互換性]
+  - [許容できる処理時間や負荷。数値は根拠がある場合だけ]
+  - [保存・表示してはいけない情報や、守るべき権限の境界]
+  - [許容できる停止時間、実行環境、復旧などの運用上の条件]
+  - [利用必須または変更できないランタイム・ライブラリと、その理由]
 - 受け入れ条件
+  - [どの状況・操作で、どんな結果になれば完了と判断できるか]
+  - [失敗時や例外時にも守るべき動作・状態]
 - 検証方法
-  - [build / test / lint / typecheck / e2e]
-  - [手動確認手順]
+  - [受け入れ条件を確認できる既知の build・test・lint・typecheck・e2e コマンド]
+  - [手動で再現する状況、操作手順、確認する結果]
 - 既知の地雷
+  - [過去の似た変更で、どんな条件のときに何が壊れたか]
 - 未確定事項
+  - [不明：現状が分からず、調査してほしいこと]
+  - [未決定：選択肢はあるが、まだ方針を決めていないこと]
 ```
 
 ### 詳細入力の記入ガイド

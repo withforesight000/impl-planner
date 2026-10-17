@@ -69,40 +69,49 @@ Detailed prompt:
 Use `impl-planner` to create an implementation plan.
 
 - Repository / system
-  - [software repository or configuration-management tool repository name]
+  - [repository to change and the target application, feature, or operational system]
 - Repository understanding
-  - [what this repository is meant to achieve]
-  - [main implementation approach / primary processing flow]
+  - [whose needs the system serves and what it helps them achieve]
+  - [the main flow you know: from input through processing and storage to output]
 - What you want to achieve
-  - [what you want to implement]
+  - [who should be able to do what, and in which situation]
 - Background
-  - [why it is needed / what problem exists now]
+  - [what happens now, who is affected, and how it causes problems]
+  - [why you want to address it now]
 - Domain knowledge AI is likely to miss
-  - [business rules]
-  - [exception handling]
-  - [background of existing specifications]
+  - [behavior or decisions that seem reasonable in general but are wrong for this business]
+  - [conditions where the usual rules do not apply and the expected behavior in those cases]
+  - [business reasons behind the existing specifications]
 - In scope
+  - [work and coverage to include in this change to achieve the goal]
 - Out of scope
+  - [related changes to exclude or defer]
 - Points that need detailed explanation or judgment from AI
+  - [decisions you are unsure about, options to compare, and points needing a recommendation and rationale]
 - Design rules to keep
-  - [architecture constraints]
-  - [existing patterns]
-  - [implementations to avoid]
+  - [layer or module responsibilities to preserve and why]
+  - [existing patterns or shared functionality to follow]
+  - [implementation approaches to avoid and why]
 - Impact surfaces to inspect
-  - [entrypoint / routing / registration]
-  - [related test / fixture / docs]
+  - [likely related screens, entrypoints, callers, or registration code; include paths only if known]
+  - [likely related tests, fixtures, or documentation]
 - Constraints
-  - [backward compatibility]
-  - [performance]
-  - [security]
-  - [operations]
-  - [runtime / library constraints]
+  - [existing usage, APIs, or data formats that must remain compatible]
+  - [acceptable processing time or load; include numbers only when justified]
+  - [information that must not be stored or displayed and permission boundaries to preserve]
+  - [operational conditions such as acceptable downtime, execution environments, or recovery requirements]
+  - [required runtimes or libraries, or ones that cannot change, and why]
 - Acceptance criteria
+  - [the situation or action and the resulting behavior that would demonstrate completion]
+  - [behavior or state to preserve during failures or exceptional cases]
 - Validation steps
-  - [build / test / lint / typecheck / e2e]
-  - [manual verification steps]
+  - [known build, test, lint, typecheck, or e2e commands that check the acceptance criteria]
+  - [conditions to reproduce manually, actions to take, and results to inspect]
 - Known pitfalls
+  - [what broke in a similar past change and under which conditions]
 - Open questions
+  - [unknown: facts about the current system that need investigation]
+  - [undecided: choices where options exist but no direction has been selected]
 ```
 
 ### Detailed input guide
