@@ -43,7 +43,7 @@ does not require asking the user to choose or approve anything.
 ## Carry Decisions Into the Plan
 
 - Record user-selected options as decisions in the relevant requirements or milestone `decision notes to avoid oscillation`, with their source, reason, and material tradeoff. Do not weaken explicit user decisions into assumptions.
-- Put planner assumptions in `Assumptions`, with their basis and the impact if wrong; refer to them from affected milestones.
+- Put planner assumptions in `Can proceed with assumptions` / `仮定を置けば進められるもの`, with their basis and the impact if wrong; refer to them from affected milestones. Do not create a standalone assumptions section.
 - Do not pretend certainty where a missing fact would change the recommendation.
 - Keep rejected alternatives concise unless the user explicitly asks for deeper comparison.
 - If a blocker remains and interaction is unavailable, return a `Plan status: Provisional` plan with branches only for the affected milestones.

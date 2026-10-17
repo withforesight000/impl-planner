@@ -25,15 +25,11 @@ by reading this file. Adapt language and labels to the user's request.
 
 ### Can proceed with assumptions
 
-- Planner assumption A1 below keeps the change local; no user decision is needed to proceed.
+- A1: The inspected prompt duplication can be maintained directly without a generator. If more copies are discovered, include them in the consistency review before reconsidering tooling; no user decision is needed to proceed.
 
 ### Can confirm during implementation
 
 - Implementer: compare the edited examples with the contract and run the package checks below; mismatches require correcting the affected wording or bundle.
-
-## Assumptions
-
-- A1: The inspected prompt duplication can be maintained directly without a generator. If more copies are discovered, include them in the consistency review before reconsidering tooling.
 
 ## Plan.md
 
@@ -57,6 +53,8 @@ The changes and checks below have not been performed.
 - Planner proposal: align terminology in the bundled minimal and detailed templates, then mirror the corresponding language in each README. Apply A1 to any additional copies found.
 
 #### files / modules likely affected
+
+Paths are relative to this repository's root.
 
 | File / module | Reason and planned change |
 | --- | --- |

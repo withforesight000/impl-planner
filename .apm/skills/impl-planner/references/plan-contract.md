@@ -11,7 +11,6 @@ Start in this order:
 - `## Purpose and Background` / `## 目的と背景`
 - `## Repository Understanding` / `## リポジトリ理解`
 - `## Missing Context and Ambiguities` / `## 前提不足・曖昧点`
-- `## Assumptions`
 - `## Plan.md`
 - First line inside `## Plan.md`: one status line from the fixed templates below.
 
@@ -37,7 +36,8 @@ Each pair shows alternatives; emit only the applicable line.
 
 The title is the first non-empty output. Derive it from the requested outcome; do not use a generic title such as `Plan.md` or put explanatory prose before it.
 In this document, `/` separates alternative labels; in the actual plan output, emit only the variant that matches the request language.
-`## Assumptions` stays `## Assumptions` for both English and Japanese requests.
+Do not add a standalone assumptions section; place planner assumptions in the
+existing `Can proceed with assumptions` subsection below.
 
 In `Purpose and Background` / `目的と背景`, state the requested outcome, why it
 matters, the current problem or motivation, and known user-provided constraints.
@@ -52,6 +52,23 @@ Within `Missing Context and Ambiguities` / `前提不足・曖昧点`, use:
 - `### Blocking now` / `### 今答えないと plan が破綻するもの`
 - `### Can proceed with assumptions` / `### 仮定を置けば進められるもの`
 - `### Can confirm during implementation` / `### 実装中に確認すればよいもの`
+
+Keep each of these three subsections to at most five items for ordinary plans,
+or ten for plans using the extended contract. Choose the contract by scope,
+uncertainty, and risk, not changed-line count alone. These are ceilings, not
+targets: write `None.` / `なし。` when empty. Order items by planning impact and
+group genuinely related matters without hiding distinct blockers. If material
+items still exceed the limit, investigate further, resolve questions when
+interaction is available, or split the plan into coherent scopes before finalizing.
+Never omit a material unknown to meet the cap; if it cannot be resolved or split
+in the current interaction, disclose the overflow and its impact explicitly rather
+than claiming a complete list or an unblocked plan.
+
+For blocking items, state the unresolved matter, the needed investigation or
+decision, and its impact. For assumptions, state the adopted assumption, its
+basis, and the impact if wrong; use IDs such as A1 for cross-references. For
+implementation-time items, state what to check, when, and what changes depending
+on the result. Explicit user decisions are not assumptions.
 
 Use `### Milestone N: <short title>` and `####` milestone fields. Every
 milestone includes the following labels once, in this order, in the request
@@ -94,7 +111,7 @@ ownership boundary; do not split merely by file list.
 - Prefer conservative assumptions that follow repository conventions. Call out
   assumptions affecting architecture, compatibility, data safety, security, or
   operations.
-- In `Assumptions`, explain the basis of important planner assumptions and what
+- In `Can proceed with assumptions`, explain the basis of important planner assumptions and what
   changes if they are wrong. Explicit user requirements and selected options
   are decisions, not assumptions; record their origin in the relevant requirement
   or decision note. Reference assumptions from other sections instead of repeating
@@ -121,7 +138,15 @@ ownership boundary; do not split merely by file list.
   columns: `File / module` and `Reason and planned change` in English, or
   `ファイル / モジュール` and `変更理由・内容` in Japanese. Use one row per file
   or module, combining why it needs attention and what will change in the second
-  cell (for example, "To prevent X, update Y"). The reason must connect the
+  cell (for example, "To prevent X, update Y"). Identify files by their full
+  repository-root-relative paths, not ambiguous basenames. For multiple
+  repositories, prefix each path with its repository name and make that convention
+  clear. Existing paths must be verified by inspection; mark proposed new paths
+  `New file planned` / `新規作成予定`. For modules, name the verified directory
+  or relevant file paths. If the location cannot yet be identified, state
+  `Path unknown` / `パス未特定` and the known investigation scope rather than
+  inventing a path. Grouped entries must still list each path explicitly.
+  The reason must connect the
   file's responsibility and the current gap or
   consequence of leaving it unchanged to a requirement (use its ID when defined).
   The planned change states what will be modified. An action such as "align
@@ -176,6 +201,9 @@ ownership boundary; do not split merely by file list.
 - Affected surfaces, acceptance criteria, and validation agree with each other.
 - Every milestone contains each required field and every plan contains the
   purpose-and-background section.
+- Assumptions appear only in the existing ambiguity subsection, with no standalone
+  section. Check the five/ten-item ceilings, prioritization, and any disclosed
+  overflow without suppressing material unknowns.
 - The opening explains the intended change and main exclusions. Important
   decisions, assumptions, and user-owned questions are distinguishable, and
   the status explanation agrees with the evidence and unresolved blockers.
@@ -183,6 +211,8 @@ ownership boundary; do not split merely by file list.
   repository style, and milestone ordering respects existing architecture.
   Each file entry follows the two-column table format and explains why that location
   needs a change or investigation, not just what action is proposed.
+  Paths are repository-relative and verified, explicitly proposed as new, or
+  marked unknown with the investigation scope; multi-repository paths are qualified.
 - Risks have a mitigation, validation, or rollback action where relevant.
 - Validation and risk entries use their prescribed two-column tables, pairing
   conditions with appropriate checks and risks with concrete responses. Execution
