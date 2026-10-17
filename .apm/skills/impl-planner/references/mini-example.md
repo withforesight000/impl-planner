@@ -37,10 +37,9 @@ by reading this file. Adapt language and labels to the user's request.
 
 ## Plan.md
 
-Plan status: Final
+Plan status: Final (No planning blockers; does not indicate approval, implementation, or validation completion.)
 
-No planning blocker remains. This status does not mean approval, implementation,
-or successful validation; the changes and checks below have not been performed.
+The changes and checks below have not been performed.
 
 ### Milestone 1: Update prompt examples
 

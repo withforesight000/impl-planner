@@ -13,7 +13,27 @@ Start in this order:
 - `## Missing Context and Ambiguities` / `## 前提不足・曖昧点`
 - `## Assumptions`
 - `## Plan.md`
-- First line inside `## Plan.md`: `Plan status: Final | Provisional`
+- First line inside `## Plan.md`: one status line from the fixed templates below.
+
+Use the matching language and status template verbatim, including its parenthetical
+explanation. Keep `Plan status`, `Final`, and `Provisional` in English; do not emit
+the bare status or invent a new explanation for each plan.
+
+English:
+
+```text
+Plan status: Final (No planning blockers; does not indicate approval, implementation, or validation completion.)
+Plan status: Provisional (Important facts or decisions remain unresolved; resolve them before finalizing the implementation approach.)
+```
+
+Japanese:
+
+```text
+Plan status: Final (実装方針を確定できる計画。承認・実装・検証の完了は意味しません。)
+Plan status: Provisional (重要な未確認・未決定事項が残る暫定計画。実装方針の確定には解消が必要です。)
+```
+
+Each pair shows alternatives; emit only the applicable line.
 
 The title is the first non-empty output. Derive it from the requested outcome; do not use a generic title such as `Plan.md` or put explanatory prose before it.
 In this document, `/` separates alternative labels; in the actual plan output, emit only the variant that matches the request language.
@@ -81,11 +101,12 @@ ownership boundary; do not split merely by file list.
   them. If none are needed, say so.
 - Use `Plan status: Final` only when no blocker remains. In a non-interactive
   best-effort response, use `Provisional` and identify the unresolved decision.
-- Immediately after `Plan status`, briefly explain the status: `Final` means
-  there is no planning blocker, not that the user approved the plan, implementation
-  is complete, or validation passed. For `Provisional`, identify the remaining
-  blocker and the scope that depends on it. These explanations do not change the
-  status-selection rules or introduce a routine approval gate.
+- Use the fixed status-line explanation from Required Structure. For `Provisional`,
+  follow it with a brief plan-specific statement identifying the remaining blocker
+  and dependent scope. For `Final`, add a follow-up only if it conveys material
+  plan-specific information; do not repeat the fixed definition. Report actual
+  implementation or validation progress separately where relevant. The templates
+  do not change status-selection rules or introduce a routine approval gate.
 - Give a reason for each affected file or module. Mark a command as
   `[Observed]`, `[Recommended]`, or `[Unknown]` when its provenance matters.
 - In `validation commands`, separate command discovery from execution results.

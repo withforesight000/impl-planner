@@ -41,7 +41,7 @@ before finalizing instead of using this example to bypass clarification.
 
 ## Plan.md
 
-Plan status: Provisional
+Plan status: Provisional (重要な未確認・未決定事項が残る暫定計画。実装方針の確定には解消が必要です。)
 
 必須の API 仕様が未確認のため、安全な再試行方式と変更範囲を確定できない。
 以下は仕様確認後に具体化する暫定計画であり、実装着手可能とは扱わない。実装・検証は未実施。

@@ -7,7 +7,7 @@ Read this reference when formatting constraints are unclear or the output needs 
 - Keep the core contract's required headings, order, and milestone fields for every plan, including small changes. Make small plans concise through shorter content, not omitted headings.
 - Close all code blocks.
 - Prefer concise, implementation-ready bullets over long prose.
-- Use short prose or bullets for decision sources, assumptions, and status explanations; do not require fixed tables or repeat shared context in each milestone.
+- Use the core contract's fixed parenthetical status explanation on the status line. Use short prose or bullets for decision sources, assumptions, and any plan-specific follow-up; do not require fixed tables or repeat shared context in each milestone.
 - Keep evidence, requirement, acceptance, and validation IDs readable where traceability is needed.
 - Use `## Plan.md`, `### Milestone`, and `####` milestone subsections so plans have a consistent hierarchy.
 - Do not tell the implementer to start coding or proceed with execution.
