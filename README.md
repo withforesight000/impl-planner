@@ -5,6 +5,19 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 
 日本語版: [README.ja.md](README.ja.md)
 
+## Contents
+
+- [What this package does](#what-this-package-does)
+- [Reading the plan](#reading-the-plan)
+- [Notes](#notes)
+- [How to install with apm](#how-to-install-with-apm)
+- [How to use the skill](#how-to-use-the-skill)
+  - [Detailed input guide](#detailed-input-guide)
+  - [When pre-planning questions are hard to answer](#when-pre-planning-questions-are-hard-to-answer)
+- [Repository layout](#repository-layout)
+- [How to verify the package](#how-to-verify-the-package)
+- [How to distribute](#how-to-distribute)
+
 ## What this package does
 
 - Produces a Plan.md-style implementation plan grounded in repository evidence.
