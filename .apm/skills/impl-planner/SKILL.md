@@ -39,25 +39,16 @@ migrations, run source-mutating commands, or tell another agent to implement.
    sequential work needs no delegation. If subagent tools are unavailable,
    use the deliberate second-pass fallback in step 7.
 5. Read `references/plan-contract.md` and produce its Markdown contract in the
-   user's language.
-   Start the response with the required plan title; do not put a preamble before
-   it.
-   Include every required top-level section and milestone field, even for a
-   small change; use concise `None.` / `なし。` or `Not applicable.` / `該当なし。`
-   content where a field has nothing material to report.
-6. Keep the plan proportional. Use one concise milestone for a small, low-risk
-   change; trace outward to callers, configuration, tests, and docs when the
-   repository evidence indicates they are affected.
+   user's language, including its required structure for small plans.
+6. Apply its milestone sizing rules; trace outward to callers, configuration,
+   tests, and docs when repository evidence indicates they are affected.
 7. For work using the extended contract, read `references/research-and-critique.md`
    and run its critic checklist after drafting. If independent critique is the
    qualifying task from step 4, delegate it now when subagent tools are available.
    Otherwise prefer a fresh-context critic when useful and available; if not,
    perform the checklist as a deliberate second pass. Delegated research does
    not replace critique.
-8. Before responding, confirm the plan is grounded, implementation-ready,
-   planning-only, and has observable acceptance criteria and validation.
-   Apply the reader-facing final checks in `references/plan-contract.md` to
-   every plan, including small changes.
+8. Apply `references/plan-contract.md` → `Final Check` to every plan before responding.
 
 ## Core Rules
 

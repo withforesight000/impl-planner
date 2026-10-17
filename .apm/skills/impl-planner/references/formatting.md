@@ -4,12 +4,9 @@ Read this reference when formatting constraints are unclear or the output needs 
 
 - Use Markdown headings and bullet lists.
 - Tables are allowed when they make comparisons, option tradeoffs, or file lists easier to scan.
-- The affected-files and main-risks subsections require two-column tables; validation-commands requires three columns separating conditions, methods, and commands. Follow the core contract's parenthesized labels for non-command checks and place long commands below the table. Other subsections retain their existing flexible format.
-- Keep the core contract's required headings, order, and milestone fields for every plan, including small changes. Make small plans concise through shorter content, not omitted headings.
-- Keep assumptions within the existing ambiguity subsections, not a separate heading. Apply the core contract's five/ten-item limits and its explicit handling of material overflow.
+- Follow `plan-contract.md` for headings, order, field placement, tables, status
+  templates, and item limits. Small plans shorten content, not the required structure.
 - Close all code blocks.
 - Prefer concise, implementation-ready bullets over long prose.
-- Use the core contract's fixed parenthetical status explanation on the status line. Use short prose or bullets for decision sources, assumptions, and any plan-specific follow-up; do not require fixed tables or repeat shared context in each milestone.
+- Outside prescribed tables, prefer short prose or bullets and avoid repeating shared context.
 - Keep evidence, requirement, acceptance, and validation IDs readable where traceability is needed.
-- Use `## Plan.md`, `### Milestone`, and `####` milestone subsections so plans have a consistent hierarchy.
-- Do not tell the implementer to start coding or proceed with execution.

@@ -24,28 +24,6 @@ unless a new blocker appears.
 Delegated research does not replace this critic pass; a delegated critic can
 fulfill it.
 
-Also apply the core contract's reader-facing checks: can the reader identify the
-intended result and exclusions, distinguish user decisions from planner assumptions,
-and see who must resolve material unknowns? Check that inspected scope and evidence
-gaps agree with the status explanation, that command discovery is not reported as
-execution, and that each check can establish its linked acceptance criterion.
-Preserve required headings while removing duplicated explanations. Do not introduce
-approval gates for decisions that do not require user input.
-For each affected file or module, verify the core contract's two-column table:
-the reason explains its responsibility and the requirement gap or investigation
-need, together with the planned change in the explanation cell. Reject action-only reasons and invented
-defects; conditional entries must not imply confirmed modifications.
-Check repository-relative file paths, repository prefixes where needed, and
-explicit new-file or unknown-path markers. Confirm that assumptions are integrated
-into the ambiguity subsections and that five/ten-item caps do not hide blockers;
-unresolved overflow must remain visible.
-Verify that validation uses three columns and risks use two-column
-tables: every condition has an appropriate method, every risk has a concrete
-response, and planned validation is not presented as an executed result.
-Check that non-command validation has a parenthesized method label in the command
-cell, needed but unidentified commands remain explicit, and execution results
-are reported outside the table by check ID.
-Check that the implementation approach retains mechanisms, responsibility
-boundaries, and critical constraints while detailed checks and completion
-conditions live in their designated fields. Reject duplicated procedures and
-unsupported numerical precision; distinguish proposed techniques from requirements.
+Apply `plan-contract.md` → `Final Check` to the draft as well. That contract
+defines reader-facing structure, evidence, decision sources, field placement,
+and table rules; review against those definitions rather than a second copy.

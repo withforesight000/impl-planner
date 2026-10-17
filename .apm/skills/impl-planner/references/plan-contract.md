@@ -14,9 +14,7 @@ Start in this order:
 - `## Plan.md`
 - First line inside `## Plan.md`: one status line from the fixed templates below.
 
-Use the matching language and status template verbatim, including its parenthetical
-explanation. Keep `Plan status`, `Final`, and `Provisional` in English; do not emit
-the bare status or invent a new explanation for each plan.
+Emit only the matching language and status template verbatim:
 
 English:
 
@@ -32,12 +30,9 @@ Plan status: Final (実装方針を確定できる計画。承認・実装・検
 Plan status: Provisional (重要な未確認・未決定事項が残る暫定計画。実装方針の確定には解消が必要です。)
 ```
 
-Each pair shows alternatives; emit only the applicable line.
-
-The title is the first non-empty output. Derive it from the requested outcome; do not use a generic title such as `Plan.md` or put explanatory prose before it.
-In this document, `/` separates alternative labels; in the actual plan output, emit only the variant that matches the request language.
-Do not add a standalone assumptions section; place planner assumptions in the
-existing `Can proceed with assumptions` subsection below.
+The outcome-specific title is the first non-empty output, without a preamble;
+do not use a generic title such as `Plan.md`. In label pairs, `/` separates
+alternatives: emit only the user's language.
 
 In `Purpose and Background` / `目的と背景`, state the requested outcome, why it
 matters, the current problem or motivation, and known user-provided constraints.
@@ -64,11 +59,19 @@ Never omit a material unknown to meet the cap; if it cannot be resolved or split
 in the current interaction, disclose the overflow and its impact explicitly rather
 than claiming a complete list or an unblocked plan.
 
-For blocking items, state the unresolved matter, the needed investigation or
-decision, and its impact. For assumptions, state the adopted assumption, its
-basis, and the impact if wrong; use IDs such as A1 for cross-references. For
-implementation-time items, state what to check, when, and what changes depending
-on the result. Explicit user decisions are not assumptions.
+For each material unknown, identify who resolves it and the dependent scope:
+
+- Blockers: unresolved matter, required user decision or planner investigation,
+  and impact. Follow the question flow in `SKILL.md`; investigate repository-
+  answerable facts and do not leave resolvable blockers merely to issue a plan.
+- Assumptions: adopted assumption, basis, and impact if wrong, with IDs such as
+  A1 for references instead of repetition. Prefer repository conventions and
+  call out architecture, compatibility, data safety, security, or operational
+  consequences. Keep them in `Can proceed with assumptions`, never a standalone section.
+- Implementation-time checks: what to check, when, and consequences of the result.
+
+Explicit user requirements and selected options remain decisions; record their
+origin in requirements or decision notes, not as assumptions.
 
 Use `### Milestone N: <short title>` and `####` milestone fields. Every
 milestone includes the following labels once, in this order, in the request
@@ -100,37 +103,11 @@ ownership boundary; do not split merely by file list.
   consequential uninspected or inaccessible documents or related repositories.
   Explain how missing evidence affects the plan; never imply an unread source
   was verified. Do not list irrelevant gaps.
-- State what blocks a correct plan, what can proceed under an assumption, and
-  what can be confirmed during implementation. Say `None.` / `なし。` when no
-  blocker remains.
-- For material unknowns in those existing subsections, distinguish a user
-  decision from planner research or implementation-time confirmation, and state
-  which part of the plan depends on it. Investigate repository-answerable facts
-  rather than asking the user. Preserve the Skill's interactive question flow;
-  do not leave a resolvable blocker unanswered merely to issue a provisional plan.
-- Prefer conservative assumptions that follow repository conventions. Call out
-  assumptions affecting architecture, compatibility, data safety, security, or
-  operations.
-- In `Can proceed with assumptions`, explain the basis of important planner assumptions and what
-  changes if they are wrong. Explicit user requirements and selected options
-  are decisions, not assumptions; record their origin in the relevant requirement
-  or decision note. Reference assumptions from other sections instead of repeating
-  them. If none are needed, say so.
 - Use `Plan status: Final` only when no blocker remains. In a non-interactive
-  best-effort response, use `Provisional` and identify the unresolved decision.
-- Use the fixed status-line explanation from Required Structure. For `Provisional`,
-  follow it with a brief plan-specific statement identifying the remaining blocker
-  and dependent scope. For `Final`, add a follow-up only if it conveys material
-  plan-specific information; do not repeat the fixed definition. Report actual
-  implementation or validation progress separately where relevant. The templates
-  do not change status-selection rules or introduce a routine approval gate.
-- Describe each affected file or module using the fixed entry format below.
-  Mark a command as `[Observed]`, `[Recommended]`, or `[Unknown]` when its
-  provenance matters.
-- In `validation commands`, separate command discovery from execution results.
-  `[Observed]` on a command means its existence or documented use was inspected,
-  not that it ran successfully. If all checks are unexecuted, one shared statement
-  suffices; if some ran, report their actual results and distinguish the rest.
+  best-effort response with a remaining blocker, use `Provisional` and follow
+  its status line with the blocker and dependent scope. For `Final`, add only
+  material plan-specific follow-up, not a repeated definition. Report actual
+  implementation or validation progress separately; introduce no routine approval gate.
 
 ## Milestone Rules
 
@@ -161,13 +138,10 @@ ownership boundary; do not split merely by file list.
   or relevant file paths. If the location cannot yet be identified, state
   `Path unknown` / `パス未特定` and the known investigation scope rather than
   inventing a path. Grouped entries must still list each path explicitly.
-  The reason must connect the
-  file's responsibility and the current gap or
-  consequence of leaving it unchanged to a requirement (use its ID when defined).
-  The planned change states what will be modified. An action such as "align
-  wording" alone is not a reason. Apply this format to small plans too; usually
-  one or two short sentences per cell suffice. Group paths only when both the reason
-  and planned change genuinely apply to every path; otherwise use separate entries.
+  Connect the reason to the file's responsibility, requirement gap or consequence
+  of leaving it unchanged, and requirement ID. An action such as "align wording"
+  alone is not a reason. Usually one or two short sentences per cell suffice.
+  Group paths only when both the reason and change apply to every listed path.
   For investigation-only or conditional candidates, say why investigation is
   needed, what remains unknown, and the condition for a change; explicitly state
   that modification is not yet confirmed. Do not invent a current defect or imply
@@ -178,7 +152,8 @@ ownership boundary; do not split merely by file list.
 - Each milestone's `goal` describes an observable result at its completion, not
   merely an activity. In decision notes, give the source of important choices
   (user instruction, existing specification, or planner proposal), the reason,
-  and the main tradeoff where relevant. Compare alternatives only when needed
+  and the main tradeoff where relevant; identify decisions not to reopen.
+  Compare alternatives only when needed
   to assess the decision; do not require a table or a label on every sentence.
 - Assign stable requirement or constraint IDs such as `R1` and connect them to
   affected surfaces, acceptance criteria, and validation.
@@ -201,48 +176,29 @@ ownership boundary; do not split merely by file list.
   them by check ID; use fenced code blocks for commands.
   Keep execution status and results outside the table: use one shared statement
   when all checks are unexecuted, or report individual results by check ID.
-  A command's availability does not imply that it was executed successfully.
+  Mark commands `[Observed]`, `[Recommended]`, or `[Unknown]` when provenance
+  matters. `[Observed]` means inspected existence or documented use, not a
+  successful execution; distinguish actual results from unexecuted checks.
 - In `main risks`, use a Markdown table with exactly two columns: `Risk / impact`
   and `Mitigation` in English, or `リスク・影響` and `対応策` in Japanese. Each
   row pairs a concrete failure and its consequence with a prevention, detection,
   or recovery action; reference validation IDs when useful. Do not invent a
   resolved mitigation if an unresolved dependency still blocks the plan.
-- These validation and risk tables are required for small plans too when entries
-  exist. If there is genuinely nothing applicable, use `None.` / `なし。` or
+- All prescribed tables apply to small plans too when entries exist.
+  If there is genuinely nothing applicable, use `None.` / `なし。` or
   `Not applicable.` / `該当なし。` instead of an empty table; unknown validation
   commands alone do not make validation inapplicable.
-- State scope exclusions, decisions that should not be reopened, risks, and
-  rollback considerations in every milestone; keep a no-op field concise. Use
-  the extended contract when evidence, traceability, or risk treatment needs
-  detailed handling.
 
 ## Final Check
 
-- The implementation approach explains how the change works and preserves its
-  critical constraints without duplicating acceptance, validation, or decision
-  details. Consequential values and techniques have a clear source and basis.
-- The plan follows repository evidence and does not hide a blocker as an
-  assumption.
-- Affected surfaces, acceptance criteria, and validation agree with each other.
-- Every milestone contains each required field and every plan contains the
-  purpose-and-background section.
-- Assumptions appear only in the existing ambiguity subsection, with no standalone
-  section. Check the five/ten-item ceilings, prioritization, and any disclosed
-  overflow without suppressing material unknowns.
-- The opening explains the intended change and main exclusions. Important
-  decisions, assumptions, and user-owned questions are distinguishable, and
-  the status explanation agrees with the evidence and unresolved blockers.
-- Each affected file or module has a reason, validation follows the discovered
-  repository style, and milestone ordering respects existing architecture.
-  Each file entry follows the two-column table format and explains why that location
-  needs a change or investigation, not just what action is proposed.
-  Paths are repository-relative and verified, explicitly proposed as new, or
-  marked unknown with the investigation scope; multi-repository paths are qualified.
-- Risks have a mitigation, validation, or rollback action where relevant.
-- Validation uses three columns and risks use two, pairing
-  conditions with appropriate checks and risks with concrete responses. Execution
-  status remains explicit and is not implied by a row's presence.
-- The plan remains concise enough for the change and never begins implementation.
-  Apply these rules to small plans too, using the required file, validation, and risk tables and short
-  prose or bullets elsewhere within the existing headings. Keep shared context in one place and specialize it in
-  milestones instead of duplicating it.
+- Structure: required title, headings, order, status template, fields, and table formats.
+- Reader decisions: clear outcome/exclusions, decision sources, assumption placement,
+  five/ten-item limits and visible overflow; no blocker disguised as an assumption.
+- Evidence: inspected scope, missing sources, qualified paths, command provenance,
+  actual execution status, and plan status agree.
+- Implementation: mechanisms and critical constraints remain clear; values have
+  a source/basis, ordering respects architecture, and details are not duplicated.
+- Traceability: requirements, file reasons, acceptance, and validation agree;
+  checks follow repository style and can establish the claimed conditions.
+- Risk and scope: concrete responses, rollback considerations, proportional
+  detail, and no implementation or unnecessary approval gates.

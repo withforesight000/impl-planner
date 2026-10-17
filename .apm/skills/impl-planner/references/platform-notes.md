@@ -14,12 +14,8 @@ Native Plan modes provide a write boundary and approval flow. `impl-planner` sup
   instructions request it. Follow the shared delegation rule in `SKILL.md`;
   use its second-pass fallback when subagent tools are unavailable.
 - When a plan needs user input, use an available structured-question tool such
-  as `request_user_input` where supported. Follow the shared question-routing
-  rule in `SKILL.md`: Markdown may explain comparisons, while the actual
-  selection belongs in the tool. If no structured tool is available, ask a
-  concise ordinary question when conversation is possible. Return a provisional
-  plan only when a blocker remains and neither form of interaction is available;
-  do not imitate the tool's selection UI in prose.
+  as `request_user_input` where supported. Follow `SKILL.md` for shared
+  question routing and fallbacks.
 - Official context: [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) and [GPT-6 model guidance](https://developers.openai.com/api/docs/guides/latest-model).
 
 ## Claude Code

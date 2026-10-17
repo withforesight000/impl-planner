@@ -6,14 +6,9 @@ Read this reference when the user asks for more detail, asks for decision suppor
 
 Use this structure before the final plan. Resolve the decision first, then carry the chosen option into the required top-level output. Do not add a competing top-level structure beside a final plan.
 
-This structure explains the comparison; it is not the mechanism for collecting
-a decision. Explain the recommendation and tradeoffs in Markdown when useful,
-then use the available structured-question tool for the actual selection. Do not
-repeat its selection prompt in prose. If no structured tool is available, use a
-concise conversational question when ordinary interaction is possible. If neither
-is possible and a blocker remains, follow the provisional-plan fallback below;
-do not end with an unanswered selection prompt. A request for explanation alone
-does not require asking the user to choose or approve anything.
+This structure explains comparisons, not how to collect a decision. Follow the
+question-routing and no-interaction fallback in `SKILL.md`. Explanation alone
+does not require the user to choose or approve anything.
 
 ## Decision Support / 判断材料
 
@@ -42,8 +37,7 @@ does not require asking the user to choose or approve anything.
 
 ## Carry Decisions Into the Plan
 
-- Record user-selected options as decisions in the relevant requirements or milestone `decision notes to avoid oscillation`, with their source, reason, and material tradeoff. Do not weaken explicit user decisions into assumptions.
-- Put planner assumptions in `Can proceed with assumptions` / `仮定を置けば進められるもの`, with their basis and the impact if wrong; refer to them from affected milestones. Do not create a standalone assumptions section.
+- Apply `plan-contract.md` for decision sources, assumption placement, and status.
 - Do not pretend certainty where a missing fact would change the recommendation.
 - Keep rejected alternatives concise unless the user explicitly asks for deeper comparison.
-- If a blocker remains and interaction is unavailable, return a `Plan status: Provisional` plan with branches only for the affected milestones.
+- In a provisional plan, branch only the milestones affected by the blocker.
