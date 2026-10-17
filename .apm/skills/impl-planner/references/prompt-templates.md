@@ -117,6 +117,20 @@ The examples below describe one fictional task: improving recovery after an orde
 
 `What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules, reference documents, and related repositories belong under business and system context, implementation conventions under design rules, and limits on acceptable solutions under constraints.
 
+### When pre-planning questions are hard to answer
+
+You do not need to choose immediately if an option's meaning or impact is unclear. You can reply by requesting an explanation or further investigation. Use these responses as written, adding any context you know.
+
+| What is difficult | Example reply |
+| --- | --- |
+| The options are unclear | “Explain with concrete examples how each option changes the user's actions or behavior, using less jargon.” |
+| You understand the differences but cannot decide | “Recommend an option for this goal and existing architecture. Explain why, its main drawbacks, and how easily we could change it later. Identify any information still needed to decide.” |
+| You do not know the current behavior | “I don't know. Investigate what you can from the repository and related documents, then ask only about what remains unknown.” |
+| None of the options fits | “None matches what I want. I want to achieve X and avoid Y. Suggest another option under those conditions.” |
+| You want to delegate technical details | “Prioritize X and keep Y unchanged. Use your recommended technical choices within those boundaries in the plan. Ask before changing the goal or scope.” |
+
+It is fine to say either “I don't know the current behavior” or “I haven't decided the direction yet.” Asking for an explanation of a recommendation does not select it. When choosing, make that explicit, for example: “Plan using option A.”
+
 ## 日本語
 
 ### 最小入力
@@ -231,3 +245,17 @@ impl-planner を使って実装 plan を作ってください。
 | `検証方法` | 期待する結果の確かめ方を伝えられます。 | 既知のチェックや手動操作で、どう結果を確認できますか？ | 通信を切って保存し、入力保持とエラーを確認する。保存成功後の応答喪失も再現し、再試行後の登録が1件であることを確認する。テストコマンドは不明。 |
 
 `やりたいこと` は達成したい結果、`今回やること` は含める作業です。`受け入れ条件` は成功した状態、`検証方法` はその確かめ方です。業務ルールや関連資料・リポジトリは業務・システムの前提、実装規約は設計・流儀、採用できる解決策の限界は制約に記入します。
+
+### 計画前の質問に迷ったとき
+
+選択肢の意味や影響が分からなければ、すぐに選ぶ必要はありません。質問への返答として、説明や追加調査を求められます。次の例をそのまま使い、分かる範囲の事情を添えてください。
+
+| 困っていること | 返答の例 |
+| --- | --- |
+| 選択肢の意味が分からない | 「各案で利用者の操作や動作がどう変わるか、専門用語を減らして具体例で説明してください。」 |
+| 違いは分かるが決められない | 「今回の目的と既存構成に合う推奨案、その理由、主なデメリット、後から変更しやすいかを教えてください。判断に必要な情報が足りなければ示してください。」 |
+| 現状の仕様を知らない | 「そこは分かりません。リポジトリや関連資料で調べられる範囲を確認し、調べても分からない点だけ質問してください。」 |
+| どの案も希望に合わない | 「どの案も希望と違います。実現したいのは〇〇で、避けたいのは△△です。この条件で別案を考えてください。」 |
+| 細かな技術判断は任せたい | 「〇〇を優先し、△△は変えない方針です。その範囲の技術判断は推奨案で計画してください。目的や範囲を変える判断は確認してください。」 |
+
+「現状を知らない」と「方針をまだ決めていない」は、そのまま伝えて構いません。推奨案の説明を求めるだけでは、その案を採用したことにはなりません。採用するときは「案Aで計画してください」のように伝えると明確です。

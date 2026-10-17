@@ -178,6 +178,20 @@ The examples below describe one fictional task: improving recovery after an orde
 
 `What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules, reference documents, and related repositories belong under business and system context, implementation conventions under design rules, and limits on acceptable solutions under constraints.
 
+### When pre-planning questions are hard to answer
+
+You do not need to choose immediately if an option's meaning or impact is unclear. You can reply by requesting an explanation or further investigation. Use these responses as written, adding any context you know.
+
+| What is difficult | Example reply |
+| --- | --- |
+| The options are unclear | “Explain with concrete examples how each option changes the user's actions or behavior, using less jargon.” |
+| You understand the differences but cannot decide | “Recommend an option for this goal and existing architecture. Explain why, its main drawbacks, and how easily we could change it later. Identify any information still needed to decide.” |
+| You do not know the current behavior | “I don't know. Investigate what you can from the repository and related documents, then ask only about what remains unknown.” |
+| None of the options fits | “None matches what I want. I want to achieve X and avoid Y. Suggest another option under those conditions.” |
+| You want to delegate technical details | “Prioritize X and keep Y unchanged. Use your recommended technical choices within those boundaries in the plan. Ask before changing the goal or scope.” |
+
+It is fine to say either “I don't know the current behavior” or “I haven't decided the direction yet.” Asking for an explanation of a recommendation does not select it. When choosing, make that explicit, for example: “Plan using option A.”
+
 ## Repository layout
 
 - `apm.yml`: APM package manifest
