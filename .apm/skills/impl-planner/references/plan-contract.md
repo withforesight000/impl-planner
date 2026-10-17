@@ -21,6 +21,9 @@ In this document, `/` separates alternative labels; in the actual plan output, e
 
 In `Purpose and Background` / `目的と背景`, state the requested outcome, why it
 matters, the current problem or motivation, and known user-provided constraints.
+Normally use two to four short bullets to explain the current problem, the
+intended result, and the main exclusions so the reader can assess intent before
+reading implementation details. This is a density guide, not a fixed quota.
 When the user did not provide background, say `Not provided.` / `未提供。` rather
 than inventing one.
 
@@ -56,25 +59,56 @@ ownership boundary; do not split merely by file list.
 
 - Summarize the repository's purpose, relevant boundary, likely impact, and
   discovered validation style without repeating its documentation.
+- In `Repository Understanding`, identify the scope actually inspected and any
+  consequential uninspected or inaccessible documents or related repositories.
+  Explain how missing evidence affects the plan; never imply an unread source
+  was verified. Do not list irrelevant gaps.
 - State what blocks a correct plan, what can proceed under an assumption, and
   what can be confirmed during implementation. Say `None.` / `なし。` when no
   blocker remains.
+- For material unknowns in those existing subsections, distinguish a user
+  decision from planner research or implementation-time confirmation, and state
+  which part of the plan depends on it. Investigate repository-answerable facts
+  rather than asking the user. Preserve the Skill's interactive question flow;
+  do not leave a resolvable blocker unanswered merely to issue a provisional plan.
 - Prefer conservative assumptions that follow repository conventions. Call out
   assumptions affecting architecture, compatibility, data safety, security, or
   operations.
+- In `Assumptions`, explain the basis of important planner assumptions and what
+  changes if they are wrong. Explicit user requirements and selected options
+  are decisions, not assumptions; record their origin in the relevant requirement
+  or decision note. Reference assumptions from other sections instead of repeating
+  them. If none are needed, say so.
 - Use `Plan status: Final` only when no blocker remains. In a non-interactive
   best-effort response, use `Provisional` and identify the unresolved decision.
+- Immediately after `Plan status`, briefly explain the status: `Final` means
+  there is no planning blocker, not that the user approved the plan, implementation
+  is complete, or validation passed. For `Provisional`, identify the remaining
+  blocker and the scope that depends on it. These explanations do not change the
+  status-selection rules or introduce a routine approval gate.
 - Give a reason for each affected file or module. Mark a command as
   `[Observed]`, `[Recommended]`, or `[Unknown]` when its provenance matters.
+- In `validation commands`, separate command discovery from execution results.
+  `[Observed]` on a command means its existence or documented use was inspected,
+  not that it ran successfully. If all checks are unexecuted, one shared statement
+  suffices; if some ran, report their actual results and distinguish the rest.
 
 ## Milestone Rules
 
 - Describe the outcome, then the change order that connects current boundaries
   to the target behavior. Do not invent unsupported APIs, schemas, or commands.
+- Each milestone's `goal` describes an observable result at its completion, not
+  merely an activity. In decision notes, give the source of important choices
+  (user instruction, existing specification, or planner proposal), the reason,
+  and the main tradeoff where relevant. Compare alternatives only when needed
+  to assess the decision; do not require a table or a label on every sentence.
 - Assign stable requirement or constraint IDs such as `R1` and connect them to
   affected surfaces, acceptance criteria, and validation.
 - Make acceptance criteria observable. Use existing validation commands when
   discovered; otherwise name the validation class rather than fabricating one.
+- Map each criterion to a check that can actually establish it. Package checks
+  do not establish semantic agreement between documents; specify a content review
+  for such criteria. Do not treat a proposed check as a successful result.
 - State scope exclusions, decisions that should not be reopened, risks, and
   rollback considerations in every milestone; keep a no-op field concise. Use
   the extended contract when evidence, traceability, or risk treatment needs
@@ -87,7 +121,13 @@ ownership boundary; do not split merely by file list.
 - Affected surfaces, acceptance criteria, and validation agree with each other.
 - Every milestone contains each required field and every plan contains the
   purpose-and-background section.
+- The opening explains the intended change and main exclusions. Important
+  decisions, assumptions, and user-owned questions are distinguishable, and
+  the status explanation agrees with the evidence and unresolved blockers.
 - Each affected file or module has a reason, validation follows the discovered
   repository style, and milestone ordering respects existing architecture.
 - Risks have a mitigation, validation, or rollback action where relevant.
 - The plan remains concise enough for the change and never begins implementation.
+  Apply these rules to small plans too, using short prose or bullets within the
+  existing headings. Keep shared context in one place and specialize it in
+  milestones instead of duplicating it.

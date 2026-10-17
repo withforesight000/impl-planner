@@ -23,3 +23,11 @@ and planning-only violations. Re-research only the smallest affected area, once,
 unless a new blocker appears.
 Delegated research does not replace this critic pass; a delegated critic can
 fulfill it.
+
+Also apply the core contract's reader-facing checks: can the reader identify the
+intended result and exclusions, distinguish user decisions from planner assumptions,
+and see who must resolve material unknowns? Check that inspected scope and evidence
+gaps agree with the status explanation, that command discovery is not reported as
+execution, and that each check can establish its linked acceptance criterion.
+Preserve required headings while removing duplicated explanations. Do not introduce
+approval gates for decisions that do not require user input.

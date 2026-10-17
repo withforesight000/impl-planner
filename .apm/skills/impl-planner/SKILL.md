@@ -53,6 +53,8 @@ migrations, run source-mutating commands, or tell another agent to implement.
    not replace critique.
 8. Before responding, confirm the plan is grounded, implementation-ready,
    planning-only, and has observable acceptance criteria and validation.
+   Apply the reader-facing final checks in `references/plan-contract.md` to
+   every plan, including small changes.
 
 ## Core Rules
 

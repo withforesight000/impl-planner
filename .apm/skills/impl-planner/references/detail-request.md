@@ -33,7 +33,8 @@ Use this structure before the final plan. Resolve the decision first, then carry
 
 ## Carry Decisions Into the Plan
 
-- After a choice is made, reflect it in `Assumptions` or milestone `decision notes to avoid oscillation`.
+- Record user-selected options as decisions in the relevant requirements or milestone `decision notes to avoid oscillation`, with their source, reason, and material tradeoff. Do not weaken explicit user decisions into assumptions.
+- Put planner assumptions in `Assumptions`, with their basis and the impact if wrong; refer to them from affected milestones.
 - Do not pretend certainty where a missing fact would change the recommendation.
 - Keep rejected alternatives concise unless the user explicitly asks for deeper comparison.
 - If a blocker remains and interaction is unavailable, return a `Plan status: Provisional` plan with branches only for the affected milestones.
