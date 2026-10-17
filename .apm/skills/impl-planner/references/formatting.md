@@ -4,7 +4,7 @@ Read this reference when formatting constraints are unclear or the output needs 
 
 - Use Markdown headings and bullet lists.
 - Tables are allowed when they make comparisons, option tradeoffs, or file lists easier to scan.
-- The affected-files, validation-commands, and main-risks subsections require the core contract's respective two-column tables when entries exist; other subsections retain their existing flexible format.
+- The affected-files and main-risks subsections require two-column tables; validation-commands requires three columns separating conditions, methods, and commands. Follow the core contract's parenthesized labels for non-command checks and place long commands below the table. Other subsections retain their existing flexible format.
 - Keep the core contract's required headings, order, and milestone fields for every plan, including small changes. Make small plans concise through shorter content, not omitted headings.
 - Keep assumptions within the existing ambiguity subsections, not a separate heading. Apply the core contract's five/ten-item limits and its explicit handling of material overflow.
 - Close all code blocks.

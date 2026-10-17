@@ -39,6 +39,9 @@ Check repository-relative file paths, repository prefixes where needed, and
 explicit new-file or unknown-path markers. Confirm that assumptions are integrated
 into the ambiguity subsections and that five/ten-item caps do not hide blockers;
 unresolved overflow must remain visible.
-Verify that validation and risk subsections use their prescribed two-column
+Verify that validation uses three columns and risks use two-column
 tables: every condition has an appropriate method, every risk has a concrete
 response, and planned validation is not presented as an executed result.
+Check that non-command validation has a parenthesized method label in the command
+cell, needed but unidentified commands remain explicit, and execution results
+are reported outside the table by check ID.

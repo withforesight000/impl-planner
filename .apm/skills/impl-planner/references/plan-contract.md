@@ -172,14 +172,21 @@ ownership boundary; do not split merely by file list.
 - Map each criterion to a check that can actually establish it. Package checks
   do not establish semantic agreement between documents; specify a content review
   for such criteria. Do not treat a proposed check as a successful result.
-- In `validation commands`, use a Markdown table with exactly two columns:
-  `Condition to verify` and `Validation method / command` in English, or
-  `確認する条件` and `検証方法・コマンド` in Japanese. Identify the observable
-  condition and applicable acceptance IDs in the first cell, and the check ID,
-  method or known command in the second. Include manual reviews or checks when
-  appropriate; unknown commands remain unknown rather than being invented.
-  Keep the shared execution-status statement before the table. If execution
-  statuses differ, state the result or unexecuted status in each method cell.
+- In `validation commands`, use a Markdown table with exactly three columns:
+  `Condition to verify`, `Validation method`, and `Command` in English, or
+  `確認する条件`, `検証方法`, and `コマンド` in Japanese. Put the observable
+  condition and acceptance IDs in the first cell, the check ID, procedure, and
+  expected result in the second, and the verified available command in the third.
+  For checks not performed through commands, fill the command cell with a
+  parenthesized method label such as `(Document review)` / `(文章レビュー)`
+  or `(Manual check)` / `(手動確認)`; do not leave it blank or use a dash.
+  If a command is needed but not yet identified, write `Not yet identified` /
+  `未特定`; do not invent it or disguise the gap as a manual check.
+  Move long commands or multi-step procedures below the table and reference
+  them by check ID; use fenced code blocks for commands.
+  Keep execution status and results outside the table: use one shared statement
+  when all checks are unexecuted, or report individual results by check ID.
+  A command's availability does not imply that it was executed successfully.
 - In `main risks`, use a Markdown table with exactly two columns: `Risk / impact`
   and `Mitigation` in English, or `リスク・影響` and `対応策` in Japanese. Each
   row pairs a concrete failure and its consequence with a prevention, detection,
@@ -214,7 +221,7 @@ ownership boundary; do not split merely by file list.
   Paths are repository-relative and verified, explicitly proposed as new, or
   marked unknown with the investigation scope; multi-repository paths are qualified.
 - Risks have a mitigation, validation, or rollback action where relevant.
-- Validation and risk entries use their prescribed two-column tables, pairing
+- Validation uses three columns and risks use two, pairing
   conditions with appropriate checks and risks with concrete responses. Execution
   status remains explicit and is not implied by a row's presence.
 - The plan remains concise enough for the change and never begins implementation.

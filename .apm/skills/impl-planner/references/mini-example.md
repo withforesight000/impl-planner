@@ -4,7 +4,7 @@ This illustrative example shows the expected density for a small English request
 Inspection statements describe the assumed example scenario, not checks performed
 by reading this file. Adapt language and labels to the user's request.
 
-```md
+````md
 # Align planning prompt terminology
 
 ## Purpose and Background
@@ -75,10 +75,22 @@ Paths are relative to this repository's root.
 
 All checks below are unexecuted. `[Observed]` identifies documented commands only.
 
-| Condition to verify | Validation method / command |
-| --- | --- |
-| AC1, AC2: Prompts agree across languages and copies and remain planning-only. | V1: Compare the minimal and detailed prompts in both READMEs and the bundled reference, including meaning, fields, and planning-only wording against the Skill contract. |
-| AC3: Required package checks pass and the prompt reference is bundled. | V2 [Observed]: Run the complete validation list from `AGENTS.md`: both `apm audit --file` checks, both `apm pack` dry runs, and all three target-specific `apm install --dry-run` checks. Inspect the bundle file list for the prompt reference. |
+| Condition to verify | Validation method | Command |
+| --- | --- | --- |
+| AC1, AC2: Prompts agree across languages and copies and remain planning-only. | V1: Compare the minimal and detailed prompts in both READMEs and the bundled reference, including meaning, fields, and planning-only wording against the Skill contract. | (Document review) |
+| AC3: Required package checks pass and the prompt reference is bundled. | V2: Run the documented package checks; require successful exits and confirm the prompt reference appears in the bundle file list. | [Observed] See the V2 command block below, from `AGENTS.md`. |
+
+V2 commands:
+
+```bash
+apm audit --file .apm/skills/impl-planner/SKILL.md
+apm audit --file apm.yml
+apm pack --dry-run
+apm pack --archive --dry-run -v
+apm install --dry-run --target codex
+apm install --dry-run --target claude
+apm install --dry-run --target copilot
+```
 
 #### decision notes to avoid oscillation
 
@@ -93,4 +105,4 @@ All checks below are unexecuted. `[Observed]` identifies documented commands onl
 #### rollback considerations
 
 - Revert the terminology change as one documentation-only commit if it causes confusion.
-```
+````
