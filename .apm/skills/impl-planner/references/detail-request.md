@@ -6,6 +6,15 @@ Read this reference when the user asks for more detail, asks for decision suppor
 
 Use this structure before the final plan. Resolve the decision first, then carry the chosen option into the required top-level output. Do not add a competing top-level structure beside a final plan.
 
+This structure explains the comparison; it is not the mechanism for collecting
+a decision. Explain the recommendation and tradeoffs in Markdown when useful,
+then use the available structured-question tool for the actual selection. Do not
+repeat its selection prompt in prose. If no structured tool is available, use a
+concise conversational question when ordinary interaction is possible. If neither
+is possible and a blocker remains, follow the provisional-plan fallback below;
+do not end with an unanswered selection prompt. A request for explanation alone
+does not require asking the user to choose or approve anything.
+
 ## Decision Support / 判断材料
 
 ### Recommended Option / 推奨案

@@ -17,14 +17,17 @@ migrations, run source-mutating commands, or tell another agent to implement.
 2. Classify unknowns as blocking now, safe assumptions, or implementation-time
    confirmation. Ask one to three high-impact questions per round after
    research, then re-research the affected area. Ask another round only when a
-   remaining or newly discovered blocker materially changes the plan. If
-   interaction is unavailable, return a clearly marked provisional plan without
-   rendering unresolved questions or option lists in prose.
-   When the environment provides a structured-question tool, use it instead of
-   rendering questions or option lists in Markdown. When no structured tool is
-   exposed but concise interactive questions are supported, ask them in that
-   format. If interaction is unavailable, do not imitate native choices in
-   prose; return a clearly marked provisional plan instead.
+   remaining or newly discovered blocker materially changes the plan.
+   Separate explanatory comparisons from questions requesting a decision:
+   Markdown may explain recommendations and tradeoffs, including the structure
+   in `references/detail-request.md`. When a structured-question tool is
+   available, use it for the actual question or selection; do not duplicate the
+   selection prompt in prose. When no such tool is available but ordinary
+   interaction is possible, ask a concise conversational question instead.
+   Tool unavailability alone does not require a provisional plan. If a blocker
+   remains and neither form of interaction is possible, return a clearly marked
+   provisional plan stating the blocker and its impact rather than a question
+   awaiting an answer or an imitation of the tool's selection UI.
 3. Before drafting, classify the change. For medium or larger, cross-cutting,
    data-affecting, security-sensitive, deployment-sensitive, or
    configuration-management work, read `references/extended-plan-contract.md`.
