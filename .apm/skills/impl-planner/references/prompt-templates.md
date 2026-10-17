@@ -100,7 +100,11 @@ The examples below describe one fictional task: improving recovery after an orde
 | `Acceptance criteria` | Makes completion observable. | What result would demonstrate success, including failure cases? | Failed saves retain input and display an error. Retrying saves the order once, even if the first response was lost. |
 | `In scope` | Identifies the work to include. | What changes must this task cover? | Preserve input after failure, show an error, and support manual retry without duplicating the same submission. |
 | `Out of scope` | Prevents unwanted expansion. | What related work should wait? | Automatic retries and restoring input after the page is closed. |
-| `Constraints` | Rules out unacceptable solutions. | What compatibility, performance, security, or operational limits apply? | Existing API clients must keep working. Do not persist order input in browser storage. |
+| `Constraints: Backward compatibility` | Defines the impact on existing users and migration boundaries. | What must keep working unchanged, and for whom? Which changes are acceptable, and when are migration or notice required? | Existing API clients must work without modification. Optional fields may be added, but new required fields need migration and advance notice. |
+| `Constraints: Performance` | Identifies operations to protect and comparison baselines. | Which operations or usage volumes matter? Are there target values or comparison baselines? | Avoid slowing down order saves. Usage volumes and targets are unknown; use the current save operation as the comparison baseline. |
+| `Constraints: Security` | Separates reference standards from task-specific protections. | Which guidelines are mandatory or advisory? Who may act, and what information needs protection? | Use relevant OWASP guidelines as design references; ask AI to select suitable documents. Do not persist order input in browser storage or write it to logs. |
+| `Constraints: Operations` | Clarifies conditions to preserve during changes and failures. | What environment, procedure, or downtime conditions apply? What must recovery or rollback preserve? | Order intake must remain available during business hours. Rollback must not lose orders already saved. |
+| `Constraints: Runtime / library constraints` | Bounds technology choices and dependency changes. | Which technologies, versions, or environments must remain, and why? What conditions apply to dependencies, licenses, or support periods? | Keep the existing runtime so deployment needs no operational environment changes. Add dependencies only if existing functionality is insufficient, and check their licenses and support status. |
 | `Domain knowledge AI is likely to miss` | Captures business rules and their context. | What seemingly reasonable behavior would be wrong for this business? | Two identical orders can be intentional. Matching contents alone must not be treated as proof of a duplicate. |
 | `Known pitfalls` | Highlights past failures. | What went wrong with a similar change, and under what conditions? | A previous retry fix created duplicates when the server had saved successfully but the client timed out. |
 | `Open questions` | Keeps uncertainty separate from decisions. | What is unknown, and what has not been decided? | Unknown: whether the API already recognizes repeated submissions. Undecided: whether the UI should offer canceling a pending retry. |
@@ -210,7 +214,11 @@ impl-planner を使って実装 plan を作ってください。
 | `受け入れ条件` | 完了を観測可能にできます。 | 失敗時も含め、どんな結果を確認できれば成功ですか？ | 保存失敗時に入力が残り、エラーが表示される。初回の応答が失われても、再試行による保存は1件だけになる。 |
 | `今回やること` | 含める作業を明確にできます。 | 今回、どの変更まで含める必要がありますか？ | 失敗時の入力保持、エラー表示、同じ送信を重複登録しない手動再試行。 |
 | `今回やらないこと` | 意図しない範囲拡大を防げます。 | 関連していても、今回は後回しにすることは何ですか？ | 自動再試行と、画面を閉じた後の入力復元。 |
-| `制約` | 採用できない解決策を除外できます。 | 互換性・性能・セキュリティ・運用上、守るべき限界は何ですか？ | 既存の API 利用クライアントを壊さない。注文の入力内容をブラウザーのストレージに永続化しない。 |
+| `制約：後方互換性` | 既存利用者への影響と移行の境界を明確にできます。 | 何を誰がそのまま使える必要がありますか？ どこまで変更でき、移行や告知はいつ必要ですか？ | 既存の API 利用クライアントは変更せず使えること。任意の項目追加は許容するが、必須項目の追加は移行と事前告知が必要。 |
+| `制約：性能` | 性能を守る対象と比較基準を伝えられます。 | 遅くなると困る操作や利用規模は何ですか？ 達成したい数値や比較対象はありますか？ | 注文の保存操作を遅くしたくない。具体的な利用規模や目標値は不明なので、現行の保存処理を比較対象にしてほしい。 |
+| `制約：セキュリティ` | 参照する基準と今回固有の保護条件を区別できます。 | どのガイドラインを必須要件または参考にしますか？ 誰の操作を許可し、どの情報を保護しますか？ | OWASP の関連ガイドラインを設計の参考にしたい。適切な文書の選定は AI に任せる。注文の入力内容をブラウザーのストレージに永続化したり、ログに出力したりしない。 |
+| `制約：運用` | 変更時と障害時に守る条件を明確にできます。 | 利用環境・手順・停止時間の条件はありますか？ 復旧や切り戻しで何を守る必要がありますか？ | 営業時間中は注文受付を停止できない。切り戻し時も、保存済みの注文は失わないこと。 |
+| `制約：ランタイム / ライブラリ制約` | 技術選択や依存関係変更の範囲を絞れます。 | 維持すべき技術・バージョン・環境と理由は何ですか？ 依存追加・更新やライセンス・サポート期間に条件はありますか？ | 運用環境を変えずに導入するため、既存のランタイムを維持する。依存追加は既存機能では対応できない場合に限り、ライセンスとサポート状況を確認する。 |
 | `AIが気づきにくいドメイン知識` | 業務ルールとその背景を補えます。 | 一般的には妥当に見えても、この業務では困る動作はありますか？ | 同じ内容の注文を意図的に2件作ることがある。内容の一致だけで重複と判断してはいけない。 |
 | `既知の地雷` | 過去の失敗を重点的に確認できます。 | 似た変更で、どんな条件のときに何が壊れましたか？ | 過去の再試行対応では、サーバーの保存成功後にクライアントがタイムアウトすると二重登録になった。 |
 | `未確定事項` | 不確実なことを決定事項と区別できます。 | 分かっていないことと、まだ決めていないことは何ですか？ | 不明：API が同じ送信の再試行を識別できるか。未決定：再試行待ちを取り消す操作を画面に設けるか。 |
