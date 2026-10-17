@@ -78,19 +78,19 @@ You do not need to clone this repository to install the skill on your PC.
 Install it directly from the repository reference:
 
 ```bash
-apm install withforesight000/impl-planner#3.1.0 --global --target codex
+apm install withforesight000/impl-planner#4.0.0 --global --target codex
 ```
 
 If you want to preview the install before applying it, use:
 
 ```bash
-apm install withforesight000/impl-planner#3.1.0 --dry-run --global --target codex
+apm install withforesight000/impl-planner#4.0.0 --dry-run --global --target codex
 ```
 
 You can also install the same package for other supported targets:
 
 ```bash
-apm install withforesight000/impl-planner#3.1.0 --global --target claude,copilot
+apm install withforesight000/impl-planner#4.0.0 --global --target claude,copilot
 ```
 
 For a local working copy, run `apm pack --archive`, then pass the generated archive path to `apm install`.
