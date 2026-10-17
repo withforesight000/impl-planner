@@ -65,6 +65,8 @@ Use `impl-planner` to create an implementation plan for this task.
 
 Detailed prompt:
 
+Fill in only what you know, focusing on the goal and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below. You do not need to repeat “follow AGENTS.md” in each field.
+
 ```text
 Use `impl-planner` to create an implementation plan.
 
@@ -116,7 +118,15 @@ Use `impl-planner` to create an implementation plan.
 
 ### Detailed input guide
 
-Fill in what you know; you do not need to answer every field. Leave unknowns or undecided points under `Open questions` instead of guessing file paths, commands, or behavior. An empty field does not mean there are no constraints.
+**You do not need to fill in every field.** Focus on your goal, background, and task-specific conditions. You do not need to repeat instructions already documented in `AGENTS.md`, relevant skills, or other repository documentation, or write “follow AGENTS.md” in each field. Name a particular skill or reference if you want to ensure it is considered.
+
+For omitted fields, the planner uses the following approach:
+
+1. Follow applicable `AGENTS.md` and relevant skill instructions.
+2. Where those instructions do not cover the issue, inspect existing code, tests, and documentation to identify established behavior and conventions.
+3. If uncertainty remains, proceed with reasonable assumptions for low-impact matters and state those assumptions in the plan. Ask about matters that materially affect the goal, scope, compatibility, safety, or other important decisions.
+
+An omitted field does not mean “no constraints” or “out of scope.” Do not guess file paths, commands, behavior, or business rules to fill the template. If you already know something is unclear or undecided, record it under `Open questions`.
 
 The examples below describe one fictional task: improving recovery after an order form fails to save. Its repository name, rules, and constraints are illustrative, not requirements for your task. Keep the copyable prompt above brief and use this guide when a field is hard to fill in.
 

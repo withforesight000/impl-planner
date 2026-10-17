@@ -17,6 +17,8 @@ Use `impl-planner` to create an implementation plan for this task.
 
 ### Detailed Input
 
+Fill in only what you know, focusing on the goal and task-specific conditions. Omitted fields are handled using applicable instructions and repository conventions; see the detailed input guide below. You do not need to repeat “follow AGENTS.md” in each field.
+
 ```text
 Use `impl-planner` to create an implementation plan.
 
@@ -68,7 +70,15 @@ Use `impl-planner` to create an implementation plan.
 
 ### Detailed input guide
 
-Fill in what you know; you do not need to answer every field. Leave unknowns or undecided points under `Open questions` instead of guessing file paths, commands, or behavior. An empty field does not mean there are no constraints.
+**You do not need to fill in every field.** Focus on your goal, background, and task-specific conditions. You do not need to repeat instructions already documented in `AGENTS.md`, relevant skills, or other repository documentation, or write “follow AGENTS.md” in each field. Name a particular skill or reference if you want to ensure it is considered.
+
+For omitted fields, the planner uses the following approach:
+
+1. Follow applicable `AGENTS.md` and relevant skill instructions.
+2. Where those instructions do not cover the issue, inspect existing code, tests, and documentation to identify established behavior and conventions.
+3. If uncertainty remains, proceed with reasonable assumptions for low-impact matters and state those assumptions in the plan. Ask about matters that materially affect the goal, scope, compatibility, safety, or other important decisions.
+
+An omitted field does not mean “no constraints” or “out of scope.” Do not guess file paths, commands, behavior, or business rules to fill the template. If you already know something is unclear or undecided, record it under `Open questions`.
 
 The examples below describe one fictional task: improving recovery after an order form fails to save. Its repository name, rules, and constraints are illustrative, not requirements for your task. Keep the copyable prompt above brief and use this guide when a field is hard to fill in.
 
@@ -106,6 +116,8 @@ impl-planner を使って、このタスクの実装 plan を作ってくださ�
 ```
 
 ### 詳細入力
+
+今回の目的や固有の条件を中心に、分かる範囲で記入してください。未記入の項目は適用される指示やリポジトリの慣例で補います。詳しくは下の記入ガイドを参照してください。各項目に「AGENTS.md に従う」と繰り返す必要はありません。
 
 ```text
 impl-planner を使って実装 plan を作ってください。
@@ -158,7 +170,15 @@ impl-planner を使って実装 plan を作ってください。
 
 ### 詳細入力の記入ガイド
 
-分かる範囲で記入し、すべての項目に回答する必要はありません。不明なことや未決定のことは、ファイルパス・コマンド・動作を推測で埋めず、`未確定事項` に残してください。空欄は「制約なし」を意味しません。
+**すべての項目を埋める必要はありません。** 今回の目的・背景・固有の条件を中心に記入してください。`AGENTS.md`・関連スキル・リポジトリのドキュメントに記載済みの指示を転記したり、各項目に「AGENTS.md に従ってください」と繰り返したりする必要はありません。特に参照してほしいスキルや資料がある場合は、その名前や参照先を明示してください。
+
+未記入の項目は、次の方針で補います。
+
+1. 適用される `AGENTS.md` と関連スキルの指示に従います。
+2. 指示で扱われていない事項は、既存コード・テスト・ドキュメントを調査し、既存の動作や慣例に基づいて判断します。
+3. それでも不明な場合、影響が小さい事項は妥当な仮定を置いて進め、計画に明記します。目的・範囲・互換性・安全性などの重要な判断を左右する事項は確認します。
+
+未記入は「制約なし」「対象外」を意味しません。入力のためにファイルパス・コマンド・動作・業務ルールを推測で埋める必要はありません。分からないことや未決定のことを既に把握している場合は、`未確定事項` に記入してください。
 
 以下は「注文フォームの保存失敗後の復帰を改善する」という架空のタスクの記入例です。リポジトリ名・業務ルール・制約は説明用であり、実際のタスクの必須要件ではありません。上のコピー用テンプレートは簡潔に保ち、書きにくい項目があるときにこのガイドを参照してください。
 
