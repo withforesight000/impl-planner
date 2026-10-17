@@ -16,7 +16,7 @@ Use it when you want Codex, Claude Code, or GitHub Copilot to produce an impleme
 - [How to install with apm](#how-to-install-with-apm)
 - [How to use the skill](#how-to-use-the-skill)
   - [Detailed input guide](#detailed-input-guide)
-  - [When pre-planning questions are hard to answer](#when-pre-planning-questions-are-hard-to-answer)
+  - [When the AI agent's pre-planning questions are hard to answer](#when-the-ai-agents-pre-planning-questions-are-hard-to-answer)
 - [Repository layout](#repository-layout)
 - [How to verify the package](#how-to-verify-the-package)
 - [How to distribute](#how-to-distribute)
@@ -214,7 +214,7 @@ The examples below describe one fictional task: improving recovery after an orde
 
 `What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules, reference documents, and related repositories belong under business and system context, implementation conventions under design rules, and limits on acceptable solutions under constraints.
 
-### When pre-planning questions are hard to answer
+### When the AI agent's pre-planning questions are hard to answer
 
 You do not need to choose immediately if an option's meaning or impact is unclear. You can reply by requesting an explanation or further investigation. Use these responses as written, adding any context you know.
 

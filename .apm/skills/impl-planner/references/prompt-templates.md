@@ -117,7 +117,7 @@ The examples below describe one fictional task: improving recovery after an orde
 
 `What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules, reference documents, and related repositories belong under business and system context, implementation conventions under design rules, and limits on acceptable solutions under constraints.
 
-### When pre-planning questions are hard to answer
+### When the AI agent's pre-planning questions are hard to answer
 
 You do not need to choose immediately if an option's meaning or impact is unclear. You can reply by requesting an explanation or further investigation. Use these responses as written, adding any context you know.
 
@@ -246,7 +246,7 @@ impl-planner を使って実装 plan を作ってください。
 
 `やりたいこと` は達成したい結果、`今回やること` は含める作業です。`受け入れ条件` は成功した状態、`検証方法` はその確かめ方です。業務ルールや関連資料・リポジトリは業務・システムの前提、実装規約は設計・流儀、採用できる解決策の限界は制約に記入します。
 
-### 計画前の質問に迷ったとき
+### 計画前のAIエージェントからの質問に迷ったとき
 
 選択肢の意味や影響が分からなければ、すぐに選ぶ必要はありません。質問への返答として、説明や追加調査を求められます。次の例をそのまま使い、分かる範囲の事情を添えてください。
 
