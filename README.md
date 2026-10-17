@@ -72,48 +72,48 @@ Use `impl-planner` to create an implementation plan.
 
 - Repository / system
   - [repository to change and the target application, feature, or operational system]
-- Repository understanding
-  - [whose needs the system serves and what it helps them achieve]
-  - [the main flow you know: from input through processing and storage to output]
 - What you want to achieve
   - [who should be able to do what, and in which situation]
 - Background
   - [what happens now, who is affected, and how it causes problems]
   - [why you want to address it now]
-- Domain knowledge AI is likely to miss
-  - [behavior or decisions that seem reasonable in general but are wrong for this business]
-  - [conditions where the usual rules do not apply and the expected behavior in those cases]
-  - [business reasons behind the existing specifications]
+- Acceptance criteria
+  - [the situation or action and the resulting behavior that would demonstrate completion]
+  - [behavior or state to preserve during failures or exceptional cases]
 - In scope
   - [work and coverage to include in this change to achieve the goal]
 - Out of scope
   - [related changes to exclude or defer]
-- Points that need detailed explanation or judgment from AI
-  - [decisions you are unsure about, options to compare, and points needing a recommendation and rationale]
-- Design rules to keep
-  - [layer or module responsibilities to preserve and why]
-  - [existing patterns or shared functionality to follow]
-  - [implementation approaches to avoid and why]
-- Impact surfaces to inspect
-  - [likely related screens, entrypoints, callers, or registration code; include paths only if known]
-  - [likely related tests, fixtures, or documentation]
 - Constraints
   - [existing usage, APIs, or data formats that must remain compatible]
   - [acceptable processing time or load; include numbers only when justified]
   - [information that must not be stored or displayed and permission boundaries to preserve]
   - [operational conditions such as acceptable downtime, execution environments, or recovery requirements]
   - [required runtimes or libraries, or ones that cannot change, and why]
-- Acceptance criteria
-  - [the situation or action and the resulting behavior that would demonstrate completion]
-  - [behavior or state to preserve during failures or exceptional cases]
-- Validation steps
-  - [known build, test, lint, typecheck, or e2e commands that check the acceptance criteria]
-  - [conditions to reproduce manually, actions to take, and results to inspect]
+- Domain knowledge AI is likely to miss
+  - [behavior or decisions that seem reasonable in general but are wrong for this business]
+  - [conditions where the usual rules do not apply and the expected behavior in those cases]
+  - [business reasons behind the existing specifications]
 - Known pitfalls
   - [what broke in a similar past change and under which conditions]
 - Open questions
   - [unknown: facts about the current system that need investigation]
   - [undecided: choices where options exist but no direction has been selected]
+- Points that need detailed explanation or judgment from AI
+  - [decisions you are unsure about, options to compare, and points needing a recommendation and rationale]
+- Design rules to keep
+  - [layer or module responsibilities to preserve and why]
+  - [existing patterns or shared functionality to follow]
+  - [implementation approaches to avoid and why]
+- Repository understanding
+  - [whose needs the system serves and what it helps them achieve]
+  - [the main flow you know: from input through processing and storage to output]
+- Impact surfaces to inspect
+  - [likely related screens, entrypoints, callers, or registration code; include paths only if known]
+  - [likely related tests, fixtures, or documentation]
+- Validation steps
+  - [known build, test, lint, typecheck, or e2e commands that check the acceptance criteria]
+  - [conditions to reproduce manually, actions to take, and results to inspect]
 ```
 
 ### Detailed input guide
@@ -133,20 +133,20 @@ The examples below describe one fictional task: improving recovery after an orde
 | Field | Why it helps | Questions to consider | Example entry |
 | --- | --- | --- | --- |
 | `Repository / system` | Identifies the target and its boundaries. | Which repository, application, or operational target should change? | The order-entry web app in the fictional `order-portal` repository. |
-| `Repository understanding` | Connects the change to the system's purpose and flow. | What does the system do? What processing flow do you already know? | Staff enter orders in a form; the web app sends them to an API for storage. |
 | `What you want to achieve` | Defines the desired outcome. | Who should be able to do what, and in which situation? | Staff can retry a failed save without re-entering the order. |
 | `Background` | Explains the problem and its priority. | What happens now, and why is it a problem? | A failed save clears the form, forcing staff to enter the order again. |
-| `Domain knowledge AI is likely to miss` | Captures business rules and their context. | What seemingly reasonable behavior would be wrong for this business? | Two identical orders can be intentional. Matching contents alone must not be treated as proof of a duplicate. |
+| `Acceptance criteria` | Makes completion observable. | What result would demonstrate success, including failure cases? | Failed saves retain input and display an error. Retrying saves the order once, even if the first response was lost. |
 | `In scope` | Identifies the work to include. | What changes must this task cover? | Preserve input after failure, show an error, and support manual retry without duplicating the same submission. |
 | `Out of scope` | Prevents unwanted expansion. | What related work should wait? | Automatic retries and restoring input after the page is closed. |
-| `Points that need detailed explanation or judgment from AI` | Focuses comparison and explanation. | Which decision needs options and a recommendation? | Compare ways to prevent duplicates when the server saves an order but its response never arrives. |
-| `Design rules to keep` | Preserves established implementation conventions. | Which existing patterns must remain, and why? | Keep API calls in the existing shared client so authentication and error handling stay consistent. |
-| `Impact surfaces to inspect` | Provides leads for repository investigation. | Which screens, callers, tests, or docs might be affected? | Inspect the order form, shared API client, order-creation API, and save-related tests; exact paths are unknown. |
 | `Constraints` | Rules out unacceptable solutions. | What compatibility, performance, security, or operational limits apply? | Existing API clients must keep working. Do not persist order input in browser storage. |
-| `Acceptance criteria` | Makes completion observable. | What result would demonstrate success, including failure cases? | Failed saves retain input and display an error. Retrying saves the order once, even if the first response was lost. |
-| `Validation steps` | Explains how to check the expected results. | Which known checks or manual steps can demonstrate those results? | Disconnect before saving and check retained input and the error. Also simulate a lost response after a successful save, retry, and verify one stored order. Test commands are unknown. |
+| `Domain knowledge AI is likely to miss` | Captures business rules and their context. | What seemingly reasonable behavior would be wrong for this business? | Two identical orders can be intentional. Matching contents alone must not be treated as proof of a duplicate. |
 | `Known pitfalls` | Highlights past failures. | What went wrong with a similar change, and under what conditions? | A previous retry fix created duplicates when the server had saved successfully but the client timed out. |
 | `Open questions` | Keeps uncertainty separate from decisions. | What is unknown, and what has not been decided? | Unknown: whether the API already recognizes repeated submissions. Undecided: whether the UI should offer canceling a pending retry. |
+| `Points that need detailed explanation or judgment from AI` | Focuses comparison and explanation. | Which decision needs options and a recommendation? | Compare ways to prevent duplicates when the server saves an order but its response never arrives. |
+| `Design rules to keep` | Preserves established implementation conventions. | Which existing patterns must remain, and why? | Keep API calls in the existing shared client so authentication and error handling stay consistent. |
+| `Repository understanding` | Connects the change to the system's purpose and flow. | What does the system do? What processing flow do you already know? | Staff enter orders in a form; the web app sends them to an API for storage. |
+| `Impact surfaces to inspect` | Provides leads for repository investigation. | Which screens, callers, tests, or docs might be affected? | Inspect the order form, shared API client, order-creation API, and save-related tests; exact paths are unknown. |
+| `Validation steps` | Explains how to check the expected results. | Which known checks or manual steps can demonstrate those results? | Disconnect before saving and check retained input and the error. Also simulate a lost response after a successful save, retry, and verify one stored order. Test commands are unknown. |
 
 `What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules belong under domain knowledge, implementation conventions under design rules, and limits on acceptable solutions under constraints.
 
