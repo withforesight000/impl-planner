@@ -105,25 +105,31 @@ Use `impl-planner` to create an implementation plan.
 - Open questions
 ```
 
-Why each detailed field helps:
+### Detailed input guide
 
-| Field | Why it helps |
-| --- | --- |
-| `Repository / system` | Anchors the plan to the correct codebase, runtime, and repository type. This is especially useful when the workspace has multiple packages, services, roles, or configuration-management targets. |
-| `Repository understanding` | Helps the planner reason from the system's purpose and main flow before drilling into files. It also reduces plans that are locally plausible but misaligned with how the repository actually delivers value. |
-| `What you want to achieve` | Defines the target outcome so milestones stay outcome-oriented. Without this, the plan can drift into a list of edits instead of describing the behavior or state that should exist after implementation. |
-| `Background` | Explains why the change matters and which current problem the plan should solve. This helps the planner choose tradeoffs that fit the motivation instead of optimizing for an unrelated interpretation of the request. |
-| `Domain knowledge AI is likely to miss` | Captures business rules, exceptions, and historical context that are hard to infer from code alone. Supplying this up front prevents the plan from flattening important edge cases into generic implementation steps. |
-| `In scope` | Prevents the plan from becoming too narrow or leaving intended work implicit. It gives the planner permission to include all work that should be considered part of the change. |
-| `Out of scope` | Prevents implementation drift and avoids planning work that should not happen now. This is useful when adjacent refactors, migrations, or cleanup tasks are tempting but would make the plan too broad. |
-| `Points that need detailed explanation or judgment from AI` | Directs extra reasoning toward the decisions where AI help is most valuable. Use this for areas where you want tradeoffs, alternatives, or deeper explanation rather than a terse milestone list. |
-| `Design rules to keep` | Preserves architecture, existing patterns, and implementation constraints. It helps the planner respect layer boundaries, module ownership, naming conventions, and approaches the repository already uses. |
-| `Impact surfaces to inspect` | Reduces missed files by pointing to entrypoints, registration, tests, fixtures, and docs that may move together. This is one of the strongest fields for improving the `files / modules likely affected` section. |
-| `Constraints` | Keeps compatibility, performance, security, operations, and runtime limits visible in the plan. Constraints make the plan more realistic by ruling out solutions that would be technically possible but unacceptable for this repository. |
-| `Acceptance criteria` | Makes completion observable and reviewable. Clear criteria help the implementer and reviewer agree on when the change is actually done. |
-| `Validation steps` | Aligns the plan with the checks the implementer should run. Providing known commands or manual checks helps the plan follow the repository's existing validation style instead of guessing. |
-| `Known pitfalls` | Surfaces failure modes that may not be obvious from a normal code search. This helps the plan include mitigations, rollback notes, or focused validation for areas that have caused issues before. |
-| `Open questions` | Separates blockers, assumptions, and items that can be confirmed during implementation. This prevents uncertainty from being hidden inside the plan as if it were already decided. |
+Fill in what you know; you do not need to answer every field. Leave unknowns or undecided points under `Open questions` instead of guessing file paths, commands, or behavior. An empty field does not mean there are no constraints.
+
+The examples below describe one fictional task: improving recovery after an order form fails to save. Its repository name, rules, and constraints are illustrative, not requirements for your task. Keep the copyable prompt above brief and use this guide when a field is hard to fill in.
+
+| Field | Why it helps | Questions to consider | Example entry |
+| --- | --- | --- | --- |
+| `Repository / system` | Identifies the target and its boundaries. | Which repository, application, or operational target should change? | The order-entry web app in the fictional `order-portal` repository. |
+| `Repository understanding` | Connects the change to the system's purpose and flow. | What does the system do? What processing flow do you already know? | Staff enter orders in a form; the web app sends them to an API for storage. |
+| `What you want to achieve` | Defines the desired outcome. | Who should be able to do what, and in which situation? | Staff can retry a failed save without re-entering the order. |
+| `Background` | Explains the problem and its priority. | What happens now, and why is it a problem? | A failed save clears the form, forcing staff to enter the order again. |
+| `Domain knowledge AI is likely to miss` | Captures business rules and their context. | What seemingly reasonable behavior would be wrong for this business? | Two identical orders can be intentional. Matching contents alone must not be treated as proof of a duplicate. |
+| `In scope` | Identifies the work to include. | What changes must this task cover? | Preserve input after failure, show an error, and support manual retry without duplicating the same submission. |
+| `Out of scope` | Prevents unwanted expansion. | What related work should wait? | Automatic retries and restoring input after the page is closed. |
+| `Points that need detailed explanation or judgment from AI` | Focuses comparison and explanation. | Which decision needs options and a recommendation? | Compare ways to prevent duplicates when the server saves an order but its response never arrives. |
+| `Design rules to keep` | Preserves established implementation conventions. | Which existing patterns must remain, and why? | Keep API calls in the existing shared client so authentication and error handling stay consistent. |
+| `Impact surfaces to inspect` | Provides leads for repository investigation. | Which screens, callers, tests, or docs might be affected? | Inspect the order form, shared API client, order-creation API, and save-related tests; exact paths are unknown. |
+| `Constraints` | Rules out unacceptable solutions. | What compatibility, performance, security, or operational limits apply? | Existing API clients must keep working. Do not persist order input in browser storage. |
+| `Acceptance criteria` | Makes completion observable. | What result would demonstrate success, including failure cases? | Failed saves retain input and display an error. Retrying saves the order once, even if the first response was lost. |
+| `Validation steps` | Explains how to check the expected results. | Which known checks or manual steps can demonstrate those results? | Disconnect before saving and check retained input and the error. Also simulate a lost response after a successful save, retry, and verify one stored order. Test commands are unknown. |
+| `Known pitfalls` | Highlights past failures. | What went wrong with a similar change, and under what conditions? | A previous retry fix created duplicates when the server had saved successfully but the client timed out. |
+| `Open questions` | Keeps uncertainty separate from decisions. | What is unknown, and what has not been decided? | Unknown: whether the API already recognizes repeated submissions. Undecided: whether the UI should offer canceling a pending retry. |
+
+`What you want to achieve` describes the outcome; `In scope` describes the work included. `Acceptance criteria` describes success; `Validation steps` describes how to check it. Business rules belong under domain knowledge, implementation conventions under design rules, and limits on acceptable solutions under constraints.
 
 ## Repository layout
 
