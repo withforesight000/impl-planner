@@ -117,20 +117,22 @@ ownership boundary; do not split merely by file list.
 
 ## Milestone Rules
 
-- In `files / modules likely affected`, use a path/module bullet followed by
-  exactly two labeled child bullets, in this order:
-  - English: `Why change:` then `Planned change:`.
-  - Japanese: `変更が必要な理由：` then `変更内容：`.
-  The reason must connect the file's responsibility and the current gap or
+- In `files / modules likely affected`, use a Markdown table with exactly two
+  columns: `File / module` and `Reason and planned change` in English, or
+  `ファイル / モジュール` and `変更理由・内容` in Japanese. Use one row per file
+  or module, combining why it needs attention and what will change in the second
+  cell (for example, "To prevent X, update Y"). The reason must connect the
+  file's responsibility and the current gap or
   consequence of leaving it unchanged to a requirement (use its ID when defined).
   The planned change states what will be modified. An action such as "align
   wording" alone is not a reason. Apply this format to small plans too; usually
-  one sentence per child bullet is enough. Group paths only when both the reason
+  one or two short sentences per cell suffice. Group paths only when both the reason
   and planned change genuinely apply to every path; otherwise use separate entries.
   For investigation-only or conditional candidates, say why investigation is
   needed, what remains unknown, and the condition for a change; explicitly state
   that modification is not yet confirmed. Do not invent a current defect or imply
-  that every listed file must change merely to fill these fields.
+  that every listed file must change merely to fill these fields. When there are
+  no affected files or modules, use `None.` / `なし。` rather than an empty table.
 - Describe the outcome, then the change order that connects current boundaries
   to the target behavior. Do not invent unsupported APIs, schemas, or commands.
 - Each milestone's `goal` describes an observable result at its completion, not
@@ -162,10 +164,10 @@ ownership boundary; do not split merely by file list.
   the status explanation agrees with the evidence and unresolved blockers.
 - Each affected file or module has a reason, validation follows the discovered
   repository style, and milestone ordering respects existing architecture.
-  Each file entry follows the two-label format and explains why that location
+  Each file entry follows the two-column table format and explains why that location
   needs a change or investigation, not just what action is proposed.
 - Risks have a mitigation, validation, or rollback action where relevant.
 - The plan remains concise enough for the change and never begins implementation.
-  Apply these rules to small plans too, using short prose or bullets within the
-  existing headings. Keep shared context in one place and specialize it in
+  Apply these rules to small plans too, using the required file table and short
+  prose or bullets elsewhere within the existing headings. Keep shared context in one place and specialize it in
   milestones instead of duplicating it.

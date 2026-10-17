@@ -58,12 +58,10 @@ The changes and checks below have not been performed.
 
 #### files / modules likely affected
 
-- `README.md` and `README.ja.md`
-  - Why change: These are the English and Japanese copyable usage instructions; leaving their differing terminology unchanged would keep readers from obtaining equivalent prompts (R1).
-  - Planned change: Align the minimal and detailed prompt wording with the corresponding language in the bundled reference.
-- `.apm/skills/impl-planner/references/prompt-templates.md`
-  - Why change: This reference supplies prompts to installed skill users; updating only the READMEs would leave the distributed prompts inconsistent with them (R1).
-  - Planned change: Update the minimal and detailed templates with the same terminology as the README copies.
+| File / module | Reason and planned change |
+| --- | --- |
+| `README.md` and `README.ja.md` | To give readers equivalent copyable prompts in both languages (R1), align the minimal and detailed wording with the corresponding language in the bundled reference. |
+| `.apm/skills/impl-planner/references/prompt-templates.md` | Updating only the READMEs would leave installed skill users with inconsistent prompts (R1), so update the distributed templates with the same terminology. |
 
 #### out of scope
 
