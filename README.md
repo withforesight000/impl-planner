@@ -37,7 +37,9 @@ The skill distinguishes facts, inferences, proposals, and unknowns, and compares
 
 `Missing Context and Ambiguities` separates blockers, matters that can proceed under assumptions, and implementation-time checks. Assumptions include their basis and consequences if wrong. Explicit user decisions remain decisions; there is no separate assumptions chapter.
 
-Each subsection has at most five items in ordinary plans or ten in plans using additional planning requirements (the extended contract). The applicable requirements depend on scope, uncertainty, and risk, not changed-line count alone. These are ceilings, not targets. Material overflow is handled through investigation or questions, splitting the plan, or explicit disclosure of the excess and its impact; it is not omitted.
+Medium or larger changes, changes spanning features or modules, and changes involving data, security, deployment, or configuration management receive more detailed examination of evidence and decision rationale. The level of detail depends on scope, uncertainty, and risk, not changed-line count alone.
+
+Each subsection has at most five items in ordinary plans or ten in plans requiring this closer examination. These are ceilings, not targets. Material overflow is handled through investigation or questions, splitting the plan, or explicit disclosure of the excess and its impact; it is not omitted.
 
 ### Milestone contents
 
@@ -66,9 +68,9 @@ See the [compact Final example](.apm/skills/impl-planner/references/mini-example
 
 The skill accepts Japanese and English requests. It does not edit files, run state-changing commands, or instruct an agent to begin implementation. Requests for more detail receive multiple options, a recommendation, and their benefits and drawbacks.
 
-For extended-contract plans with independent read-only research or review, the planner delegates at least one task when subagents are available. Small plans and work that must proceed strictly in sequence do not require delegation.
+For [changes requiring closer examination](#purpose-and-unresolved-matters) with independent read-only research or review, the planner delegates at least one task when subagents are available. Small plans and work that must proceed strictly in sequence do not require delegation.
 
-Extended-contract plans also receive a review after drafting. When a separate agent does not perform that review, the authoring agent reviews the complete draft against a checklist after writing it. This review checks missing requirements, unsupported claims, affected scope, validation, risks, and rollback. Delegating research does not remove the requirement to review the draft.
+Plans for these changes also receive a review after drafting. When a separate agent does not perform that review, the authoring agent reviews the complete draft against a checklist after writing it. This review checks missing requirements, unsupported claims, affected scope, validation, risks, and rollback. Delegating research does not remove the requirement to review the draft.
 
 ## How to install with `apm`
 
