@@ -8,7 +8,6 @@ This repository contains the `impl-planner` APM package. The source of truth is:
 - `.apm/skills/impl-planner/references/extended-plan-contract.md`
 - `.apm/skills/impl-planner/references/examples.md`
 - `.apm/skills/impl-planner/references/detail-request.md`
-- `.apm/skills/impl-planner/references/html-output.md`
 - `.apm/skills/impl-planner/references/formatting.md`
 - `.apm/skills/impl-planner/references/mini-example.md`
 - `.apm/skills/impl-planner/references/provisional-example.md`
@@ -18,6 +17,7 @@ This repository contains the `impl-planner` APM package. The source of truth is:
 - `.apm/skills/impl-planner/references/risk-task-profiles.md`
 - `.apm/skills/impl-planner/references/config-management-profile.md`
 - `.apm/skills/impl-planner/references/platform-notes.md`
+- `.agents/skills/maintain-impl-planner/SKILL.md`
 - `README.md`
 - `README.ja.md`
 
@@ -31,9 +31,21 @@ This repository contains the `impl-planner` APM package. The source of truth is:
 - Keep `README.ja.md` in Japanese.
 - Keep `impl-planner` skill prompts and documentation consistent across README files and the Skill contract.
 - The skill accepts prompts in both Japanese and English.
+- For changes or reviews to this repository's contracts, references, documentation, package metadata, or maintenance tooling, use `.agents/skills/maintain-impl-planner/SKILL.md`. It also guides explicitly requested release preparation.
+- Keep `.agents` as the real maintenance directory and `.claude` as a relative symlink to `.agents`. `CLAUDE.md` is a relative symlink to `AGENTS.md`; edit the underlying guide once.
 - For planning work in this repository, follow the Skill's conditional delegation rule: when an extended-contract plan has independent read-only research or critique, delegate at least one task if subagent tools are available. If they are unavailable, use the Skill's second-pass fallback.
 
 ## Validation
+
+For repository maintenance, run the structural checker and its tests with Python 3.11 or later:
+
+```bash
+python3 -B -m unittest discover -s .agents/skills/maintain-impl-planner/tests -v
+python3 -B .agents/skills/maintain-impl-planner/scripts/check_consistency.py
+git -c core.fsmonitor=false diff --check
+```
+
+These checks cover documentation inventories and shared-instruction links. Review contract/example agreement and bilingual meaning separately.
 
 When changing the package or the skill, verify with the local APM CLI:
 

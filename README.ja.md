@@ -242,8 +242,43 @@ impl-planner を使って実装 plan を作ってください。
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: 変更内容に応じた確認項目
 - `.apm/skills/impl-planner/references/config-management-profile.md`: 構成管理の変更で使う確認項目
 - `.apm/skills/impl-planner/references/platform-notes.md`: プラットフォーム別の補足
+- `.agents/skills/maintain-impl-planner/SKILL.md`: リポジトリ保守用スキル
+- `.agents/skills/maintain-impl-planner/scripts/check_consistency.py`: 一覧とシンボリックリンクを読み取り専用で検証するスクリプト
+- `.agents/skills/maintain-impl-planner/tests/test_consistency.py`: 検証スクリプトの回帰テスト
+- `.claude`: 保守用スキルを共有するための `.agents` への相対シンボリックリンク
 
 ## 検証方法
+
+リポジトリの保守では、`maintain-impl-planner` を使い、契約・参照資料・
+パッケージ定義の変更に関連する文書と検証を洗い出せます。
+保守用スキルの実体は `.agents/skills` に置き、`.claude` は `.agents` を参照します。
+これらの保守用ファイルは APM の配布対象に含めません。
+
+最小プロンプト：
+
+```text
+maintain-impl-planner を使って、今回の変更に伴う文書の更新漏れを確認してください。
+```
+
+詳細プロンプト：
+
+```text
+maintain-impl-planner を使って、このブランチで追加・削除・改名した参照資料をレビューしてください。
+正本一覧、例の索引、日英 README の構成一覧を確認し、契約と日英の説明の意味も照合してください。
+構造検証と APM の dry-run を実行し、警告と未検証事項を報告してください。ファイルは変更しないでください。
+```
+
+Python 3.11 以上でローカルの構造検証を実行します。
+
+```bash
+python3 -B -m unittest discover -s .agents/skills/maintain-impl-planner/tests -v
+python3 -B .agents/skills/maintain-impl-planner/scripts/check_consistency.py
+```
+
+一覧の欠落・古い項目・重複と、共有用のシンボリックリンクの不整合を検出します。
+別の checkout を検証する場合は `--root PATH` を指定します。
+終了コードは、正常時 `0`、内容の不整合時 `1`、引数やルートの指定が不正な場合 `2` です。
+一般的な Markdown リンクや、エージェントのクライアントがスキルを読み込めるかどうかは検証しません。
 
 リポジトリルートで次を実行します。
 

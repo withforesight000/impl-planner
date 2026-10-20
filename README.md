@@ -244,8 +244,44 @@ It is fine to say either “I don't know the current behavior” or “I haven't
 - `.apm/skills/impl-planner/references/*-task-profiles.md`: Conditional task checklists
 - `.apm/skills/impl-planner/references/config-management-profile.md`: Conditional configuration-management checklist
 - `.apm/skills/impl-planner/references/platform-notes.md`: Platform-specific operational notes
+- `.agents/skills/maintain-impl-planner/SKILL.md`: Repository maintenance skill
+- `.agents/skills/maintain-impl-planner/scripts/check_consistency.py`: Read-only inventory and symlink checker
+- `.agents/skills/maintain-impl-planner/tests/test_consistency.py`: Checker regression tests
+- `.claude`: Relative symlink to `.agents` for shared maintenance skills
 
 ## How to verify the package
+
+Repository maintainers can use `maintain-impl-planner` to identify related
+documentation and validation before changing contracts, references, or packaging.
+The maintenance skill is stored in `.agents/skills`; `.claude` points to `.agents`.
+These maintenance files are outside the distributed APM skill.
+
+Minimal prompt:
+
+```text
+Use maintain-impl-planner to check this repository change for missing documentation updates.
+```
+
+Detailed prompt:
+
+```text
+Use maintain-impl-planner to review the added, removed, and renamed references in this branch.
+Check the source-of-truth list, example index, and both README layouts, then review contract and bilingual meaning.
+Run the structural checks and APM dry runs and report warnings and unverified items. Do not modify files.
+```
+
+Run the local structural checks with Python 3.11 or later:
+
+```bash
+python3 -B -m unittest discover -s .agents/skills/maintain-impl-planner/tests -v
+python3 -B .agents/skills/maintain-impl-planner/scripts/check_consistency.py
+```
+
+The checker detects missing, stale, or duplicate inventory entries and incorrect
+shared-instruction links. Use `--root PATH` to check another checkout. Exit codes
+are `0` for success, `1` for inconsistent contents, and `2` for invalid arguments
+or an invalid root. It does not check general Markdown links or native skill
+discovery in an agent client.
 
 From the repository root:
 
