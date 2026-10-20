@@ -234,6 +234,7 @@ impl-planner を使って実装 plan を作ってください。
 - `.apm/skills/impl-planner/references/extended-plan-contract.md`: 複雑または高リスクな変更に適用する追加要件
 - `.apm/skills/impl-planner/references/examples.md`: 例ファイルへの案内
 - `.apm/skills/impl-planner/references/mini-example.md`: 小規模な計画の記述例
+- `.apm/skills/impl-planner/references/provisional-example.md`: 必須の根拠を確認できず、対話もできない場合の暫定計画の記述例
 - `.apm/skills/impl-planner/references/prompt-templates.md`: 再利用用のプロンプトテンプレート
 - `.apm/skills/impl-planner/references/detail-request.md`: 選択肢と推奨案の説明方法
 - `.apm/skills/impl-planner/references/formatting.md`: 文章・表・コードブロックの書式

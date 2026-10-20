@@ -236,6 +236,7 @@ It is fine to say either “I don't know the current behavior” or “I haven't
 - `.apm/skills/impl-planner/references/extended-plan-contract.md`: Conditional contract for complex or risky changes
 - `.apm/skills/impl-planner/references/examples.md`: Index of optional example files
 - `.apm/skills/impl-planner/references/mini-example.md`: Compact plan-density example
+- `.apm/skills/impl-planner/references/provisional-example.md`: Complete Japanese example of a provisional plan when required evidence and interaction are unavailable
 - `.apm/skills/impl-planner/references/prompt-templates.md`: Reusable prompt templates
 - `.apm/skills/impl-planner/references/detail-request.md`: Optional decision-support response structure
 - `.apm/skills/impl-planner/references/formatting.md`: Optional formatting constraints

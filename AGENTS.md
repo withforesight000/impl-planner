@@ -11,6 +11,7 @@ This repository contains the `impl-planner` APM package. The source of truth is:
 - `.apm/skills/impl-planner/references/html-output.md`
 - `.apm/skills/impl-planner/references/formatting.md`
 - `.apm/skills/impl-planner/references/mini-example.md`
+- `.apm/skills/impl-planner/references/provisional-example.md`
 - `.apm/skills/impl-planner/references/prompt-templates.md`
 - `.apm/skills/impl-planner/references/research-and-critique.md`
 - `.apm/skills/impl-planner/references/software-task-profiles.md`
