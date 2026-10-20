@@ -248,6 +248,7 @@ It is fine to say either “I don't know the current behavior” or “I haven't
 - `.agents/skills/maintain-impl-planner/scripts/check_consistency.py`: Read-only inventory and symlink checker
 - `.agents/skills/maintain-impl-planner/tests/test_consistency.py`: Checker regression tests
 - `.claude`: Relative symlink to `.agents` for shared maintenance skills
+- `.github/workflows/consistency.yml`: CI for the inventory and symlink checks
 
 ## How to verify the package
 
@@ -282,6 +283,10 @@ shared-instruction links. Use `--root PATH` to check another checkout. Exit code
 are `0` for success, `1` for inconsistent contents, and `2` for invalid arguments
 or an invalid root. It does not check general Markdown links or native skill
 discovery in an agent client.
+
+The `Repository consistency` GitHub Actions workflow runs the same tests and
+checker on pull requests and pushes to `main`. APM checks and content review
+remain separate local verification steps.
 
 From the repository root:
 

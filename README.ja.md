@@ -246,6 +246,7 @@ impl-planner を使って実装 plan を作ってください。
 - `.agents/skills/maintain-impl-planner/scripts/check_consistency.py`: 一覧とシンボリックリンクを読み取り専用で検証するスクリプト
 - `.agents/skills/maintain-impl-planner/tests/test_consistency.py`: 検証スクリプトの回帰テスト
 - `.claude`: 保守用スキルを共有するための `.agents` への相対シンボリックリンク
+- `.github/workflows/consistency.yml`: 一覧とシンボリックリンクを検証する CI
 
 ## 検証方法
 
@@ -279,6 +280,10 @@ python3 -B .agents/skills/maintain-impl-planner/scripts/check_consistency.py
 別の checkout を検証する場合は `--root PATH` を指定します。
 終了コードは、正常時 `0`、内容の不整合時 `1`、引数やルートの指定が不正な場合 `2` です。
 一般的な Markdown リンクや、エージェントのクライアントがスキルを読み込めるかどうかは検証しません。
+
+GitHub Actions の `Repository consistency` ワークフローでも、PR と `main` への
+push を対象に同じテストと構造検証を実行します。
+APM の検証と文章レビューは、別途ローカルで実施します。
 
 リポジトリルートで次を実行します。
 

@@ -1,0 +1,25 @@
+name: Repository consistency
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  consistency:
+    name: Inventory and symlink checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Test the checker
+        run: python3 -B -m unittest discover -s .agents/skills/maintain-impl-planner/tests -v
+      - name: Check repository consistency
+        run: python3 -B .agents/skills/maintain-impl-planner/scripts/check_consistency.py

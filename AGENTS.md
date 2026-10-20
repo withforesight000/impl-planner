@@ -47,6 +47,8 @@ git -c core.fsmonitor=false diff --check
 
 These checks cover documentation inventories and shared-instruction links. Review contract/example agreement and bilingual meaning separately.
 
+The `Repository consistency` GitHub Actions workflow runs the checker and tests on pull requests and pushes to `main`. Run the APM checks below locally; CI does not validate package contents, bilingual meaning, or native skill discovery.
+
 When changing the package or the skill, verify with the local APM CLI:
 
 ```bash
