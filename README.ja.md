@@ -76,19 +76,19 @@ English: [README.md](README.md)
 リポジトリを複製せず、参照先を指定してスキルをインストールできます。
 
 ```bash
-apm install withforesight000/impl-planner#4.0.0 --global --target codex
+apm install withforesight000/impl-planner#4.0.1 --global --target codex
 ```
 
 事前に内容を確認したい場合は、`--dry-run` を付けます。
 
 ```bash
-apm install withforesight000/impl-planner#4.0.0 --dry-run --global --target codex
+apm install withforesight000/impl-planner#4.0.1 --dry-run --global --target codex
 ```
 
 Claude Code と GitHub Copilot にもインストールできます。
 
 ```bash
-apm install withforesight000/impl-planner#4.0.0 --global --target claude,copilot
+apm install withforesight000/impl-planner#4.0.1 --global --target claude,copilot
 ```
 
 ローカルの作業コピーを使う場合は、`apm pack --archive` で配布用アーカイブを作り、生成されたパスを `apm install` に指定します。
