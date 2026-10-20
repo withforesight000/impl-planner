@@ -16,10 +16,15 @@ them as evidence. Do not claim delegation occurred when no subagent was used.
 
 ## Critic Pass
 
-Use a fresh-context critic when available; otherwise use a deliberate second
-pass. Check requirement gaps, unsupported claims, dependency direction, missing
+Use a fresh-context critic when available; otherwise the authoring agent reviews
+the complete draft against the following checklist after writing it.
+Check requirement gaps, unsupported claims, dependency direction, missing
 interfaces or data/error flows, weak validation, risks, rollback, scope creep,
 and planning-only violations. Re-research only the smallest affected area, once,
 unless a new blocker appears.
 Delegated research does not replace this critic pass; a delegated critic can
 fulfill it.
+
+Apply `plan-contract.md` → `Final Check` to the draft as well. That contract
+defines reader-facing structure, evidence, decision sources, field placement,
+and table rules; review against those definitions rather than a second copy.

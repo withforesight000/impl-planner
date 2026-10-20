@@ -6,6 +6,10 @@ Read this reference when the user asks for more detail, asks for decision suppor
 
 Use this structure before the final plan. Resolve the decision first, then carry the chosen option into the required top-level output. Do not add a competing top-level structure beside a final plan.
 
+This structure explains comparisons, not how to collect a decision. Follow the
+question-routing and no-interaction fallback in `SKILL.md`. Explanation alone
+does not require the user to choose or approve anything.
+
 ## Decision Support / 判断材料
 
 ### Recommended Option / 推奨案
@@ -33,7 +37,7 @@ Use this structure before the final plan. Resolve the decision first, then carry
 
 ## Carry Decisions Into the Plan
 
-- After a choice is made, reflect it in `Assumptions` or milestone `decision notes to avoid oscillation`.
+- Apply `plan-contract.md` for decision sources, assumption placement, and status.
 - Do not pretend certainty where a missing fact would change the recommendation.
 - Keep rejected alternatives concise unless the user explicitly asks for deeper comparison.
-- If a blocker remains and interaction is unavailable, return a `Plan status: Provisional` plan with branches only for the affected milestones.
+- In a provisional plan, branch only the milestones affected by the blocker.

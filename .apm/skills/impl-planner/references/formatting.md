@@ -4,9 +4,9 @@ Read this reference when formatting constraints are unclear or the output needs 
 
 - Use Markdown headings and bullet lists.
 - Tables are allowed when they make comparisons, option tradeoffs, or file lists easier to scan.
-- Keep milestone heading structure consistent within a plan, except for intentionally concise small-change plans.
+- Follow `plan-contract.md` for headings, order, field placement, tables, status
+  templates, and item limits. Small plans shorten content, not the required structure.
 - Close all code blocks.
 - Prefer concise, implementation-ready bullets over long prose.
+- Outside prescribed tables, prefer short prose or bullets and avoid repeating shared context.
 - Keep evidence, requirement, acceptance, and validation IDs readable where traceability is needed.
-- Use `## Plan.md`, `### Milestone`, and `####` milestone subsections so plans have a consistent hierarchy.
-- Do not tell the implementer to start coding or proceed with execution.

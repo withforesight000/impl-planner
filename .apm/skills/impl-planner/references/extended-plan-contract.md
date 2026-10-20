@@ -9,6 +9,10 @@ It extends `plan-contract.md`; do not repeat its general rules.
 - Label direct repository facts `[Observed]`, evidence-based conclusions
   `[Inferred]`, intended changes `[Proposed]`, and unresolved facts `[Unknown]`.
   Anchor observed claims to a path, symbol, config key, command, or equivalent.
+- Evidence labels describe how a claim is supported, not who selected a design.
+  Follow the core contract's separate guidance on decision sources and assumptions.
+  A proposed action is not `[Observed]`; a discovered command is not an execution
+  result. Keep labels on material claims rather than mechanically on every sentence.
 - In an interactive environment, ask one to three questions per round only when
   the answer changes architecture, compatibility, data safety, security,
   operations, or scope. Re-research after each answer and ask another round only
@@ -38,7 +42,9 @@ affected surface, observable acceptance criterion, and validation item.
 ## Extended Final Check
 
 - Current behavior, proposed behavior, public interfaces, data flow, state, and
-  error handling are covered where the change affects them.
+  error handling are covered where the change affects them. Distribute this
+  detail across the core contract's designated fields; an extended plan does
+  not require repeating all of it in the implementation approach.
 - Migration, compatibility, rollout, security, idempotence, and dependency risks
   have an explicit mitigation, validation, or rollback path when relevant.
 - No unsupported path, symbol, command, or repository behavior is labeled as an

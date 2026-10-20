@@ -12,16 +12,16 @@ Native Plan modes provide a write boundary and approval flow. `impl-planner` sup
 - Keep repository instructions and Skill requirements concise and non-duplicative so critical constraints remain visible in the shared context.
 - Current local Codex clients can delegate when applicable `AGENTS.md` or Skill
   instructions request it. Follow the shared delegation rule in `SKILL.md`;
-  use its second-pass fallback when subagent tools are unavailable.
-- When a plan needs user input, run in Plan mode and use `request_user_input` to
-  present native structured choices. If the tool is unavailable, do not imitate
-  that UI by listing options in Markdown; return a provisional plan instead.
+  use its review by the authoring agent after drafting when subagent tools are unavailable.
+- When a plan needs user input, use an available structured-question tool such
+  as `request_user_input` where supported. Follow `SKILL.md` for shared
+  question routing and fallbacks.
 - Official context: [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents) and [GPT-6 model guidance](https://developers.openai.com/api/docs/guides/latest-model).
 
 ## Claude Code
 
 - Plan mode is read-only until approval. Built-in Explore and Plan subagents use isolated contexts and skip `CLAUDE.md` and parent git status; repeat required constraints in the handoff prompt.
-- Use a fresh critic or a deliberate second pass after drafting rather than relying on the draft author's self-assessment.
+- Use a separate critic when available; otherwise the authoring agent reviews the completed draft against the shared checklist. Confidence expressed during drafting does not replace this review.
 - Use `AskUserQuestion` when the runtime exposes it. Otherwise, use Claude
   Code's normal concise interactive question flow; do not require Codex's
   `request_user_input` behavior.
@@ -37,4 +37,4 @@ Native Plan modes provide a write boundary and approval flow. `impl-planner` sup
 
 ## No-Tool or No-Subagent Fallback
 
-Use the same evidence labels, blocker policy, and critic checklist locally. A platform without subagents must still perform the second-pass checklist and must not claim unseen repository facts.
+Use the same evidence labels, blocker policy, and critic checklist locally. Without subagents, the authoring agent must review the completed draft against that checklist and must not claim unseen repository facts.
