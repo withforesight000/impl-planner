@@ -36,6 +36,7 @@ class ConsistencyTests(unittest.TestCase):
             "AGENTS.md",
             "# Repository Guide\n\nThe source of truth is:\n\n"
             + "".join(f"- `{path}`\n" for path in self.paths)
+            + "- `README.md`\n- `README.ja.md`\n"
             + "\n## Working Rules\n\n- Read the guides.\n",
         )
         layout = [
@@ -92,6 +93,23 @@ class ConsistencyTests(unittest.TestCase):
         return result
 
     def test_valid_repository_and_wildcard(self):
+        result = self.run_check()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_readmes_are_required_in_root_inventory_only(self):
+        original = (self.root / "AGENTS.md").read_text()
+        for removed in (("README.md",), ("README.ja.md",), ("README.md", "README.ja.md")):
+            with self.subTest(removed=removed):
+                content = original
+                for name in removed:
+                    content = content.replace(f"- `{name}`\n", "")
+                self.write("AGENTS.md", content)
+                result = self.assert_failure(
+                    *(f"AGENTS.md:1: missing inventory entry: {name}" for name in removed)
+                )
+                self.assertEqual(len(result.stdout.splitlines()), len(removed) + 1)
+        self.write("AGENTS.md", original)
+        # README layout sections intentionally do not inventory the READMEs themselves.
         result = self.run_check()
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 

@@ -146,14 +146,14 @@ class Checker:
             *(p.relative_to(self.root).as_posix() for p in references.rglob("*.md")),
         }
         inventories = [
-            ("AGENTS.md", None),
-            ("README.md", "Repository layout"),
-            ("README.ja.md", "リポジトリ構成"),
+            ("AGENTS.md", None, expected | {"README.md", "README.ja.md"}),
+            ("README.md", "Repository layout", expected),
+            ("README.ja.md", "リポジトリ構成", expected),
         ]
         expanded = {}
-        for file, heading in inventories:
+        for file, heading, required in inventories:
             entries, anchor = self.inventory(file, heading)
-            self.require(file, anchor, entries, expected)
+            self.require(file, anchor, entries, required)
             expanded[file] = entries
         english, japanese = expanded["README.md"], expanded["README.ja.md"]
         for file, missing in (
