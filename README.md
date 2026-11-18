@@ -1,7 +1,7 @@
 # impl-planner APM package
 
 `impl-planner` is a planning-only skill for software repositories or configuration-management tool repositories.
-Use it when you want Codex, Claude Code, or GitHub Copilot to produce an implementation plan, not to implement the change.
+Use it to draft implementation plans in Codex, Claude Code, or GitHub Copilot.
 
 日本語版: [README.ja.md](README.ja.md)
 
@@ -43,9 +43,9 @@ Each subsection has at most five items in ordinary plans or ten in plans requiri
 
 ### Milestone contents
 
-Each milestone's goal states an observable completion result. The implementation approach focuses on the change mechanism, responsibility boundaries, and conditions that prevent incorrect implementation. Acceptance criteria hold completion conditions; validation holds detailed tests and measurements. Decision notes explain the source, reason, and main tradeoff of choices without repeating the same explanation.
+Each milestone’s goal states what you can observe when the work is done. The implementation approach explains how the change works, which components are responsible, and which conditions prevent incorrect implementation. Acceptance criteria define what counts as done. The validation section gives detailed test and measurement procedures. Decision notes record where each choice came from, why it was made, and its main tradeoff. Avoid repeating details across sections.
 
-Consequential values and techniques distinguish user requirements, existing behavior, and planner proposals. Proposals include their basis. Detail follows decision needs and risk; shortening must not remove important constraints.
+For consequential values and techniques, identify whether they come from a user requirement, existing behavior, or a planner proposal. Explain the basis for each proposal. Give readers enough detail to make decisions and account for risks. Keep important constraints explicit.
 
 Affected files use a two-column table: `File / module` and `Reason and planned change`. File paths are verified and relative to the repository root, with repository prefixes for multi-repository work. Proposed paths are marked `New file planned`; unidentified locations are marked `Path unknown` with their investigation scope. Investigation-only entries explicitly state that modification is unconfirmed.
 
@@ -60,7 +60,7 @@ A provisional plan identifies its unresolved matters and dependent scope immedia
 
 Validation uses three columns: `Condition to verify`, `Validation method`, and `Command`. Non-command checks use labels such as `(Document review)` or `(Manual check)`; needed but unidentified commands are marked `Not yet identified`. Long commands appear in referenced code blocks below the table.
 
-Execution status and results appear outside the table, by check ID when needed. A listed command is not evidence that a check passed. Risks use the two columns `Risk / impact` and `Mitigation`. Small plans retain the prescribed file, validation, and risk tables, with short prose or bullets elsewhere.
+Execution status and results appear outside the table, by check ID when needed. A listed command is not evidence that a check passed. Risks use the two columns `Risk / impact` and `Mitigation`. Small plans use the prescribed file, validation, and risk tables when they have entries. Keep other prose and bullets short.
 
 See the [compact Final example](.apm/skills/impl-planner/references/mini-example.md) and the [Japanese Provisional example](.apm/skills/impl-planner/references/provisional-example.md). The latter illustrates unavailable external evidence and no opportunity for user interaction.
 
@@ -74,8 +74,7 @@ Plans for these changes also receive a review after drafting. When a separate ag
 
 ## How to install with `apm`
 
-You do not need to clone this repository to install the skill on your PC.
-Install it directly from the repository reference:
+Install directly from the repository reference. The command works without a local clone.
 
 ```bash
 apm install withforesight000/impl-planner#4.0.1 --global --target codex
@@ -178,9 +177,9 @@ Use `impl-planner` to create an implementation plan.
 
 ### Detailed input guide
 
-You do not need to repeat instructions already documented in `AGENTS.md`, relevant skills, or other repository documentation, or write “follow AGENTS.md” in each field. Name a particular skill or reference if you want to ensure it is considered.
+You can omit instructions already covered by `AGENTS.md`, relevant skills, or repository documentation. Name any skill or reference you want the planner to consult.
 
-For omitted fields, the planner uses the following approach:
+Here’s how the planner handles blanks.
 
 1. Follow applicable `AGENTS.md` and relevant skill instructions.
 2. Where those instructions do not cover the issue, inspect existing code, tests, and documentation to identify established behavior and conventions.
@@ -188,7 +187,7 @@ For omitted fields, the planner uses the following approach:
 
 An omitted field does not mean “no constraints” or “out of scope.” Do not guess file paths, commands, behavior, or business rules to fill the template. If you already know something is unclear or undecided, record it under `Open questions`.
 
-The examples below describe one fictional task: improving recovery after an order form fails to save. Its repository name, rules, and constraints are illustrative, not requirements for your task. Keep the copyable prompt above brief and use this guide when a field is hard to fill in.
+Use this guide when a field is hard to fill in, and keep the prompt brief. The examples use a fictional order form that clears its input when saving fails. Use your own repository name, rules, and constraints.
 
 | Field | Why it helps | Questions to consider | Example entry |
 | --- | --- | --- | --- |
@@ -216,7 +215,7 @@ The examples below describe one fictional task: improving recovery after an orde
 
 ### When the AI agent's pre-planning questions are hard to answer
 
-You do not need to choose immediately if an option's meaning or impact is unclear. You can reply by requesting an explanation or further investigation. Use these responses as written, adding any context you know.
+If you’re unsure what an option would change, ask for an explanation or more investigation before choosing. Copy a reply below and add any context you have.
 
 | What is difficult | Example reply |
 | --- | --- |

@@ -1,8 +1,8 @@
 # impl-planner Mini Example
 
-This illustrative example shows the expected density for a small English request.
-Inspection statements describe the assumed example scenario, not checks performed
-by reading this file. Adapt language and labels to the user's request.
+This English example shows how much detail to include in a small plan. The
+inspection notes describe a hypothetical scenario. Follow the contract's
+labels for the user's language.
 
 ````md
 # Align planning prompt terminology
@@ -45,7 +45,7 @@ The changes and checks below have not been performed.
 
 #### requirements covered
 
-- `R1`: Prompt templates consistently capture the desired outcome and relevant repository context.
+- `R1`: Both prompt versions ask for the desired outcome and background. The detailed version also asks for relevant repository context.
 - `R2`: Preserve the package's planning-only behavior and valid bundle.
 
 #### implementation approach
@@ -67,7 +67,7 @@ Paths are relative to this repository's root.
 
 #### acceptance criteria
 
-- `AC1 [R1]` Minimal and detailed prompts agree across README and bundled copies in each language, with equivalent meaning between languages.
+- `AC1 [R1]` The minimal prompt asks for the desired outcome and background. The detailed prompt also asks for relevant repository context. Each README matches its bundled copy, and the English and Japanese prompts have equivalent meaning.
 - `AC2 [R2]` Prompts request planning only, without instructions to implement.
 - `AC3 [R2]` Required package checks pass and the dry-run bundle includes the prompt reference.
 
@@ -77,7 +77,7 @@ All checks below are unexecuted. `[Observed]` identifies documented commands onl
 
 | Condition to verify | Validation method | Command |
 | --- | --- | --- |
-| AC1, AC2: Prompts agree across languages and copies and remain planning-only. | V1: Compare the minimal and detailed prompts in both READMEs and the bundled reference, including meaning, fields, and planning-only wording against the Skill contract. | (Document review) |
+| AC1, AC2: Each prompt asks for the intended information, agrees across copies and languages, and requests planning only. | V1: Compare each README with the bundled reference and compare the two languages. Check that both prompts ask for the outcome and background, the detailed prompt also asks for repository context, and both request planning only. | (Document review) |
 | AC3: Required package checks pass and the prompt reference is bundled. | V2: Run the documented package checks; require successful exits and confirm the prompt reference appears in the bundle file list. | [Observed] See the V2 command block below, from `AGENTS.md`. |
 
 V2 commands:

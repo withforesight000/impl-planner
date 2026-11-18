@@ -30,17 +30,16 @@ Plan status: Final (実装方針を確定できる計画。承認・実装・検
 Plan status: Provisional (重要な未確認・未決定事項が残る暫定計画。実装方針の確定には解消が必要です。)
 ```
 
-The outcome-specific title is the first non-empty output, without a preamble;
-do not use a generic title such as `Plan.md`. In label pairs, `/` separates
-alternatives: emit only the user's language.
+Start with a title that names the intended outcome. Put it on the first
+non-empty line. In label pairs, use the label on the side of `/` that matches
+the user's language.
 
 In `Purpose and Background` / `目的と背景`, state the requested outcome, why it
 matters, the current problem or motivation, and known user-provided constraints.
 Normally use two to four short bullets to explain the current problem, the
 intended result, and the main exclusions so the reader can assess intent before
-reading implementation details. This is a density guide, not a fixed quota.
-When the user did not provide background, say `Not provided.` / `未提供。` rather
-than inventing one.
+reading implementation details. Use more or fewer bullets if that makes the
+purpose clearer. If the user gave no background, write `Not provided.` / `未提供。`.
 
 Within `Missing Context and Ambiguities` / `前提不足・曖昧点`, use:
 
@@ -48,10 +47,9 @@ Within `Missing Context and Ambiguities` / `前提不足・曖昧点`, use:
 - `### Can proceed with assumptions` / `### 仮定を置けば進められるもの`
 - `### Can confirm during implementation` / `### 実装中に確認すればよいもの`
 
-Keep each of these three subsections to at most five items for ordinary plans,
-or ten for plans using the extended contract. Choose the contract by scope,
-uncertainty, and risk, not changed-line count alone. These are ceilings, not
-targets: write `None.` / `なし。` when empty. Order items by planning impact and
+Use up to five items per subsection for ordinary plans or up to ten for plans
+using the extended contract. Choose the contract by scope, uncertainty, and risk.
+Write `None.` / `なし。` when a subsection is empty. Order items by planning impact and
 group genuinely related matters without hiding distinct blockers. If material
 items still exceed the limit, investigate further, resolve questions when
 interaction is available, or split the plan into coherent scopes before finalizing.
@@ -147,14 +145,15 @@ ownership boundary; do not split merely by file list.
   that modification is not yet confirmed. Do not invent a current defect or imply
   that every listed file must change merely to fill these fields. When there are
   no affected files or modules, use `None.` / `なし。` rather than an empty table.
-- Describe the outcome, then the change order that connects current boundaries
-  to the target behavior. Do not invent unsupported APIs, schemas, or commands.
+- Describe the outcome, then explain the order of changes needed to reach it
+  from the current design. Verify existing APIs, schemas, and commands against
+  evidence. Identify proposed additions as proposals and support them with a rationale.
 - Each milestone's `goal` describes an observable result at its completion, not
   merely an activity. In decision notes, give the source of important choices
   (user instruction, existing specification, or planner proposal), the reason,
   and the main tradeoff where relevant; identify decisions not to reopen.
-  Compare alternatives only when needed
-  to assess the decision; do not require a table or a label on every sentence.
+  Compare alternatives only when readers need them to assess the decision.
+  Tables and sentence-level labels are optional for these comparisons.
 - Assign stable requirement or constraint IDs such as `R1` and connect them to
   affected surfaces, acceptance criteria, and validation.
 - Make acceptance criteria observable. Use existing validation commands when

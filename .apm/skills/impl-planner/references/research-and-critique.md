@@ -4,11 +4,11 @@ Read this only when delegating research or running a critic pass.
 
 ## Delegation Handoff
 
-Repeat the user goal, success criteria, in-scope and out-of-scope boundaries,
-read-only constraint, known evidence, questions to answer, expected evidence
-format, impact surfaces to inspect, and stopping condition. Do not assume the
-worker inherits conversation history, repository instructions, loaded skills, or
-files already read.
+Give the worker the user's goal, success criteria, scope and exclusions, and
+the read-only constraint. Include the evidence already known, the questions to
+answer, where to look, how to report evidence, and when to stop. Supply relevant
+conversation context, repository instructions, skill guidance, and file paths
+the worker may need.
 For delegated critique, also provide the draft plan and the applicable output
 contract, or accessible paths the critic must read.
 The main planner must verify delegated repository paths and claims before using
@@ -22,8 +22,8 @@ Check requirement gaps, unsupported claims, dependency direction, missing
 interfaces or data/error flows, weak validation, risks, rollback, scope creep,
 and planning-only violations. Re-research only the smallest affected area, once,
 unless a new blocker appears.
-Delegated research does not replace this critic pass; a delegated critic can
-fulfill it.
+Review the draft even if another agent researched it. A delegated critic can
+perform the review.
 
 Apply `plan-contract.md` → `Final Check` to the draft as well. That contract
 defines reader-facing structure, evidence, decision sources, field placement,

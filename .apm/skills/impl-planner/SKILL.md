@@ -5,8 +5,8 @@ description: "Create repository-grounded plans for software or configuration-man
 
 # impl-planner
 
-Create an implementation plan, not an implementation. Do not edit files, apply
-migrations, run source-mutating commands, or tell another agent to implement.
+Write an implementation plan. Leave file edits, migrations, and other
+source-changing commands to implementation. Keep delegated work read-only.
 
 ## Core Workflow
 
@@ -14,20 +14,19 @@ migrations, run source-mutating commands, or tell another agent to implement.
    callers, configuration, tests, documentation, and existing validation. Use
    non-mutating commands only; do not ask for facts the repository can answer.
    Inspect direct dependents of a central file before fixing the affected surface.
-2. Classify unknowns as blocking now, safe assumptions, or implementation-time
-   confirmation. Ask one to three high-impact questions per round after
-   research, then re-research the affected area. Ask another round only when a
+2. Identify what blocks the plan, what can proceed under a safe assumption, and
+   what can wait until implementation. After research, ask one to three
+   questions per round about issues that would materially change the plan.
+   Follow each round with research on the affected area. Ask again only if a
    remaining or newly discovered blocker materially changes the plan.
-   Separate explanatory comparisons from questions requesting a decision:
-   Markdown may explain recommendations and tradeoffs, including the structure
-   in `references/detail-request.md`. When a structured-question tool is
-   available, use it for the actual question or selection; do not duplicate the
-   selection prompt in prose. When no such tool is available but ordinary
-   interaction is possible, ask a concise conversational question instead.
-   Tool unavailability alone does not require a provisional plan. If a blocker
-   remains and neither form of interaction is possible, return a clearly marked
-   provisional plan stating the blocker and its impact rather than a question
-   awaiting an answer or an imitation of the tool's selection UI.
+   Explain recommendations and tradeoffs in Markdown using
+   `references/detail-request.md` when it applies. Use the structured-question
+   tool for the actual question or selection when available and present the
+   selection prompt once. Otherwise, ask a concise question in conversation if
+   possible. If a blocker remains and you cannot interact with the user, return
+   a clearly marked provisional plan that states the blocker and its impact.
+   In that case, record unresolved decisions in the plan itself. Avoid leaving
+   a question awaiting an answer or mimicking the selection tool in prose.
 3. Before drafting, classify the change. For medium or larger, cross-cutting,
    data-affecting, security-sensitive, deployment-sensitive, or
    configuration-management work, read `references/extended-plan-contract.md`.
@@ -45,10 +44,9 @@ migrations, run source-mutating commands, or tell another agent to implement.
 7. For work using the extended contract, read `references/research-and-critique.md`
    and run its critic checklist after drafting. If independent critique is the
    qualifying task from step 4, delegate it now when subagent tools are available.
-   Otherwise prefer a fresh-context critic when useful and available; if not,
-   have the authoring agent review the complete draft against the checklist
-   after writing it. Delegated research does
-   not replace critique.
+   Otherwise prefer a reviewer with fresh context when useful and available.
+   In other cases, have the authoring agent review the complete draft
+   against the checklist. Run this review even if another agent handled research.
 8. Apply `references/plan-contract.md` → `Final Check` to every plan before responding.
 
 ## Core Rules

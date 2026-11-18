@@ -5,10 +5,9 @@ description: Maintain or review this impl-planner repository's contracts, refere
 
 # Maintain impl-planner
 
-Keep changes consistent with their affected contracts, examples, documentation,
-and package contents. Respect the user's requested scope and read-only or
-planning mode. This skill does not authorize publishing, merging, tagging, or
-implementing work when only review or planning was requested.
+Check each change against the affected contracts, examples, documentation, and
+bundle contents. Follow the scope and mode the user requested. A request to
+review or plan authorizes only that work.
 
 ## Establish the change
 

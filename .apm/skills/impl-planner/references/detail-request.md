@@ -1,14 +1,14 @@
 # impl-planner Detail-Request Response
 
-Read this reference when the user asks for more detail, asks for decision support, asks for multiple options, or cannot choose an implementation direction.
+Use this reference when the user asks for more detail, wants to compare options, or needs help choosing a direction.
 
 ## Response Format
 
 Use this structure before the final plan. Resolve the decision first, then carry the chosen option into the required top-level output. Do not add a competing top-level structure beside a final plan.
 
-This structure explains comparisons, not how to collect a decision. Follow the
-question-routing and no-interaction fallback in `SKILL.md`. Explanation alone
-does not require the user to choose or approve anything.
+Use the format below to explain the options. If a decision is needed, follow
+the question and fallback rules in `SKILL.md`. A request for explanation alone
+requires no choice or approval.
 
 ## Decision Support / 判断材料
 

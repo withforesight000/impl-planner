@@ -1,10 +1,10 @@
 # Configuration-Management Task Profile
 
-Use this profile for Ansible or another declarative configuration-management repository. Treat these as investigation points, not boilerplate.
+Use this checklist to investigate changes in Ansible or other declarative configuration-management repositories.
 
 - Trace inventory, groups, host/group variables, role boundaries, variable precedence, templates, handlers, playbooks, and service dependencies.
 - State idempotency expectations and validate an unchanged second run where repository tooling permits it.
-- Include syntax checking, check mode, or targeted dry-run only when their limitations are stated; check mode does not prove every runtime action is safe.
-- Identify secrets sources and ensure plans do not expose values or propose committing secret material.
+- If you include syntax checking, check mode, or a targeted dry run, explain the limits of each check. Check mode alone cannot establish the safety of every runtime action.
+- Identify where secrets come from. Keep values out of the plan and exclude secret material from proposed commits.
 - Describe handler notification behavior, service state changes, partial-apply recovery, inventory rollback, and role/play rollback when relevant.
 - Keep generated host-specific state, destructive operations, and non-idempotent shell commands explicit in risks and validation.

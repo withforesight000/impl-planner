@@ -1,10 +1,10 @@
 # impl-planner Examples
 
-Read this reference only when you want to choose a specific example file.
+Use this index to choose an example.
 
 ## Available Files
 
-- `mini-example.md`: Compact example for calibrating plan density.
+- `mini-example.md`: Shows how much detail to include in a small plan.
 - `provisional-example.md`: Complete Japanese example with an inaccessible external API specification and no available interaction.
 - `prompt-templates.md`: Reusable prompt templates in English and Japanese.
 - `extended-plan-contract.md`: Detailed grounding, traceability, and risk contract for larger or risky plans.
@@ -14,6 +14,6 @@ Read this reference only when you want to choose a specific example file.
 ## Usage
 
 - Read `mini-example.md` when you want a short, Plan.md-shaped example.
-- Read `provisional-example.md` when missing evidence blocks a plan and interaction is unavailable; it is not a reason to skip questions when interaction is possible.
+- Read `provisional-example.md` when missing evidence blocks a plan and you cannot ask the user. When you can ask, clarify the blocker.
 - Read `prompt-templates.md` when you want a prompt you can copy and adapt quickly.
 - Read task profiles only after the repository task type makes them relevant.

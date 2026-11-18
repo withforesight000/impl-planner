@@ -1,6 +1,6 @@
 # Repository Guide
 
-This repository contains the `impl-planner` APM package. The source of truth is:
+The following files define and document the `impl-planner` APM package.
 
 - `apm.yml`
 - `.apm/skills/impl-planner/SKILL.md`
@@ -47,7 +47,7 @@ git -c core.fsmonitor=false diff --check
 
 These checks cover documentation inventories and shared-instruction links. Review contract/example agreement and bilingual meaning separately.
 
-The `Repository consistency` GitHub Actions workflow runs the checker and tests on pull requests and pushes to `main`. Run the APM checks below locally; CI does not validate package contents, bilingual meaning, or native skill discovery.
+The `Repository consistency` GitHub Actions workflow runs the checker and tests on pull requests and pushes to `main`. Run the APM checks below locally. Package contents, bilingual meaning, and native skill discovery are outside the workflow's coverage.
 
 When changing the package or the skill, verify with the local APM CLI:
 
@@ -65,8 +65,6 @@ Use these checks to confirm that the package metadata, skill contract, and bundl
 
 
 ## Version Release Checklist
-
-When preparing a version release, keep the release state easy to audit:
 
 - Update `apm.yml` to the target version.
 - Update install examples in both `README.md` and `README.ja.md` to use the explicit Git tag reference with the target version, such as `withforesight000/impl-planner#1.0.0`.

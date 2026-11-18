@@ -1,10 +1,14 @@
 # Platform Notes
 
-This reference is intentionally separate from the portable output contract. Verify vendor behavior again before relying on it. Codex sources were checked on 2026-09-24; Claude Code and GitHub Copilot sources were checked on 2026-07-10.
+Verify how the platform behaves before relying on these notes.
+The Codex references were checked on 2026-09-24. The Claude Code and GitHub
+Copilot references were checked on 2026-07-10.
 
 ## Shared Rule
 
-Native Plan modes provide a write boundary and approval flow. `impl-planner` supplies the portable research, evidence, output, blocker, and critique contract. Do not assume a native plan mode alone guarantees grounded output.
+Native Plan modes limit writes and provide an approval process. Use
+the same `impl-planner` rules for research, evidence, output, blockers, and review
+across platforms. Check the plan against repository evidence even in a native Plan mode.
 
 ## Codex
 

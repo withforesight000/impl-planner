@@ -1,6 +1,7 @@
 # Software Task Profiles
 
-Read only the relevant profile sections. These are investigation checklists, not mandatory output sections; omit items that do not apply.
+Use only the sections relevant to your research. Follow the plan contract for
+the output structure.
 
 ## API and Public Contract Changes
 
@@ -17,7 +18,8 @@ Read only the relevant profile sections. These are investigation checklists, not
 ## Asynchronous Work and Jobs
 
 - Identify producer, consumer, queue/topic, retry policy, ordering assumptions, deduplication, idempotency key, timeout, dead-letter handling, and observability.
-- State behavior for duplicate delivery, partial failure, replay, and rollback. Do not assume exactly-once delivery unless repository evidence establishes it.
+- Explain what happens on duplicate delivery, partial failure, replay, and
+  rollback. Rely on exactly-once delivery only if repository evidence establishes it.
 
 ## Dependency Upgrades
 

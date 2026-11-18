@@ -1,6 +1,6 @@
 # impl-planner Prompt Templates
 
-Use these when you want reusable prompt examples without reading the full README.
+Copy the minimal or detailed prompt below and adapt it to your task.
 
 ## English
 
@@ -81,9 +81,9 @@ Use `impl-planner` to create an implementation plan.
 
 ### Detailed input guide
 
-You do not need to repeat instructions already documented in `AGENTS.md`, relevant skills, or other repository documentation, or write “follow AGENTS.md” in each field. Name a particular skill or reference if you want to ensure it is considered.
+You can omit instructions already covered by `AGENTS.md`, relevant skills, or repository documentation. Name any skill or reference you want the planner to consult.
 
-For omitted fields, the planner uses the following approach:
+Here’s how the planner handles blanks.
 
 1. Follow applicable `AGENTS.md` and relevant skill instructions.
 2. Where those instructions do not cover the issue, inspect existing code, tests, and documentation to identify established behavior and conventions.
@@ -91,7 +91,7 @@ For omitted fields, the planner uses the following approach:
 
 An omitted field does not mean “no constraints” or “out of scope.” Do not guess file paths, commands, behavior, or business rules to fill the template. If you already know something is unclear or undecided, record it under `Open questions`.
 
-The examples below describe one fictional task: improving recovery after an order form fails to save. Its repository name, rules, and constraints are illustrative, not requirements for your task. Keep the copyable prompt above brief and use this guide when a field is hard to fill in.
+Use this guide when a field is hard to fill in, and keep the prompt brief. The examples use a fictional order form that clears its input when saving fails. Use your own repository name, rules, and constraints.
 
 | Field | Why it helps | Questions to consider | Example entry |
 | --- | --- | --- | --- |
@@ -119,7 +119,7 @@ The examples below describe one fictional task: improving recovery after an orde
 
 ### When the AI agent's pre-planning questions are hard to answer
 
-You do not need to choose immediately if an option's meaning or impact is unclear. You can reply by requesting an explanation or further investigation. Use these responses as written, adding any context you know.
+If you’re unsure what an option would change, ask for an explanation or more investigation before choosing. Copy a reply below and add any context you have.
 
 | What is difficult | Example reply |
 | --- | --- |
@@ -212,22 +212,22 @@ impl-planner を使って実装 plan を作ってください。
 
 `AGENTS.md`・関連スキル・リポジトリのドキュメントに記載済みの指示を転記したり、各項目に「AGENTS.md に従ってください」と繰り返したりする必要はありません。特に参照してほしいスキルや資料がある場合は、その名前や参照先を明示してください。
 
-未記入の項目は、次の方針で補います。
+空欄の項目は、計画を作るエージェントが次の順で補います。
 
 1. 適用される `AGENTS.md` と関連スキルの指示に従います。
 2. 指示で扱われていない事項は、既存コード・テスト・ドキュメントを調査し、既存の動作や慣例に基づいて判断します。
-3. それでも不明な場合、影響が小さい事項は妥当な仮定を置いて進め、計画に明記します。目的・範囲・互換性・安全性などの重要な判断を左右する事項は確認します。
+3. 調べても分からず、影響が小さい場合は、妥当な仮定を置いて進め、その仮定を計画に明記します。目的・範囲・互換性・安全性などの重要な判断に関わる場合は、ユーザーに確認します。
 
 未記入は「制約なし」「対象外」を意味しません。入力のためにファイルパス・コマンド・動作・業務ルールを推測で埋める必要はありません。分からないことや未決定のことを既に把握している場合は、`未確定事項` に記入してください。
 
-以下は「注文フォームの保存失敗後の復帰を改善する」という架空のタスクの記入例です。リポジトリ名・業務ルール・制約は説明用であり、実際のタスクの必須要件ではありません。上のコピー用テンプレートは簡潔に保ち、書きにくい項目があるときにこのガイドを参照してください。
+書きにくい項目があれば、この表を参考にしてください。記入例では、保存に失敗すると入力が消える架空の注文フォームを扱います。リポジトリ名や業務ルール、制約は、ご自身のタスクに合わせて簡潔に書いてください。
 
 | 項目 | 入力すると何がよくなるか | 考えるための問い | 記入例 |
 | --- | --- | --- | --- |
 | `対象リポジトリ` | 対象とその境界を特定できます。 | どのリポジトリ・アプリ・運用対象を変更しますか？ | `order-portal` リポジトリの注文入力用Webアプリ。 |
 | `やりたいこと` | 達成したい結果が明確になります。 | 誰が、どの状況で、何をできるようにしたいですか？ | 担当者が、保存に失敗しても注文を入力し直さずに再試行できるようにしたい。 |
 | `背景` | 問題と対応の優先度を伝えられます。 | 現在何が起きていて、なぜ困っていますか？ | 保存に失敗するとフォームが消去され、担当者が注文を再入力している。 |
-| `受け入れ条件` | 完了を観測可能にできます。 | 失敗時も含め、どんな結果を確認できれば成功ですか？ | 保存失敗時に入力が残り、エラーが表示される。初回の応答が失われても、再試行による保存は1件だけになる。 |
+| `受け入れ条件` | 何を確認すれば完了と判断できるかが分かります。 | 失敗時も含め、どんな結果を確認できれば成功ですか？ | 保存失敗時に入力が残り、エラーが表示される。初回の応答が失われても、再試行による保存は1件だけになる。 |
 | `今回やること` | 含める作業を明確にできます。 | 今回、どの変更まで含める必要がありますか？ | 失敗時の入力保持、エラー表示、同じ送信を重複登録しない手動再試行。 |
 | `今回やらないこと` | 意図しない範囲拡大を防げます。 | 関連していても、今回は後回しにすることは何ですか？ | 自動再試行と、画面を閉じた後の入力復元。 |
 | `AIが気づきにくい業務・システムの前提` | 業務ルールと、対象リポジトリだけでは分からないシステムの関係を補えます。 | 守るべき業務上の前提は何ですか？ どの資料の何を確認すべきですか？ 関連リポジトリは何を担当していますか？ | 同じ内容の注文を意図的に2件作ることがある。仕様リポジトリ order-specs の docs/order-sequence.md で再試行時の送信識別を確認してほしい。order-api リポジトリは注文保存と再試行による重複防止を担当する。再送識別の実装状況は調査が必要。 |
@@ -248,7 +248,7 @@ impl-planner を使って実装 plan を作ってください。
 
 ### 計画前のAIエージェントからの質問に迷ったとき
 
-選択肢の意味や影響が分からなければ、すぐに選ぶ必要はありません。質問への返答として、説明や追加調査を求められます。次の例をそのまま使い、分かる範囲の事情を添えてください。
+各案で何が変わるか分からなければ、選ぶ前に説明や追加調査を頼めます。次の返答例に、分かっている事情を添えて使ってください。
 
 | 困っていること | 返答の例 |
 | --- | --- |

@@ -1,10 +1,9 @@
 # impl-planner Provisional Example
 
-This complete Japanese example is fictional. Paths and inspection results belong
-to the scenario, not the repository containing this example. The planner can read
-the web repository but cannot access the external API specification or ask the user.
-When interaction is available, investigate first and ask about material blockers
-before finalizing instead of using this example to bypass clarification.
+This fictional Japanese plan uses paths and inspection results from the
+scenario. The planner can read the web repository, but has no access to the
+external API specification and no way to ask the user. If you can ask the
+user, investigate first and raise any material blockers before finalizing.
 
 ```md
 # 注文保存の失敗後に安全に再試行できるようにする計画
@@ -24,7 +23,7 @@ before finalizing instead of using this example to bypass clarification.
 
 ### 今答えないと plan が破綻するもの
 
-- AI の追加調査が必要：API の再送識別・保存済み応答の扱い。仕様を取得できず、今回はユーザーとの対話もできないため未解決。安全な再試行方式の確定を阻害する。
+- AI は、API が再送をどう識別し、保存済みの応答をどう扱うかを追加で調べる必要がある。今回は仕様を入手できず、ユーザーにも質問できないため、安全な再試行方式を確定できない。
 - API 変更が必要と判明した場合は、ユーザーによる対象範囲の判断が必要。関連リポジトリへの言及だけでは変更対象に含めない。
 
 ### 仮定を置けば進められるもの
@@ -33,7 +32,7 @@ before finalizing instead of using this example to bypass clarification.
 
 ### 実装中に確認すればよいもの
 
-- 実装担当者：採用方式を確定した後、通信失敗と応答喪失を再現し、入力保持・エラー表示・保存件数を確認する。
+- 実装担当者は、採用方式を確定した後、通信失敗と応答喪失を再現する。入力保持、エラー表示、保存件数が受け入れ条件を満たさなければ、該当する処理を修正する。
 
 ## Plan.md
 
@@ -51,7 +50,7 @@ Plan status: Provisional (重要な未確認・未決定事項が残る暫定計
 #### 対応する要件
 
 - R1：失敗時に入力を保持してエラーを表示する。
-- R2：同じ送信の再試行で二重登録しない。
+- R2：同じ送信を再試行しても二重登録しない。同じ内容でも別々に送信した注文は、別件として保存できるようにする。
 
 #### 実装方針
 
